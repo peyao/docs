@@ -108,6 +108,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../create/">Creating Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../beginner/">Beginner's Guide</a>
         
     </li>
@@ -675,7 +682,7 @@ import com.datatorrent.demos.dimensions.ads.AdInfo;
 <li>
 <p>Add the following <code>repositories</code> element at the top level (i.e. as a
    child of the <code>project</code> element):</p>
-<p><code>&lt;!-- repository to provide the DataTorrent artifacts --&gt;
+<pre><code>&lt;!-- repository to provide the DataTorrent artifacts --&gt;
 &lt;repositories&gt;
   &lt;repository&gt;
     &lt;id&gt;datatorrent&lt;/id&gt;
@@ -685,12 +692,13 @@ import com.datatorrent.demos.dimensions.ads.AdInfo;
       &lt;enabled&gt;false&lt;/enabled&gt;
     &lt;/snapshots&gt;
   &lt;/repository&gt;
-&lt;/repositories&gt;</code></p>
+&lt;/repositories&gt;
+</code></pre>
 </li>
 <li>
 <p>Add these lines to the dependencies section at the end of the <code>pom.xml</code>
 file (the version number might need to change as new releases come out):</p>
-<p><code>&lt;dependency&gt;
+<pre><code>&lt;dependency&gt;
     &lt;groupId&gt;com.datatorrent&lt;/groupId&gt;
     &lt;artifactId&gt;dt-contrib&lt;/artifactId&gt;
     &lt;version&gt;3.3.0&lt;/version&gt;
@@ -699,7 +707,8 @@ file (the version number might need to change as new releases come out):</p>
     &lt;groupId&gt;com.datatorrent&lt;/groupId&gt;
     &lt;artifactId&gt;dt-library&lt;/artifactId&gt;
     &lt;version&gt;3.3.0&lt;/version&gt;
-&lt;/dependency&gt;</code></p>
+&lt;/dependency&gt;
+</code></pre>
 </li>
 <li>
 <p>Finally change <code>apex.version</code> to 3.2.0-incubating. To recapitulate, we are
