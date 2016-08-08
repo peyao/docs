@@ -1,6 +1,184 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version 3.4.0 
+------------------------------------------------------------------------------------------------------------------------
+### Summary
+Affinity rules provides a way to specify hints on how operators should be deployed in a Hadoop cluster. There are two types of rules: affinity and anti-affinity rules. Affinity rule indicates that the group of operators in the rule should be allocated together. Anti-affinity rule, the new feature in Apache Apex 3.4.0, indicates that the group of operators should be allocated separately.
+
+This release also includes a lot of bug fixes. Please see appendix for full list. 
+
+### dtManage
+* User can restart a killed application from dtManage
+* "Retrieve Ended Apps" button changes to "Hide Ended Apps" after dtManage retrieves killed apps.
+* User can use mouse scroll to zoom in/out of physical DAG view
+
+### Apache Apex 3.4.0
+* Blacklist problem nodes from future container requests
+* Support adding module to application using property file API.
+* Ability to obtain a thread dump from a container
+* RPC timeout is now configurable
+* When an operator is blocked, it nows print out a warning instead of debug
+
+### Appendix
+
+#### Known Issues
+* [SPOI-8518] - Support links from Dashboard to Application instance pages
+* [SPOI-8516] - Datatorrent rpm version inconsistency
+* [SPOI-8470] - Check for already existing app package should be done before uploading the whole package
+* [SPOI-8436] - Documentation is needed on "How to use Transform operators in ingestion solution app package"
+* [SPOI-8434] - Documentation is needed on "How to use Generic JDBC/PostgreSQL operators in ingestion solution app package"
+* [SPOI-8433] - Documentation is needed on "How to use Enrichment operator in ingestion solution app package"
+* [SPOI-8414] - Drop down is not shown for "Fields to copy" property of "POJO Enricher" unless output schema is not specified
+* [SPOI-8352] - Warning message while restarting app should be changed
+* [SPOI-8296] - "File Path" and "Output File Name" properties for HDFS File Output Operator should be clubbed together
+* [SPOI-8295] - "Include Fields" parameter for "POJO Enricher" has misleading description
+* [SPOI-8294] - Operator Class Name for "Delimited Parser" operator should not be "CSV Parser"
+* [SPOI-8293] - File permission property is not working properly for HDFS File Output Operator
+* [SPOI-8291] - Parameters on dtAssemble should be logically ordered
+* [SPOI-8224] - Providing Field Infos value for JDBC POJO Input Operator is too complex
+* [SPOI-8192] - Clicking on edit option for apps throws validation errors in activity panel
+* [SPOI-8158] - Options to modify property values should be closer to the property name on dtAssemble canvas
+* [SPOI-8144] - "Tuple Schemas" link at top right corner of dtAssemble canvas should open in new tab
+* [SPOI-8143] - Tuple Schema page not available directly from Develop tab
+* [SPOI-8133] - When stream is added in dtAssemble, user should be notified if schema is required
+* [SPOI-8131] - Couple of parameters for Kafka Input Operator should have dropdown selection in dtAssemble
+* [SPOI-8130] - Documentation for ingestion beta operators need to be improved
+* [SPOI-8128] - Port names for operators are not intuitive when displayed on dtAssemble canvas
+* [SPOI-8087] - JDBC input operator query should not require explicit ordering of column names
+* [SPOI-8038] - Output file names for HDFS output should not contain timestamp and '.tmp' extension
+* [SPOI-8522] - Unable to set role while creating user in a secure environment.  There is a workaround by create user with no role and then assign the role
+* [SPOI-8523] - User can kill app even though privileges got revoked.  This applies to secure environment only.  
+* [SPOI-8552] -	App Package cache throws uncaught exception when package is not found, resulting in http status 500
+* [SPOI-8536] -	DT RTS gateway log floods with WARN message
+* [SPOI-8535] -	Need to restart dtgateway for enabling password authentication in sandbox
+* [SPOI-8534] -	README.html for sandbox contains references to 'malhar-users'
+* [SPOI-8533] -	Importing 'Apache Apex Malhar Iteration Demo' throws error for 'property' tag in properties.xml
+* [SPOI-8532] -	Importing packages from dtHub sometimes gives ZipException
+* [SPOI-8531] -	Multiple MachineData demos are available at dtHub
+* [SPOI-8524] -	Clicking on "generate new dashboard" first navigates to 'Learn' tab on the dtConsole
+* [SPOI-8523] -	Users can kill the app even if privileges get revoked in secure environment
+* [SPOI-8522] -	Unable to set roles while creating user in secure environment
+* [SPOI-8519] -	Ingestion application on dtHub still shows 'requires Apex version' with "-incubating"
+* [SPOI-8511] -	Gateway Websocket API leaks information while unauthorized
+* [SPOI-8509] -	dtAssemble operator documentation shows '@link' markers
+* [SPOI-8507] -	Unable to launch an AppDataTracker application imported from dtHub
+* [SPOI-8491] -	UI mixes the order and ids of tuple recording ports
+* [SPOI-8490] -	gateway issues in SSL enabled cluster
+* [SPOI-8479] -	Uninstall does not work even though the install was successful previously
+* [SPOI-8477] -	Upgrade License Opens in dtManage window, it should be in opened up in new window
+* [SPOI-8476] -	Hadoop-common-tests library shouldn't be part of RTS build
+* [SPOI-8474] -	On addition of huge role name, non-specific errors are shown
+* [SPOI-8473] -	Gateway, console allows impractially longer user roles additions
+* [SPOI-8472] -	Visually ugly error presentation
+* [SPOI-8469] -	If Kerberos tickets are changed, you have to refresh whole UI
+* [SPOI-8467] -	installation script provides incorrect information
+* [SPOI-8432] -	JDBC input operator is failing with exception "fetching metadata"
+* [SPOI-8424] -	Dedup does not honor the expiryPeriod when error tuple is introduced in between two valid tuples
+* [SPOI-8422] -	Time properties for operators should have units mentioned for them
+* [SPOI-8416] -	dtAssemble Can't change application name
+* [SPOI-8365] -	HDFS sync app : Unable to sync 500 GB file
+* [SPOI-8358] -	Uptime and latency values are very high exactly after app is launched
+* [SPOI-8317] -	dtIngest 1.1.0 (Compiled against 3.2.0) can not be launched
+* [SPOI-8222] -	Operator/module names under Operator Library, dtAssemble canvas and right side panel should be same
+* [SPOI-8213] -	Application DAG is not displayed when clicked on app link
+* [SPOI-8202] -	Unable to add custom properties while launching apps
+* [SPOI-8197] -	Default values for "Field Infos" and "Bucket Manager" properties should be set appropriately
+* [SPOI-7986] -	Gateway proxy feature is not working
+* [SPOI-7934] -	Kafka-dedup-HDFS-solution: Ahead in time messages are lost from Dedup operator
+
+#### Bug Fixes
+* [SPOI-7939] -	Dynamic repartition causes application to hang
+* [SPOI-8468] -	Can't assign roles for users in secure environment
+* [SPOI-8464] -	"Disable Reporting" option on System Configuration page gives NullPointerException
+* [SPOI-8024] -	Gateway is leaving behind dtcheck temp files in HDFS
+* [SPOI-7640] -	Changing dashboard name in dashboard settings modal and then canceling does not revert dashboard name
+* [SPOI-8077] -	Gateway logs NPE if an app master is misbehaving
+* [SPOI-8046] -	Kerberos Cluster: Installation Wizard can not get past beyond Hadoop Configuration screen
+* [SPOI-8055] -	Console references to dt-text-tooltip no longer produce a tool tip
+* [SPOI-7898] -	Default JAAS support classes duplicated in dt-library
+* [SPOI-7929] -	Update log4j.properties in the DTX/dist/install to set debug level for org.apache.apex
+* [SPOI-7943] -	The demo applications fails due to numberOfBuckets is less than 1
+* [SPOI-8092] -	Problems in launching jobs with authentication enabled on secure cluster
+* [SPOI-7794] -	Monitor page not refreshing properly
+* [SPOI-7889] -	Cannot read property 'hideBreadcrumbs' of undefined
+* [SPOI-7856] -	Modify application packages dtHub import/update paths
+* [SPOI-7907] -	Downloads of AppPackages result in corrupted files during local testing
+* [SPOI-7971] -	After dynamic repartition application appears blocked
+
+#### Apache Apex 3.4.0
+
+#### New Feature
+* [APEXCORE-10] - Enable non-affinity of operators per node (not containers)
+* [APEXCORE-359] - Add clean-app-directories command to CLI to clean up data of terminated apps
+* [APEXCORE-411] - Restart app without specifying app package
+
+#### Improvement
+* [APEXCORE-92] - Blacklist problem nodes from future container requests
+* [APEXCORE-107] - Support adding module to application using property file API.
+* [APEXCORE-304] - Ability to add jars to classpath in populateDAG
+* [APEXCORE-328] - CLI tests should not rely on default maven repository or mvn being on the PATH
+* [APEXCORE-330] - Ability to obtain a thread dump from a container
+* [APEXCORE-358] - Make RPC timeout configurable
+* [APEXCORE-380] - Idle time sleep time should increase from 0 to a configurable max value
+* [APEXCORE-383] - Time to sleep while reservoirs are full should increase from 0 to a configurable max value
+* [APEXCORE-384] - For smaller InlineStream port queue size use ArrayBlockingQueueReservoir as default
+* [APEXCORE-399] - Need better debug information in stram web service filter initializer
+* [APEXCORE-400] - Create documentation for security
+* [APEXCORE-401] - Create a separate artifact for checkstyle and other common configurations
+* [APEXCORE-407] - Adaptive SPIN_MILLIS for input operators
+* [APEXCORE-409] - Document json application format
+* [APEXCORE-419] - When operator is blocked, print out a warning instead of debug
+* [APEXCORE-447] - Document: update AutoMetrics with AppDataTracker link
+
+#### Bug
+* [APEXCORE-130] - Throwing A Runtime Exception In Setup Causes The Operator To Block
+* [APEXCORE-201] - Reported latency is wrong when a downstream operator is behind more than 1000 windows
+* [APEXCORE-326] - Iteration causes problems when there are multiple streams between two operators
+* [APEXCORE-335] - StramLocalCluster should teardown StreaminContainerManager after run is complete
+* [APEXCORE-349] - Application/operator/port attributes should be returned using string codec in REST service
+* [APEXCORE-350] - STRAM's REST service sometimes returns duplicate and conflicting Content-Type headers
+* [APEXCORE-352] - Temp directories/files not created in temp directory specified by system property java.io.tmpdir
+* [APEXCORE-353] - Buffer server may stop processing data
+* [APEXCORE-355] - CLI list-*-attributes command name change
+* [APEXCORE-362] - NPE in StreamingContainerManager
+* [APEXCORE-363] - NPE in StreamingContainerManager
+* [APEXCORE-374] - Block with positive reference count is found during buffer server purge
+* [APEXCORE-375] - Container killed because of Out of Sequence tuple error.
+* [APEXCORE-376] - CLI command 'dump-properties-file' does not work when connected to an app
+* [APEXCORE-385] - Temp directories/files not always cleaned up when launching applications
+* [APEXCORE-391] - AsyncFSStorageAgent creates tmp directory unnecessarily
+* [APEXCORE-393] - Reset failure count when consecutive failed node is removed from blacklist
+* [APEXCORE-397] - Allow configurability of stram web services authentication
+* [APEXCORE-398] - Ack may not be delivered from buffer server to it's client
+* [APEXCORE-403] - DelayOperator unit test fails intermittently
+* [APEXCORE-413] - Collision between Sink.getCount() and SweepableReservoir.getCount()
+* [APEXCORE-415] - Input Operator double checkpoint
+* [APEXCORE-421] - Double Checkpointing May Happen In Input Node On Shutdown
+* [APEXCORE-422] - Checkstyle rule related to allowSamelineParameterizedAnnotation suppression
+* [APEXCORE-434] - ClassCastException when making webservice calls to STRAM in secure mode
+* [APEXCORE-436] - Update log4j.properties in archetype test resources to set debug level for org.apache.apex
+* [APEXCORE-439] - After dynamic repartition application appears blocked
+* [APEXCORE-444] - 401 authentication errors when making webservice calls to STRAM in secure mode
+* [APEXCORE-445] - Race condition in AsynFSStorageAgent.save()
+
+#### Task
+* [APEXCORE-293] - Add core and malhar documentation to project web site
+* [APEXCORE-319] - Document backward compatibility guidelines
+* [APEXCORE-340] - Rename dtcli script to apex
+* [APEXCORE-345] - Upgrade to 0.7.0 japicmp
+* [APEXCORE-381] - Upgrade async-http-client dependency version because of security issue
+* [APEXCORE-410] - Upgrade to netlet 1.2.1
+* [APEXCORE-423] - Fix style violations in Apex Core
+* [APEXCORE-446] - Add source jar in the shaded-ning build
+
+#### Sub-task
+* [APEXCORE-254] - Introduce Abstract and Forwarding Reservoir classes
+* [APEXCORE-269] - Provide concrete implementation of AbstractReservoir based on SpscArrayQueue
+* [APEXCORE-365] - Buffer server handling for tuple length that exceeds data list block size
+* [APEXCORE-369] - Fix timeout in AbstractReservoirTest.performanceTest
+* [APEXCORE-402] - SpscArrayQueue to notify publishing thread on not full condition
+
 Version 3.3.0 
 ------------------------------------------------------------------------------------------------------------------------
 ### Summary

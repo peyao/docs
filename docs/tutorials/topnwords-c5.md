@@ -8,7 +8,7 @@ monitored input directory; the application, as it stands, cannot handle
 simultaneous addition of files at a time into the input directory. This
 issue is discussed in more detail in the Appendix entitled _Further Explorations_.
 
-Step 1: Add files to the monitored directory
+Step I: Add files to the monitored directory
 ---
 To add the files to the monitored input directory
 

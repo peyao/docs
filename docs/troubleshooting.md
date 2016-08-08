@@ -10,7 +10,7 @@ DataTorrent products are available for download from [https://www.datatorrent.co
 -  **Community Edition**:  It is a packaged version of Apache Apex and enables developers to quickly develop their big data streaming and batch projects.
 -  **Enterprise Edition**:  Designed for enterprise production deployment and includes security, advanced monitoring and troubleshooting, graphical application assembly, and application data visualization.
 -  **Sandbox Edition**:  Enterprise Edition and demo applications pre-installed and configured with a single-node Hadoop cluster running in a virtual machine.  Optimized for evaluation and training purposes.
--  **dtIngest Application**: simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
+-  **Data Ingestion Application**: It simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost. It's available for download through dtHub, a feature inside DataTorrent product.
 
 ###  What is the difference between DataTorrent RTS editions?
 
@@ -30,7 +30,6 @@ Package contents for Community edition:
 -   Apache Apex (incubating)
 -   DataTorrent Demo Applications
 -   DataTorrent dtManage
--   DataTorrent dtIngest
 
 Package contents for Enterprise edition:
 
@@ -39,7 +38,6 @@ Package contents for Enterprise edition:
 -   DataTorrent Operator Library
 -   DataTorrent Enterprise Security
 -   DataTorrent dtManage
--   DataTorrent dtIngest
 -   DataTorrent dtAssemble
 -   DataTorrent dtDashboard
 
@@ -149,14 +147,13 @@ machine. Following are prerequisites for DataTorrent RTS:
 -  DataTorrent Operator Library
 -  DataTorrent Enterprise Security
 -  DataTorrent dtManage
--  DataTorrent dtIngest
 -  DataTorrent dtAssemble
 -  DataTorrent dtDashboard
 -  Demo Applications
 
 ###  Why does the browser console on the sandbox say `HDFS Not Ready` ?
 
-The Hadoop HDFS services take a few minutes to start; the console needs all of
+The HDFS services take a few minutes to start; the console needs all of
 those services to be up and running and until that occurs, it displays this
 warning. If the normal console does not appear after a few minutes, please run
 the `jps` command to see which services may _not_ be running, for example:
@@ -179,28 +176,17 @@ under these directories:
 Now reformat HDFS with `hdfs namenode -format`
 and finally, restart all HDFS services.
 
-### What is dtIngest applicaiton?
+### What is Data Ingestion applicaiton?
 
-DataTorrent dtIngest simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
+Data Ingestion application simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
 
-###  Where do I get dtingest application?
+###  Where do I get Data Ingestion application?
 
-Application can be downloaded by visiting [datatorrent.com/download](https://www.datatorrent.com/download/)
+It's available for download through dtHub, a feature inside DataTorrent product.
 
-###  What are the dtingest package contents?
+###  What are the prerequisites of Data Ingestion application?
 
-Package comprises of DataTorrent RTS and dtIngest application.
-
-###  What are the prerequisites of dtIngest?
-
-DataTorrent RTS 3.x and above. Please refer [dtIngest tutorial](dtingest.md) for more details.
-
-###  Where can I start from after downloading dtingest?
-
--   Make sure all DataTorrent RTS prerequisites are satisfied before dtIngest installation.
--   Run the downloaded installer installer. Refer to DataTorrent RTS [installation guide](installation.md).
--   After DataTorrent RTS installation and configuration, you can configure and launch the
-    dtIngest application from dtManage, the DataTorrent console. Refer to [dtIngest tutorial](dtingest.md) for more details.
+DataTorrent RTS 3.4.x and above.
 
 ###  How do I get specific DT version ?
 
