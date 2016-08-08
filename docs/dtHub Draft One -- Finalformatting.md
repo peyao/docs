@@ -54,7 +54,7 @@ You can access dtHub from the DataTorrent RTS 3.3.0 console.
 2 (*Authentication enabled*) Use your credentials to log on. 
 3. On the menu bar, click **Develop**.
 4. Click **import from dtHub**.
-![image alt text](image_0.png)
+![image alt text](dthub_image_0.png)
 
 ## Import packages using dtHub
 
@@ -62,7 +62,7 @@ To save the package in the Hadoop cluster where dtGateway is running, use the im
 
 1. In the list of packages, locate the package that you want.
 2. Click **import**. 
-![image alt text](image_2.png)
+![image alt text](dthub_image_2.png)
 
 The import button shows a progress bar indicating the progress of the import operation. After the import operation completes, a notification appears indicating that the import is complete.  
 
@@ -72,7 +72,7 @@ If your Hadoop cluster where dtGateway is running does not have internet connect
 
 > Your dtGateway does not have internet access. Therefore, "import" button is disabled. To import a package from dtHub to your dtGateway, click "download" button to download it first, then click "upload package" button to upload it to dtGateway.
 
- ![image alt text](image_3.png)
+ ![image alt text](dthub_image_3.png)
 
 If you see this message, use this procedure to obtain packages:
 
@@ -82,7 +82,7 @@ If you see this message, use this procedure to obtain packages:
  2. Upload the package that you downloaded:
  &nbsp;&nbsp;&nbsp;2.1 At the top of the application list, locate and click **upload package.** 
  &nbsp;&nbsp;&nbsp;2.2 On the Application Package Upload window, upload the package that you downloaded to the Hadoop cluster where dtGateway is running. 
-![image alt text](image_4.png)
+![image alt text](dthub_image_4.png)
 
  3. Wait till the upload completes before performing application operations.
 ## Check for updates
@@ -97,18 +97,18 @@ dtHub is periodically updated to enable distribution of the most-recent versions
 2. (*Authentication enabled*) Use your credentials to log on. 
 &nbsp;&nbsp;&nbsp;2.1 On the menu bar, click **Develop**.
 &nbsp;&nbsp;&nbsp;2.2 On the Application Packages page, click **check for updates**.
-![image alt text](image_6.png)
+![image alt text](dthub_image_6.png)
 
 3. Import the application from the Updates packages in dtHub page:   
  &nbsp;&nbsp;&nbsp;3.1 In the list of applications, locate the application that you want.
  &nbsp;&nbsp;&nbsp;3.2 Click **import**. 			
-![image alt text](image_7.png)
+![image alt text](dthub_image_7.png)
 **Note**: The import button shows a progress bar indicating the progress of the import operation. After the import operation completes, a notification appears indicating that the import is complete.  
 
 4. Download the application: 
  &nbsp;&nbsp;&nbsp;4.1 In the list of applications, locate the application that you want.
 &nbsp;&nbsp;&nbsp;4.2 Click **download** to download the application package to your local file system.
-![image alt text](image_8.png) 
+![image alt text](dthub_image_8.png) 
 
 5. On the top of the application list, locate and click **upload package**. 
 6. On the Application Package Upload window, upload the package that you downloaded to the Hadoop cluster where dtGateway is running. 
