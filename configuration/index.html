@@ -324,6 +324,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operators/snapshot_server/">Snapshot Server</a>
+        
+    </li>
+
+        
     </ul>
 
         
@@ -471,8 +478,6 @@
                 <li class="toctree-l3"><a href="#multi-tenancy-and-security">Multi-Tenancy and Security</a></li>
                 
                     <li><a class="toctree-l4" href="#kerberos-authentication">Kerberos Authentication</a></li>
-                
-                    <li><a class="toctree-l4" href="#hadoop-configuration">Hadoop Configuration</a></li>
                 
                     <li><a class="toctree-l4" href="#cli-configuration">CLI Configuration</a></li>
                 
@@ -781,95 +786,10 @@ your Hadoop distribution on how to do that. Once Hadoop is running with
 Kerberos security enabled, DataTorrent platform also needs to be
 configured for Kerberos. There are two parts of the platform that need
 to be configured, CLI (Command Line Interface) and DT Gateway.</p>
-<h2 id="hadoop-configuration">Hadoop Configuration</h2>
-<p>The DataTorrent application uses delegation tokens to communicate
-with the ResourceManager (YARN) and NameNode (HDFS) and these tokens are
-issued by those servers respectively. Since the application is long-running,
-the tokens should be valid for the lifetime of the application.
-Hadoop has a configuration setting for the maximum lifetime of the
-tokens and they should be set to cover the lifetime of the application.
-There are separate settings for ResourceManager and NameNode delegation
-tokens.</p>
-<p>The ResourceManager delegation token max lifetime is specified in
-<code>yarn-site.xml</code> and can be specified as follows for example for a lifetime
-of 1 year</p>
-<pre><code class="xml">&lt;property&gt;
-  &lt;name&gt;yarn.resourcemanager.delegation.token.max-lifetime&lt;/name&gt;
-  &lt;value&gt;31536000000&lt;/value&gt;
-&lt;/property&gt;
-</code></pre>
-
-<p>The NameNode delegation token max lifetime is specified in
-hdfs-site.xml and can be specified as follows for example for a lifetime
-of 1 year</p>
-<pre><code class="xml">&lt;property&gt;
-   &lt;name&gt;dfs.namenode.delegation.token.max-lifetime&lt;/name&gt;
-   &lt;value&gt;31536000000&lt;/value&gt;
- &lt;/property&gt;
-</code></pre>
-
-<p>Also, DataTorrent RTS needs the DT Gateway user (default <code>dtadmin</code>) to be a
-proxy user in the Hadoop configuration when running in
-secure mode.  This will enable the DT Gateway to launch applications on
-behalf of the logged-in user.  Please add the following in <code>core-site.xml</code>
-and replace [username] with the user running the DT Gateway:</p>
-<pre><code class="xml">&lt;property&gt;
-  &lt;name&gt;hadoop.proxyuser.[username].groups&lt;/name&gt;
-  &lt;value&gt;*&lt;/value&gt;
-&lt;/property&gt;
-
-&lt;property&gt;
-  &lt;name&gt;hadoop.proxyuser.[username].hosts&lt;/name&gt;
-  &lt;value&gt;*&lt;/value&gt;
-&lt;/property&gt;
-</code></pre>
-
 <h2 id="cli-configuration">CLI Configuration</h2>
 <p>The DataTorrent command line interface is used to launch
 applications along with performing various other operations on
-applications.  When Kerberos security is enabled in Hadoop, a Kerberos
-ticket granting ticket or the Kerberos credentials of the user is needed
-by the CLI program <code>apex</code> to authenticate with Hadoop for any
-operation. Kerberos credentials are composed of a principal and either a
-<em>keytab</em> or a password. For security and operational reasons only keytabs
-are supported in Hadoop and by extension in DataTorrent platform. When
-user credentials are specified, all operations including launching
-application are performed as that user.</p>
-<h3 id="using-kinit">Using kinit</h3>
-<p>A Kerberos ticket granting ticket (TGT) can be obtained by using the
-Kerberos command <code>kinit</code>. Detailed documentation for the command can be
-found online or in man pages. An sample usage of this command is</p>
-<pre><code>kinit -k -t path-tokeytab-file kerberos-principal
-</code></pre>
-<p>If this command is successful, the TGT is obtained, cached and available for
-other programs. The CLI program <code>apex</code> can then be started to launch
-applications and perform other operations.</p>
-<h3 id="using-kerberos-credentials">Using Kerberos credentials</h3>
-<p>The CLI program <code>apex</code> can also use the Kerberos credentials directly without
-requiring a TGT to be obtained separately. This can be useful in batch mode
-where <code>apex</code> is not launched manually and also in scenarios where running a
-separate program like <code>kinit</code> is not feasible.</p>
-<p>The credentials can be specified in the <code>dt-site.xml</code> configuration
-file. If only a single user is launching applications, the global
-<code>dt-site.xml</code> configuration file in the installation folder can be used.
-In a multi-user environment the user can use the <code>dt-site.xml</code> file in his
-home directory. The location of this file will be <code>$HOME/.dt/dt-site.xml</code>
-If this file does not exist, the user can create a new one.</p>
-<p>The snippet below shows the how the credentials are specified in
-the configuration file as properties.</p>
-<pre><code class="xml">&lt;property&gt;
-        &lt;name&gt;dt.authentication.principal&lt;/name&gt;
-        &lt;value&gt;kerberos-principal-of-user&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-        &lt;name&gt;dt.authentication.keytab&lt;/name&gt;
-        &lt;value&gt;absolute-path-to-keytab-file&lt;/value&gt;
-&lt;/property&gt;
-</code></pre>
-
-<p>The property <code>dt.authentication.principal</code> specifies the Kerberos
-user principal and <code>dt.authentication.keytab</code> specifies the absolute path
-to the keytab file for the user.</p>
+applications. The security configuration for the CLI program is described in the Apache Apex security document available <a href="https://apex.apache.org/docs/apex/security/">here</a>.</p>
 <h2 id="dt-gateway-configuration">DT Gateway Configuration</h2>
 <p>DT Gateway is a service that provides the backend functionality
 for the DataTorrent UI console. In a Hadoop cluster with Kerberos security enabled additional configuration is needed for this service to communicate with Hadoop. This is described in <a href="../dtgateway_security/">Gateway Security</a>.</p>

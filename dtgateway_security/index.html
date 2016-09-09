@@ -324,6 +324,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operators/snapshot_server/">Snapshot Server</a>
+        
+    </li>
+
+        
     </ul>
 
         
@@ -454,6 +461,8 @@
                 
                     <li><a class="toctree-l4" href="#authentication">Authentication</a></li>
                 
+                    <li><a class="toctree-l4" href="#hadoop-user-mapping">Hadoop user mapping</a></li>
+                
                     <li><a class="toctree-l4" href="#authorization">Authorization</a></li>
                 
                     <li><a class="toctree-l4" href="#viewing-and-managing-auth-in-the-console">Viewing and Managing Auth in the Console</a></li>
@@ -566,6 +575,8 @@ configuration file.</p>
 &lt;/property&gt;
 </code></pre>
 
+<h3 id="long-running-applications">Long running applications</h3>
+<p>In secure mode, long running applications have additional requirements. Refer to the Token Refresh section in the Apache Apex security <a href="https://apex.apache.org/docs/apex/security/">document</a>.</p>
 <h2 id="authentication">Authentication</h2>
 <p>DataTorrent Gateway has support for authentication and when it is configured users have to authenticate before they can access the UI Console. Various authentication mechanisms are supported and this gives enterprises the flexibility to extend their existing authentication mechanism already in use within the enterprise to Gateway. It also supports roles, mapping of groups or roles from the external authentication mechanism to roles and supports role based authorization.</p>
 <p>The different authentication mechanisms supported by Gateway are</p>
@@ -940,6 +951,29 @@ authentication. The next settings are JPAM related settings. The setting <code>s
 <h3 id="group-support">Group Support</h3>
 <p>For group support such as using LDAP groups for authorization refer to
 the <a href="#authorization-using-external-roles">Authorization using external roles</a> section below.</p>
+<h2 id="hadoop-user-mapping">Hadoop user mapping</h2>
+<p>When authentication is enabled, applications are launched on the Hadoop cluster, by default, as the user matching the user name of the authenticated user. This mapping behavior, to select the user to use on the Hadoop side, is configurable and different options are available. To configure the behavior use the following setting</p>
+<pre><code class="xml">&lt;property&gt;
+  &lt;name&gt;dt.gateway.hadoop.user.strategy&lt;/name&gt;
+  &lt;value&gt;STRATEGY&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>The <code>STRATEGY</code> in the property above identifies the mapping behavior and the following options are available</p>
+<h3 id="authenticated-user">Authenticated user</h3>
+<p>To specify this behavior, use <code>AUTH_USER</code> as the value for <code>STRATEGY</code>. As explained earlier, this leads to applications being launched with the same user name as the authenticated user. This is the default behavior even when the property is not specified.</p>
+<p>In Kerberos secure mode, DT Gateway would still connect to Hadoop by using its Kerberos credentials, namely credentials of the user the DT Gateway service is running under (default <code>dtadmin</code>) but impersonate the authenticated user, to launch the application. This impersonation requires additional configuration on Hadoop side and it is explained in the Hadoop Configuration sub-section under the Impersonation section in the Apache Apex security <a href="https://apex.apache.org/docs/apex/security/">document</a>.</p>
+<h3 id="gateway-user">Gateway user</h3>
+<p>To specify this behavior, use <code>GATEWAY_USER</code> as the value for <code>STRATEGY</code>. In this mode, the Hadoop user is the same as the DT Gateway service user (default <code>dtadmin</code>) and no impersonation is necessary.</p>
+<h3 id="specified-user">Specified user</h3>
+<p>To specify this behavior, use <code>SPECIFIED_USER</code> as the value for <code>STRATEGY</code>. In this mode, a specific user name can be specified for the Hadoop user and it is used no matter who the authenticated user is. The Hadoop user name is specified by an additional property</p>
+<pre><code class="xml">&lt;property&gt;
+  &lt;name&gt;dt.gateway.hadoop.user.name&lt;/name&gt;
+  &lt;value&gt;username&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>The impersonation behavior described in the <a href="#authenticated-user">Authenticated user</a> section above applies here as well and so do the requirements mentioned there.</p>
 <h2 id="authorization">Authorization</h2>
 <p>When any authentication method is enabled, authorization will also be
 enabled.  DT Gateway uses roles and permissions for authorization.
