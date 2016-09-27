@@ -771,7 +771,7 @@ under these directories:</p>
 </code></pre>
 <p>Now reformat HDFS with <code>hdfs namenode -format</code>
 and finally, restart all HDFS services.</p>
-<h3 id="what-is-data-ingestion-applicaiton">What is Data Ingestion applicaiton?</h3>
+<h3 id="what-is-data-ingestion-application">What is Data Ingestion application?</h3>
 <p>Data Ingestion application simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.</p>
 <h3 id="where-do-i-get-data-ingestion-application">Where do I get Data Ingestion application?</h3>
 <p>It's available for download through dtHub, a feature inside DataTorrent product.</p>
@@ -904,7 +904,7 @@ $ hadoop dfs -chown &lt;USER&gt; /user/&lt;USER&gt;/datatorrent
 </code></pre>
 </li>
 <li>
-<p>If your application has trasitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application depedency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows</p>
+<p>If your application has transitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;&lt;/groupId&gt;
   &lt;artifactId&gt;&lt;/artifactId&gt;

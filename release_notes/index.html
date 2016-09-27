@@ -481,6 +481,12 @@
             
                 <li class="toctree-l3"><a href="#datatorrent-rts-release-notes">DataTorrent RTS Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#summary">Summary</a></li>
+                
+                    <li><a class="toctree-l4" href="#apache-apex-malhar">Apache Apex Malhar</a></li>
+                
+                    <li><a class="toctree-l4" href="#appendix">Appendix</a></li>
+                
                     <li><a class="toctree-l4" href="#version-340">Version 3.4.0</a></li>
                 
                     <li><a class="toctree-l4" href="#version-330">Version 3.3.0</a></li>
@@ -548,8 +554,77 @@
             <div class="section">
               
                 <h1 id="datatorrent-rts-release-notes">DataTorrent RTS Release Notes</h1>
-<h2 id="version-340">Version 3.4.0</h2>
+<p>Version: 3.5.0
+Release date: Sep 26, 2016</p>
+<hr />
 <h3 id="summary">Summary</h3>
+<p>DataTorrent RTS continues to deliver features that sets it apart in bringing operability in running an enterprise grade big data-in-motion platform. This particular release brought new features such as</p>
+<ul>
+<li>Allowing users to analyze "stuck operator" by obtaining stats from the running JVM (i.e. GC stats and thread dump)</li>
+<li>Ability to show/hide critical path in both logical and physical DAG</li>
+</ul>
+<h3 id="apache-apex-malhar">Apache Apex Malhar</h3>
+<p>The other important part of going to production is a library of operators that is more than just functional. They need to be fault tolerant, partitionable, support idempotency, and dynanically scalable. The recent release of Apache Apex Malhar 3.5.0 provides new and updated operators and APIs to bring those enterprise features. </p>
+<ul>
+<li>Windowed Operator that supports the windowing semantics outlined by Apache Beam and Google Cloud DataFlow, including the concepts of event time windows, session windows, watermarks, allowed lateness, and triggering.</li>
+<li>High level Java stream API now uses the aforementioned Windowed Operator to support stateful transformation with Apache Beam style windowing semantics.</li>
+<li>Introduction of Spillable Data Structures that make use of Managed State.</li>
+<li>Deduper Operator to process  whether a given record is a duplicate or not</li>
+<li>Enricher Operator to join a stream with a lookup source and operate on any POJO object</li>
+<li>HBase input operator. Improve HBasePOJOInputOperator with support for threaded read</li>
+<li>File Record reader module. It is useful for reading from files "line by line" in parallel and emit each line as seperate * tuple.</li>
+<li>JDBC Poll Input Operator</li>
+</ul>
+<p>For the full release note, please go to
+https://blogs.apache.org/apex/entry/apache_apex_malhar_3_5</p>
+<h3 id="appendix">Appendix</h3>
+<h4 id="known-issues">Known Issues</h4>
+<ul>
+<li>[SPOI-9232] Dedup with manage state operator marking all impression as duplicate</li>
+<li>[SPOI-9203]   "check for updates" option says 'no updated versions' and then displays updated packages</li>
+<li>[SPOI-9183]   Nested operator properties should follow order specified in the ORB on dtAssemble UI</li>
+<li>[SPOI-8827]   "Check for updates" option keeps loading the page when no updates are available</li>
+</ul>
+<h4 id="improvement">Improvement</h4>
+<ul>
+<li>[SPOI-7343] - Ability to obtain a thread dump from a container</li>
+<li>[SPOI-8191] - Operator properties should follow order specified in the ORB on dtAssemble UI</li>
+<li>[SPOI-8352] - Warning message while restarting app should be changed</li>
+<li>[SPOI-8450] - Dedup ports connected to console should not write to log</li>
+<li>[SPOI-8722] - Logical DAG, Physical DAG - change "Show/Hide String Locality", "Show/Hide Critical Path" to checkbox.</li>
+</ul>
+<h4 id="story">Story</h4>
+<ul>
+<li>[SPOI-6794] - HBase Input Operator</li>
+<li>[SPOI-6795] - Creation of Concrete Cassandra Output</li>
+<li>[SPOI-6932] - Module to read from HDFS Input record by record and emit it downstream</li>
+<li>[SPOI-7948] - JDBC Input Operator</li>
+</ul>
+<h4 id="bug-fixes">Bug Fixes</h4>
+<ul>
+<li>[SPOI-7836] - Trend widget fails after dashboard save/reload with PiDemo app</li>
+<li>[SPOI-7886] - Duplicate ports show up in the UI for POJO operators</li>
+<li>[SPOI-8222] - Operator/module names under Operator Library, dtAssemble canvas and right side panel should be same</li>
+<li>[SPOI-8552] - App Package cache throws uncaught exception when package is not found, resulting in http status 500</li>
+<li>[SPOI-8721] - Column labeled buffer service size is showing bytes per second</li>
+<li>[SPOI-9084] - Refresh tokens failing in some scenarios with a login failure message</li>
+<li>[SPOI-9130] - dtConsole shows no applications on monitor tab</li>
+<li>[SPOI-9131] - gateway REST and WebSocket APIs for cluster metrics fail to report stats</li>
+</ul>
+<h4 id="task">Task</h4>
+<ul>
+<li>[SPOI-8411] - Deduper operator using Managed State</li>
+<li>[SPOI-9004] - Deduper Documentation</li>
+</ul>
+<h4 id="sub-task">Sub-task</h4>
+<ul>
+<li>[SPOI-8389] - ORB defaults for FileSystem related operators</li>
+<li>[SPOI-8390] - Added operator default values in Application.json for user visibility</li>
+<li>[SPOI-8410] - Kafka Input Operator Unit test failed</li>
+<li>[SPOI-8461] - AbstractKafkaInputOperator problems</li>
+</ul>
+<h2 id="version-340">Version 3.4.0</h2>
+<h3 id="summary_1">Summary</h3>
 <p>Affinity rules provides a way to specify hints on how operators should be deployed in a Hadoop cluster. There are two types of rules: affinity and anti-affinity rules. Affinity rule indicates that the group of operators in the rule should be allocated together. Anti-affinity rule, the new feature in Apache Apex 3.4.0, indicates that the group of operators should be allocated separately.</p>
 <p>This release also includes a lot of bug fixes. Please see appendix for full list. </p>
 <h3 id="dtmanage">dtManage</h3>
@@ -566,8 +641,8 @@
 <li>RPC timeout is now configurable</li>
 <li>When an operator is blocked, it nows print out a warning instead of debug</li>
 </ul>
-<h3 id="appendix">Appendix</h3>
-<h4 id="known-issues">Known Issues</h4>
+<h3 id="appendix_1">Appendix</h3>
+<h4 id="known-issues_1">Known Issues</h4>
 <ul>
 <li>[SPOI-8518] - Support links from Dashboard to Application instance pages</li>
 <li>[SPOI-8516] - Datatorrent rpm version inconsistency</li>
@@ -633,7 +708,7 @@
 <li>[SPOI-7986] - Gateway proxy feature is not working</li>
 <li>[SPOI-7934] - Kafka-dedup-HDFS-solution: Ahead in time messages are lost from Dedup operator</li>
 </ul>
-<h4 id="bug-fixes">Bug Fixes</h4>
+<h4 id="bug-fixes_1">Bug Fixes</h4>
 <ul>
 <li>[SPOI-7939] - Dynamic repartition causes application to hang</li>
 <li>[SPOI-8468] - Can't assign roles for users in secure environment</li>
@@ -660,7 +735,7 @@
 <li>[APEXCORE-359] - Add clean-app-directories command to CLI to clean up data of terminated apps</li>
 <li>[APEXCORE-411] - Restart app without specifying app package</li>
 </ul>
-<h4 id="improvement">Improvement</h4>
+<h4 id="improvement_1">Improvement</h4>
 <ul>
 <li>[APEXCORE-92] - Blacklist problem nodes from future container requests</li>
 <li>[APEXCORE-107] - Support adding module to application using property file API.</li>
@@ -711,7 +786,7 @@
 <li>[APEXCORE-444] - 401 authentication errors when making webservice calls to STRAM in secure mode</li>
 <li>[APEXCORE-445] - Race condition in AsynFSStorageAgent.save()</li>
 </ul>
-<h4 id="task">Task</h4>
+<h4 id="task_1">Task</h4>
 <ul>
 <li>[APEXCORE-293] - Add core and malhar documentation to project web site</li>
 <li>[APEXCORE-319] - Document backward compatibility guidelines</li>
@@ -722,7 +797,7 @@
 <li>[APEXCORE-423] - Fix style violations in Apex Core</li>
 <li>[APEXCORE-446] - Add source jar in the shaded-ning build</li>
 </ul>
-<h4 id="sub-task">Sub-task</h4>
+<h4 id="sub-task_1">Sub-task</h4>
 <ul>
 <li>[APEXCORE-254] - Introduce Abstract and Forwarding Reservoir classes</li>
 <li>[APEXCORE-269] - Provide concrete implementation of AbstractReservoir based on SpscArrayQueue</li>
@@ -731,7 +806,7 @@
 <li>[APEXCORE-402] - SpscArrayQueue to notify publishing thread on not full condition</li>
 </ul>
 <h2 id="version-330">Version 3.3.0</h2>
-<h3 id="summary_1">Summary</h3>
+<h3 id="summary_2">Summary</h3>
 <h4 id="dthub">dtHub</h4>
 <p>DataTorrent RTS allows companies to quickly build low latency real time Big Data application that can scale and fault tolerant. With the introduction of dtHub, DataTorrent now host and maintain an application distributor. You can access it through dtManage and easily install or update application without having to upgrade the whole RTS platform. Prior to dtHub, RTS installer packaged both platform and applications. In 3.3, they are decoupled with significantly reduced installer size. You can independently choose when to upgrade the platform and when to install/upgrade applications.</p>
 <h4 id="dtmanage_1">dtManage</h4>
@@ -775,7 +850,7 @@
 <li>[SPOI-7479] - dtHub "check for updates" option says 'no updated versions' and then displays updated packages</li>
 <li>[SPOI-7626] - Stacked Area Chart widget shows NaN values on Firefox</li>
 </ul>
-<h3 id="appendix_1">Appendix</h3>
+<h3 id="appendix_2">Appendix</h3>
 <h4 id="dthub_1">dtHub</h4>
 <ul>
 <li>[SPOI-6787] - dtHub UI - explore, import, download</li>
@@ -834,7 +909,7 @@
 <ul>
 <li>[SPOI-7127] - Change enterprise evaluation days from 30 days to 60 days</li>
 </ul>
-<h4 id="bug-fixes_1">Bug Fixes</h4>
+<h4 id="bug-fixes_2">Bug Fixes</h4>
 <ul>
 <li>[SPOI-5622] - dtcli: Command 'show-physical-plan' fails with "Failed web service request" error</li>
 <li>[SPOI-6352] - Gateway's RM Proxy REST calls don't work with HA-enabled</li>
@@ -907,7 +982,7 @@
 <li>[APEXCORE-283] - Operator checkpointing in distributed in-memory store</li>
 <li>[APEXCORE-288] - Add group id information to apex app package</li>
 </ul>
-<h3 id="improvement_1">Improvement</h3>
+<h3 id="improvement_2">Improvement</h3>
 <ul>
 <li>[APEXCORE-40] - Semver dependencies should be in Maven Central</li>
 <li>[APEXCORE-162] - Enhance StramTestSupport.TestMeta API</li>
@@ -934,7 +1009,7 @@
 <li>[APEXCORE-300] - Fix checkstyle regular expression</li>
 <li>[APEXCORE-303] - Launch properties not evaluated</li>
 </ul>
-<h3 id="task_1">Task</h3>
+<h3 id="task_2">Task</h3>
 <ul>
 <li>[APEXCORE-24] - Takes out usage of Rhino as it is GPL 2.0</li>
 <li>[APEXCORE-186] - Enable license check in Travis CI</li>
@@ -945,7 +1020,7 @@
 <li>[APEXCORE-308] - Implement findbugs plugin reporting</li>
 <li>[APEXCORE-317] - Run performance benchmark for the Apex Core 3.3.0 release</li>
 </ul>
-<h3 id="sub-task_1">Sub-task</h3>
+<h3 id="sub-task_2">Sub-task</h3>
 <ul>
 <li>[APEXCORE-104] - Expand Module DAG</li>
 <li>[APEXCORE-105] - Support injecting properties through xml file on modules.</li>
@@ -967,20 +1042,20 @@
 <li>[APEXCORE-306] - Recovery checkpoint handing in iteration loops</li>
 </ul>
 <h2 id="version-321">Version 3.2.1</h2>
-<h3 id="summary_2">Summary</h3>
+<h3 id="summary_3">Summary</h3>
 <p>This release bundles a few fixes and features for customers who are on 3.2.0 and not ready to upgrade to 3.3.0  </p>
-<h4 id="improvement_2">Improvement</h4>
+<h4 id="improvement_3">Improvement</h4>
 <ul>
 <li>[SPOI-7900] add default role to first time login user</li>
 <li>[SPOI-7061] Implement retention policy for terminated apps</li>
 </ul>
-<h4 id="bug-fixes_2">Bug Fixes</h4>
+<h4 id="bug-fixes_3">Bug Fixes</h4>
 <ul>
 <li>[SPOI-6999] Gateway stops updating application information after problems with YARN or HDFS</li>
 <li>[SPOI-7471] Temp directories/files not cleaned up in Gateway</li>
 <li>[SPOI-7971] After dynamic repartition application appears blocked</li>
 </ul>
-<h4 id="known-issues_1">Known Issues</h4>
+<h4 id="known-issues_2">Known Issues</h4>
 <ul>
 <li>[SPOI-6999] Gateway stops updating application information after problems with YARN or HDFS</li>
 <li>[SPOI-7061] Implement retention policy for terminated apps</li>
@@ -1014,7 +1089,7 @@
 <ul>
 <li>[SPOI-6351] - Add feature to REST API to get queue information from cluster</li>
 </ul>
-<h3 id="improvement_3">Improvement</h3>
+<h3 id="improvement_4">Improvement</h3>
 <ul>
 <li>[SPOI-5777] - Kafka start offset should have user option to read from latest or earliest</li>
 <li>[SPOI-5828] - Stackstraces should not be shown on errors</li>
@@ -1069,7 +1144,7 @@
 <li>[DTIN-176] - Parallel read is not working in case of FTP and S3 as input</li>
 <li>[DTIN-186] - FileMerger failed with unable to merge file exception</li>
 </ul>
-<h3 id="task_2">Task</h3>
+<h3 id="task_3">Task</h3>
 <ul>
 <li>[SPOI-5173] - DAG validation: Attribute values Serializable</li>
 <li>[SPOI-5403] - Ingestion Splunk integration</li>
@@ -1084,7 +1159,7 @@
 <li>[DTIN-54] - Disabling the splunk from dtIngest script</li>
 <li>[DTIN-71] - Integrate release 1.0.1 branch with integration-1.1.0</li>
 </ul>
-<h3 id="sub-task_2">Sub-task</h3>
+<h3 id="sub-task_3">Sub-task</h3>
 <ul>
 <li>[SPOI-5369] - Integrate schema support in Cassandra Input/Output</li>
 <li>[SPOI-5437] - Create Jdbc Pojo input operator and integrate schema support in Jdbc POJO input/output</li>
@@ -1095,7 +1170,7 @@
 <li>[SPOI-6441] - Change console home page to be welcome screen instead of operations summary</li>
 </ul>
 <h2 id="version-311">Version 3.1.1</h2>
-<h3 id="improvement_4">Improvement</h3>
+<h3 id="improvement_5">Improvement</h3>
 <ul>
 <li>[SPOI-5828] - Stackstraces should not be shown on errors</li>
 </ul>
@@ -1116,7 +1191,7 @@
 <li>[SPOI-6313] - Work Around APEX-129</li>
 <li>[SPOI-6333] - RandomNumberGenerator in apex-app-archetype does not use numTuples property</li>
 </ul>
-<h3 id="task_3">Task</h3>
+<h3 id="task_4">Task</h3>
 <ul>
 <li>[SPOI-5755] - Gateway should show "HDFS is not up yet"</li>
 <li>[SPOI-6148] - Update website with release 3.1</li>
@@ -1128,7 +1203,7 @@
 <li>[SPOI-4670] - Enable message schema management in App Builder</li>
 <li>[SPOI-5844] - Retrieve older versions of schemas</li>
 </ul>
-<h3 id="improvement_5">Improvement</h3>
+<h3 id="improvement_6">Improvement</h3>
 <ul>
 <li>[SPOI-5611] - Simplify PubSub operators to supply Gateway connect address URI by default</li>
 </ul>
@@ -1147,7 +1222,7 @@
 <li>[SPOI-5946] - Port compatibility when port require schemas</li>
 <li>[SPOI-6002] - AppBuilder fails to load operator due to NullPointerException</li>
 </ul>
-<h3 id="task_4">Task</h3>
+<h3 id="task_5">Task</h3>
 <ul>
 <li>[SPOI-5307] - Mocha based tests for Gateway API calls</li>
 <li>[SPOI-5749] - Certify MapR sandbox</li>
@@ -1162,7 +1237,7 @@
 <li>[SPOI-5803] - Support of custom aggregation for ADT</li>
 <li>[SPOI-5893] - Changes for retrieving container and operator history information</li>
 </ul>
-<h3 id="sub-task_3">Sub-task</h3>
+<h3 id="sub-task_4">Sub-task</h3>
 <ul>
 <li>[SPOI-4946] - Handle new @useSchema and @description property metadata in UI</li>
 <li>[SPOI-4980] - Schema Management in the UI</li>
@@ -1172,7 +1247,7 @@
 <li>[SPOI-5747] - Automatically generate new eval license when sandbox starts up</li>
 </ul>
 <h2 id="version-300">Version 3.0.0</h2>
-<h3 id="sub-task_4">Sub-task</h3>
+<h3 id="sub-task_5">Sub-task</h3>
 <ul>
 <li>[SPOI-1901] - Dynamic property changes lost on AM restart </li>
 <li>[SPOI-4820] - Add an api call to retrieve all the application, operator and port attributes available for the app-package</li>
@@ -1261,7 +1336,7 @@
 <li>[SPOI-5708] - Update netlet dependency to release for 3.0</li>
 <li>[SPOI-5712] - Unable to launch dtingest app using dtingest command line utility but able to launch via UI</li>
 </ul>
-<h3 id="improvement_6">Improvement</h3>
+<h3 id="improvement_7">Improvement</h3>
 <ul>
 <li>[SPOI-4513] - Expose app data tracker stats as "pseudo-datasource" for each application</li>
 <li>[SPOI-4889] - Make BucketIdTagger fault tolerant</li>
@@ -1284,7 +1359,7 @@
 <li>[SPOI-5313] - Obfuscate ADT in the distribution build</li>
 <li>[SPOI-5561] - Markdown documentation support in the Console</li>
 </ul>
-<h3 id="task_5">Task</h3>
+<h3 id="task_6">Task</h3>
 <ul>
 <li>[SPOI-4228] - The location of App Data Tracker from installation and from devel mode</li>
 <li>[SPOI-4658] - App Data Tracker Technical Doc</li>
@@ -1318,7 +1393,7 @@
 <li>[MLHR-1756] - Exclude hadoop-common and other hadoop libraries from application</li>
 <li>[MLHR-1789] - Complete Category and property name fixes</li>
 </ul>
-<h3 id="improvement_7">Improvement</h3>
+<h3 id="improvement_8">Improvement</h3>
 <ul>
 <li>[MLHR-1725] - Add Support for Setters to PojoUtils</li>
 <li>[MLHR-1757] - change scope of dt-engine in maven build</li>
