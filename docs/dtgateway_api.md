@@ -2225,6 +2225,209 @@ Return:
 }
 ```
 
+### PUT /ws/v2/config/auth
+
+Function: The clients will send a PUT request to this web service to configure the authentication. 
+The request will be a JSON request, will specify the type of authentication to use such as password, kerberos, 
+ldap etc and the configuration parameters for the authentication. For any type of authentication, dt-site.xml is updated.
+But other configuration files such as external-roles & jaas.conf is generated only with kerberos, ldap under different variants.
+
+payload:
+
+```json
+{
+    "type": "{authenticationType}",
+    "configuration":{ }
+};
+
+```
+
+Return:
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For Password.
+
+Function: The clients will send a PUT request to this web service to configure password authentication. The request body is shown below.
+The configuration json array is empty as there is no properties are configured. Groupsupport is not supported by password.
+
+```json
+{
+    "type": "password",
+    "configuration":{ }
+};
+
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For kerberos.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+{
+    "type":"kerberos",
+       "configuration":{  
+         "groupSupport":"false",
+         "kerberosPrincipal":"{kerberosPrincipal}",
+         "kerberosKeytab":"{Keytab}",
+         "tokenValidity":"{tokenValidity}",
+         "cookieDomain":"{cookieDomain}",
+         "cookiePath":"{cookiePath}",      
+         "signatureSecret":"{signatureSecret}"
+         }
+};
+
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For kerberos & groupSupport is true.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". In this case groupSupport is true, 
+so a configuration file "external-roles" is created. 
+
+```json
+
+{  "type": "kerberos",
+   "configuration": {  
+        "groupSupport": "true",
+        "kerberosPrincipal": "{kerberosPrincipal}",
+        "kerberosKeytab": "{Keytab}",
+        "tokenValidity": "{Validity}",
+        "cookieDomain" : "{cookieDomain}",
+        "cookiePath": "{cookiePath}"
+        "signatureSecret": "{signatureSecret}"
+        }
+    "groupMapping": [
+        { 
+             "group": "users",
+             "roles": ["developers", "admins", "qa"] 
+        },
+        {  
+             "group": "ops",
+             "roles": ["operators"]
+        }
+     ]  
+};
+
+```
+
+```json
+{
+}
+```
+
+
+### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is false & Anonymous search is allowed.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+
+{  "type": "ldap",
+   "configuration": {  
+       "groupSupport": "false",
+       "Server": "{Server}",
+       "Port": {port}" +
+       "userBaseDn": "{usserBaseDn}",
+       "userIdAttribute": "{userIdAttribute}"
+   }
+};
+
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is false & Anonymous search is not allowed.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+
+{  
+    "type": "ldap",
+    "configuration": {  
+        "groupSupport": "false",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}", 
+        "userObjectClass": "{userObjectClass}", 
+    }
+};
+   
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is true & Anonymous search is not alowed
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+{ 
+    "type": "ldap",
+    "configuration": {  
+        "groupSupport": "true",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}", 
+        "roleBaseDn": "{roleBaseDn}",
+        "userRdnAttribute":"{userRdnAttribute}", 
+        "roleNameAttribute": "{roleNameAttribute}", 
+        "roleObjectClass": "{roleObjectClass}", 
+        "userObjectClass": "{userObjectClass}", 
+    },
+    "groupMapping": [ 
+        { 
+        	"group": "users",
+            "roles":["developers"] 
+        },
+        { 
+        	"group": "ops",
+        	"roles": ["operators"]
+        }
+    ]  
+};
+```
+
+```json
+{
+}
+```
+
 
 Publisher-Subscriber WebSocket Protocol
 =======================================
@@ -2264,8 +2467,6 @@ For example: `ws://localhost:9090/pubsub`
 ### Number of Subscribers:
 
     {"type":"data", "topic":"{topic}.numSubscribers", "data":{data}}
-
-
 
 
 Auto publish topics
