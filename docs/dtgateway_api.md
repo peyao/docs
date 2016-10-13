@@ -2376,7 +2376,7 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
         "userIdAttribute": "{userIdAttribute}",
         "bindDn": "{bindDn}",
         "bindPassword": "{bindPassword}", 
-        "userObjectClass": "{userObjectClass}", 
+        "userObjectClass": "{userObjectClass}"
     }
 };
    
@@ -2408,7 +2408,7 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
         "userRdnAttribute":"{userRdnAttribute}", 
         "roleNameAttribute": "{roleNameAttribute}", 
         "roleObjectClass": "{roleObjectClass}", 
-        "userObjectClass": "{userObjectClass}", 
+        "userObjectClass": "{userObjectClass}"
     },
     "groupMapping": [ 
         { 
@@ -2421,6 +2421,118 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
         }
     ]  
 };
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is false & Anonymous search is allowed.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+
+{  
+   "type": "ad",
+   "configuration": {  
+       "groupSupport ": "false",
+       "Server": "{server}",
+       "Port": {port},
+       "userSearchFilter": "{userSearchFilter}",
+       "userBaseDn": "{userBaseDn}",
+       "userIdAttribute": "{userIdAttribute}",
+       "userDomain" : "{userDomain}"    
+   }
+};
+
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is false & Anonymous search is not allowed.
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+
+{  
+   "type": "ad",
+   "configuration": {  
+   "groupSupport": "false",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}",
+        "userObjectClass": "{userObjectClass}"
+    }
+};
+   
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is true & Anonymous search is not alowed
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+{ 
+    "type": "ad",
+    "configuration": {  
+        "groupSupport": "true",
+        "Server": "{Server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}",
+        "roleBaseDn": "{roleBaseDn}",
+        "userRdnAttribute": "{userRdnAttribute}",
+        "roleNameAttribute": "roleNameAttribute",
+        "roleObjectClass": "roleObjectClass",
+        "userObjectClass": "{userObjectClass}",
+     },
+     "groupMapping": [ ]  
+};
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/auth -- For PAM
+
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
+The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+
+```json
+
+{  
+   "type":"pam",
+   "configuration":{  
+      "groupSupport":"true|false",
+      "serviceName":"{serviceName}"
+   }
+};
+
 ```
 
 ```json
