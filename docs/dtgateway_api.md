@@ -2230,7 +2230,8 @@ Return:
 Function: The clients will send a PUT request to this web service to configure the authentication. 
 The request will be a JSON request, will specify the type of authentication to use such as password, kerberos, 
 ldap etc and the configuration parameters for the authentication. For any type of authentication, dt-site.xml is updated.
-But other configuration files such as external-roles & jaas.conf is generated only with kerberos, ldap under different variants.
+But other configuration files such as external-roles & jaas.conf is generated only with kerberos, ldap under different 
+variants.
 
 payload:
 
@@ -2251,8 +2252,9 @@ Return:
 
 ### PUT /ws/v2/config/auth -- For Password.
 
-Function: The clients will send a PUT request to this web service to configure password authentication. The request body is shown below.
-The configuration json array is empty as there is no properties are configured. Groupsupport is not supported by password.
+Function: The clients will send a PUT request to this web service to configure password authentication. The request body 
+is shown below. The configuration json array is empty as there is no properties are configured. Configuration file 
+dt-site.xml is updated. Groupsupport is not supported by password. 
 
 ```json
 {
@@ -2267,11 +2269,12 @@ The configuration json array is empty as there is no properties are configured. 
 }
 ```
 
-### PUT /ws/v2/config/auth -- For kerberos.
+### PUT /ws/v2/config/auth -- For kerberos & groupSupport is false.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is 
+shown below. The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". The Configuration file dt-site.xml is updated.
+Also, groupSupport is false in this case. 
 
 ```json
 {
@@ -2296,10 +2299,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For kerberos & groupSupport is true.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". In this case groupSupport is true, 
-so a configuration file "external-roles" is created. 
+Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is 
+shown below. The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
+The mandatory properties are "kerberosPrincipal" & "kerberosKeytab".  The Configuration file dt-site.xml is updated. 
+In this case groupSupport is true, so a configuration file "external-roles" is created. 
 
 ```json
 
@@ -2333,11 +2336,12 @@ so a configuration file "external-roles" is created.
 ```
 
 
-### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is false & Anonymous search is allowed.
+### PUT /ws/v2/config/auth -- For LDAP -- groupSupport is false & Anonymous search is allowed.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure LDAP authentication. The request body is shown below.
+The configuration comprises different properties, of them property "server" is mandatory . The Configuration file dt-site.xml is updated. 
+At least one of userBaseDn, authIdentity or userSearchFilter properties must be specified. Here, groupSupport is false . 
+In LDAP, configuration file "Jaas.conf" is created.
 
 ```json
 
@@ -2360,9 +2364,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is false & Anonymous search is not allowed.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure LDAP authentication. The request body is shown below.
+The configuration comprises different properties, of them properties "server", "userBaseDn", "bindDn" & "bindPassword" 
+are mandatory. The Configuration file dt-site.xml is updated. Also, groupSupport is false here. 
+In LDAP, configuration file "Jaas.conf" is created.
 
 ```json
 
@@ -2389,9 +2394,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For LDAP -- GroupSupport is true & Anonymous search is not alowed
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure LDAP authentication. The request body is shown below.
+The configuration comprises different properties, of them properties "server", "userBaseDn", "bindDn" & "bindPassword" 
+are mandatory. The Configuration file dt-site.xml is updated. In LDAP, configuration file "Jaas.conf" is created.
+In this case groupSupport is true, so a configuration file "external-roles" is created. 
 
 ```json
 { 
@@ -2430,9 +2436,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is false & Anonymous search is allowed.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure AD authentication. The request body is shown below.
+The configuration comprises different properties, of them property "server" is mandatory . The Configuration file dt-site.xml is updated. 
+At least one of userBaseDn, authIdentity or userSearchFilter properties must be specified. Here, groupSupport is false . 
+In LDAP, configuration file "Jaas.conf" is created.
 
 ```json
 
@@ -2458,9 +2465,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is false & Anonymous search is not allowed.
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure AD authentication. The request body is shown below.
+The configuration comprises different properties, of them properties "server", "userBaseDn", "bindDn" & "bindPassword" 
+are mandatory. The Configuration file dt-site.xml is updated. Also, groupSupport is false here. 
+In LDAP, configuration file "Jaas.conf" is created.
 
 ```json
 
@@ -2487,9 +2495,10 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 
 ### PUT /ws/v2/config/auth -- For ActiveDirectory -- GroupSupport is true & Anonymous search is not alowed
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure LDAP authentication. The request body is shown below.
+The configuration comprises different properties, of them properties "server", "userBaseDn", "bindDn" & "bindPassword" 
+are mandatory. The Configuration file dt-site.xml is updated. In LDAP, configuration file "Jaas.conf" is created.
+In this case groupSupport is true, so a configuration file "external-roles" is created.
 
 ```json
 { 
@@ -2517,18 +2526,18 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 }
 ```
 
-### PUT /ws/v2/config/auth -- For PAM
+### PUT /ws/v2/config/auth -- For Pluggable Authentication Mechanism - PAM & groupSupport is false
 
-Function: The clients will send a PUT request to this web service to configure kerberos authentication. The request body is shown below.
-The configuration comprises of 6 properties, out of which 2 properties are mandatory and rest are optional. 
-The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, groupSupport is false in this case. 
+Function: The clients will send a PUT request to this web service to configure PAM authentication. The request body is shown
+below. In PAM, service name is madatory & there is no configuration. The Configuration file dt-site.xml is updated. 
+Also, groupSupport is false here. 
 
 ```json
 
 {  
    "type":"pam",
    "configuration":{  
-      "groupSupport":"true|false",
+      "groupSupport":"false",
       "serviceName":"{serviceName}"
    }
 };
@@ -2540,6 +2549,65 @@ The mandatory properties are "kerberosPrincipal" & "kerberosKeytab". Also, group
 }
 ```
 
+### PUT /ws/v2/config/auth -- For Pluggable Authentication Mechanism - PAM & groupSupport is true
+
+Function: The clients will send a PUT request to this web service to configure PAM authentication. The request body is shown
+below. In PAM, service name is madatory & there is no configuration. The Configuration file dt-site.xml is updated. 
+In this case groupSupport is true, so a configuration file "external-roles" is created. 
+
+```json
+
+{  
+   "type":"pam",
+   "configuration":{  
+      "groupSupport":"true",
+      "serviceName":"{serviceName}"
+   },
+   
+   "groupMapping": [ 
+       { 
+          "group": "users",
+          "roles":["developers"] 
+       },
+       { 
+          "group": "ops",
+          "roles": ["operators"]
+       }
+   ]  
+};
+
+```
+
+```json
+{
+}
+```
+
+### PUT /ws/v2/config/groupMapping 
+
+Updating Groups and roles :  To update groups and roles, we can call web service.
+The request body is shown below.
+
+```json
+
+{
+   "groupMapping" : [
+        {
+           "group" : "users",
+           "role" : ["developers", "admins", "qa", "interns"]
+        },
+        {
+           "group": "ops",
+           "role" : ["operators"]
+        }
+   ]
+};
+```
+
+```json
+{
+}
+```
 
 Publisher-Subscriber WebSocket Protocol
 =======================================
