@@ -346,6 +346,56 @@
           
             <li>
     <ul class="subnav">
+    <li><span>App Templates</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/hdfs-sync/">HDFS Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/s3-to-hdfs-sync/">S3 to HDFS Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/kafka-to-hdfs-sync/">Kafka to HDFS Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/hdfs-line-copy/">HDFS to HDFS Line Copy App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/hdfs-to-kafka-sync/">HDFS to Kafka Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/database-to-hdfs/">Database dump to HDFS App</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
     <li><span>Applications</span></li>
 
         
@@ -634,13 +684,13 @@ Licenses are available in 2 types : evaluation and production.</p>
 <h3 id="what-are-datatorrent-rts-package-contents-of-community-vs-enterprise-edition">What are DataTorrent RTS package contents of Community vs Enterprise edition?</h3>
 <p>Package contents for Community edition:</p>
 <ul>
-<li>Apache Apex (incubating)</li>
+<li>Apache Apex</li>
 <li>DataTorrent Demo Applications</li>
 <li>DataTorrent dtManage</li>
 </ul>
 <p>Package contents for Enterprise edition:</p>
 <ul>
-<li>Apache Apex (incubating)</li>
+<li>Apache Apex</li>
 <li>DataTorrent Demo Applications</li>
 <li>DataTorrent Operator Library</li>
 <li>DataTorrent Enterprise Security</li>
@@ -736,7 +786,7 @@ machine. Following are prerequisites for DataTorrent RTS:</p>
 <ul>
 <li>Ubuntu 12.04 LTS + Apache Hadoop 2.2 (DataTorrent RTS 3.1 or earlier)</li>
 <li>Lubuntu 14.04 LTS + Apache Hadoop 2.7 (DataTorrent RTS 3.2 or later)</li>
-<li>Apache Apex (incubating), Apache Apex-Malhar (incubating)</li>
+<li>Apache Apex, Apache Apex-Malhar</li>
 <li>DataTorrent Operator Library</li>
 <li>DataTorrent Enterprise Security</li>
 <li>DataTorrent dtManage</li>
@@ -794,7 +844,7 @@ before proceeding with this installation.
 </code></pre>
 <p>Install Java 7 from package manager of Linux Distribution and try running installer again.</p>
 <h3 id="what-happens-if-hadoop-is-not-installed">What happens if Hadoop is not installed?</h3>
-<p>Installation will be successful, however Hadoop Configuration page in dtManage (e.g. http://localhost:9090) will expect hadoop binary (/usr/bin/hadoop) &amp; DFS location.</p>
+<p>Installation will be successful, however Hadoop Configuration page in dtManage (e.g. http://localhost:9090) will expect Hadoop binary (/usr/bin/hadoop) &amp; DFS location.</p>
 <p><img alt="HadoopConfiguration.png" src="../images/troubleshooting/image02.png" /></p>
 <p>Install Hadoop > 2.2.0 and update the configuration parameters above.</p>
 <h3 id="how-do-i-check-if-hadoop-is-installed-and-running-correctly">How do I check if Hadoop is installed and running correctly?</h3>
@@ -886,10 +936,10 @@ $ hadoop dfs -chown &lt;USER&gt; /user/&lt;USER&gt;/datatorrent
 <p>Default value for this attribute is 1024 MB. You may need to increase this value if you are running a big application that has large number of containers</p>
 <h1 id="development">Development</h1>
 <h3 id="hadoop-dependencies-conflicts">Hadoop dependencies conflicts</h3>
-<p>You have to make sure that the hadoop jars are not bundled with the application package o/w they may conflict with the versions available in hadoop classpath. Here are some of the ways to exclude hadoop dependencies from the application package</p>
+<p>You have to make sure that the Hadoop jars are not bundled with the application package o/w they may conflict with the versions available in Hadoop classpath. Here are some of the ways to exclude Hadoop dependencies from the application package</p>
 <ol>
 <li>
-<p>If your application is directly dependent on the hadoop jars, make sure that the scope of the dependency is <code>provided</code>. For eg if your application is dependent on hadoop-common, this is how you should add the dependency in pom.xml</p>
+<p>If your application is directly dependent on the Hadoop jars, make sure that the scope of the dependency is <code>provided</code>. For eg if your application is dependent on hadoop-common, this is how you should add the dependency in pom.xml</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
   &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt;
@@ -899,7 +949,7 @@ $ hadoop dfs -chown &lt;USER&gt; /user/&lt;USER&gt;/datatorrent
 </code></pre>
 </li>
 <li>
-<p>If your application has transitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows</p>
+<p>If your application has transitive dependency on Hadoop jars, make sure that Hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;&lt;/groupId&gt;
   &lt;artifactId&gt;&lt;/artifactId&gt;
@@ -946,7 +996,7 @@ across process invocations.</p>
 <p>Coming soon.</p>
 <h1 id="debugging">Debugging</h1>
 <h3 id="how-to-remote-debug-gateway-service">How to remote debug gateway service?</h3>
-<p>Update hadoop OPTS variable by running,</p>
+<p>Update Hadoop OPTS variable by running,</p>
 <pre><code>export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS"
 </code></pre>
 <h3 id="how-to-setup-debug-level-while-running-an-application">How to setup DEBUG level while running an application?</h3>
@@ -1171,7 +1221,7 @@ Additional information on tools related to both types of dumps is available
 </li>
 <li>
 <p>pom dependency management, exclusions etc. eg: Malhar library and
-    contrib, Hive (includes hadoop dependencies, we need to explicitly
+    contrib, Hive (includes Hadoop dependencies, we need to explicitly
     exclude), Jersey(we work only with 1.9 version) etc</p>
 </li>
 <li>
