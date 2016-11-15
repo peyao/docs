@@ -7,14 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../favicon.ico">
   
   <title>REST API - DataTorrent Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -27,6 +33,7 @@
   <script src="../js/modernizr-2.8.3.min.js"></script>
   <script type="text/javascript" src="../js/highlight.pack.js"></script>
   <script src="../js/theme.js"></script> 
+
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -56,7 +63,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -68,13 +75,6 @@
             <li>
     <ul class="subnav">
     <li><span>Demos</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../demo_videos/">Videos</a>
-        
-    </li>
 
         
             
@@ -2238,6 +2238,7 @@ system</p>
 <pre><code class="json">{
         &quot;condition&quot;:&quot;{condition in javascript}&quot;,
         &quot;email&quot;:&quot;{email}&quot;,
+    &quot;description&quot;: &quot;{description}&quot;,
         &quot;timeThresholdMillis&quot;:&quot;{time}&quot;
 }
 </code></pre>
@@ -2252,6 +2253,7 @@ system</p>
         &quot;name&quot;: &quot;{alertName}&quot;,
         &quot;condition&quot;:&quot;{condition in javascript}&quot;,
         &quot;email&quot;:&quot;{email}&quot;,
+    &quot;description&quot;: &quot;{description}&quot;,
         &quot;timeThresholdMillis&quot;:&quot;{time}&quot;,
         &quot;alertStatus&quot;: {
             &quot;isInAlert&quot;:{true/false}
@@ -2270,6 +2272,7 @@ system</p>
     &quot;name&quot;: &quot;{alertName}&quot;,
     &quot;condition&quot;:&quot;{condition in javascript}&quot;,        
     &quot;email&quot;:&quot;{email}&quot;,
+    &quot;description&quot;: &quot;{description}&quot;,
     &quot;timeThresholdMillis&quot;:&quot;{time}&quot;,
     &quot;alertStatus&quot;: {
         &quot;isInAlert&quot;:{true/false}
@@ -2444,7 +2447,7 @@ For example: <code>ws://localhost:9090/pubsub</code></p>
       </div>
 
     </section>
-    
+
   </div>
 
 <div class="rst-versions" role="note" style="cursor: pointer">
