@@ -3,32 +3,29 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuration Packages - DataTorrent Documentation</title>
   
-
   <link rel="shortcut icon" href="../favicon.ico">
   
-
-  
+  <title>Configuration Packages - DataTorrent Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
     var mkdocs_page_name = "Configuration Packages";
+    var mkdocs_page_input_path = "configuration_packages.md";
+    var mkdocs_page_url = "/configuration_packages/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -58,7 +55,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -283,15 +280,15 @@
                 
                     <li><a class="toctree-l4" href="#post-wsv2configpackages">POST /ws/v2/configPackages</a></li>
                 
-                    <li><a class="toctree-l4" href="#get-wsv2configpackagesapppackagenameapppackageversion">GET /ws/v2/configPackages?appPackageName=...&appPackageVersion=...</a></li>
+                    <li><a class="toctree-l4" href="#get-wsv2configpackagesapppackagenameapppackageversion">GET /ws/v2/configPackages?appPackageName=...&amp;appPackageVersion=...</a></li>
                 
-                    <li><a class="toctree-l4" href="#get-wsv2configpackagesuserapppackagenameapppackageversion">GET /ws/v2/configPackages/<user>?appPackageName=...&appPackageVersion=...</a></li>
+                    <li><a class="toctree-l4" href="#get-wsv2configpackagesuserapppackagenameapppackageversion">GET /ws/v2/configPackages/&lt;user&gt;?appPackageName=...&amp;appPackageVersion=...</a></li>
                 
-                    <li><a class="toctree-l4" href="#get-wsv2configpackagesusername">GET /ws/v2/configPackages/<user>/<name></a></li>
+                    <li><a class="toctree-l4" href="#get-wsv2configpackagesusername">GET /ws/v2/configPackages/&lt;user&gt;/&lt;name&gt;</a></li>
                 
-                    <li><a class="toctree-l4" href="#get-wsv2configpackagesusernamedownload">GET /ws/v2/configPackages/<user>/<name>/download</a></li>
+                    <li><a class="toctree-l4" href="#get-wsv2configpackagesusernamedownload">GET /ws/v2/configPackages/&lt;user&gt;/&lt;name&gt;/download</a></li>
                 
-                    <li><a class="toctree-l4" href="#post-wsv2apppackagesuserapp-pkg-nameapp-pkg-versionapplicationsapp-namelaunchconfigpackageuserconfpkgname">POST /ws/v2/appPackages/<user>/<app-pkg-name>/<app-pkg-version>/applications/{app-name}/launch?configPackage=<user>/<confpkgname></a></li>
+                    <li><a class="toctree-l4" href="#post-wsv2apppackagesuserapp-pkg-nameapp-pkg-versionapplicationsapp-namelaunchconfigpackageuserconfpkgname">POST /ws/v2/appPackages/&lt;user&gt;/&lt;app-pkg-name&gt;/&lt;app-pkg-version&gt;/applications/{app-name}/launch?configPackage=&lt;user&gt;/&lt;confpkgname&gt;</a></li>
                 
             
             </ul>
@@ -802,7 +799,7 @@ $ unzip -t xyz.apc
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../operator_development/" class="btn btn-neutral float-right" title="Operators"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../operator_development/" class="btn btn-neutral float-right" title="Operators">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../application_packages/" class="btn btn-neutral" title="Application Packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -824,10 +821,10 @@ $ unzip -t xyz.apc
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -838,6 +835,7 @@ $ unzip -t xyz.apc
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>
