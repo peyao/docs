@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>None/</loc>
+     <loc>/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -12,7 +12,7 @@
     
         
     <url>
-     <loc>None/demos/</loc>
+     <loc>/demos/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -21,7 +21,7 @@
 
     
     <url>
-     <loc>None/sandbox/</loc>
+     <loc>/sandbox/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -30,131 +30,73 @@
     
         
     <url>
-     <loc>None/create/</loc>
+     <loc>/create/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/beginner/</loc>
+     <loc>/beginner/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
+     <loc></loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/apex_development_setup/</loc>
+     <loc>/apex_development_setup/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/configure_IDE/</loc>
+     <loc>/configure_IDE/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/application_development/</loc>
+     <loc>/application_development/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/application_packages/</loc>
+     <loc>/application_packages/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/configuration_packages/</loc>
+     <loc>/configuration_packages/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/operator_development/</loc>
+     <loc>/operator_development/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
+     <loc></loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/app_data_framework/</loc>
+     <loc>/app_data_framework/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtgateway_api/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/app-templates/hdfs-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/s3-to-hdfs-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/kafka-to-hdfs-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/hdfs-line-copy/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/hdfs-to-kafka-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/database-to-hdfs/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/database-to-database-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/kafka-to-database-sync/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/app-templates/kafka-to-hdfs-filter/</loc>
+     <loc>/dtgateway_api/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -164,13 +106,71 @@
     
         
     <url>
-     <loc>None/app_data_tracker/</loc>
+     <loc>/app-templates/hdfs-sync/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtingest/</loc>
+     <loc>/app-templates/s3-to-hdfs-sync/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/kafka-to-hdfs-sync/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/hdfs-line-copy/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/hdfs-to-kafka-sync/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/database-to-hdfs/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/database-to-database-sync/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/kafka-to-database-sync/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/kafka-to-hdfs-filter/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/app_data_tracker/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/dtingest/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -180,83 +180,43 @@
     
         
     <url>
-     <loc>None/rts/</loc>
+     <loc>/rts/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtmanage/</loc>
+     <loc>/dtmanage/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtassemble/</loc>
+     <loc>/dtassemble/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtdashboard/</loc>
+     <loc>/dtdashboard/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/dtgateway/</loc>
+     <loc>/dtgateway/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/apex/</loc>
+     <loc>/apex/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/apex_malhar/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/installation/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/configuration/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/dtgateway_security/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/dtgateway_systemalerts/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/apexcli/</loc>
-     <lastmod>2017-01-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/troubleshooting/</loc>
+     <loc>/apex_malhar/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -264,8 +224,48 @@
     
 
     
+        
     <url>
-     <loc>None/release_notes/</loc>
+     <loc>/installation/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/configuration/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/dtgateway_security/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/dtgateway_systemalerts/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/apexcli/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/troubleshooting/</loc>
+     <lastmod>2017-01-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>/release_notes/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -273,7 +273,7 @@
 
     
     <url>
-     <loc>None/glossary/</loc>
+     <loc>/glossary/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -281,7 +281,7 @@
 
     
     <url>
-     <loc>None/additional_docs/</loc>
+     <loc>/additional_docs/</loc>
      <lastmod>2017-01-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
