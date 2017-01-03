@@ -8,7 +8,7 @@
   
   
   
-  <title>Running Apps - DataTorrent Documentation</title>
+  <title>System Alerts - DataTorrent Documentation</title>
   
 
   <link rel="shortcut icon" href="../favicon.ico">
@@ -24,9 +24,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Running Apps";
-    var mkdocs_page_input_path = "demos.md";
-    var mkdocs_page_url = "/demos/";
+    var mkdocs_page_name = "System Alerts";
+    var mkdocs_page_input_path = "dtgateway_systemalerts.md";
+    var mkdocs_page_url = "/dtgateway_systemalerts/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -78,23 +78,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Running Apps</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#running-demo-applications">Running Demo Applications</a></li>
-                
-                    <li><a class="toctree-l4" href="#importing-demo-applications">Importing Demo Applications</a></li>
-                
-                    <li><a class="toctree-l4" href="#launching-demo-applications">Launching Demo Applications</a></li>
-                
-                    <li><a class="toctree-l4" href="#configuring-launch-parameters">Configuring Launch Parameters</a></li>
-                
-                    <li><a class="toctree-l4" href="#stopping-applications">Stopping Applications</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../demos/">Running Apps</a>
         
     </li>
 
@@ -536,8 +521,29 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../dtgateway_systemalerts/">System Alerts</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">System Alerts</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#dt-gateway-system-alerts">DT Gateway System Alerts</a></li>
+                
+                    <li><a class="toctree-l4" href="#alerts-topics">Alerts &amp; Topics</a></li>
+                
+                    <li><a class="toctree-l4" href="#managing-and-viewing-alerts">Managing and viewing alerts</a></li>
+                
+                    <li><a class="toctree-l4" href="#creating-an-alert">Creating an alert</a></li>
+                
+                    <li><a class="toctree-l4" href="#deleting-an-alert">Deleting an alert</a></li>
+                
+                    <li><a class="toctree-l4" href="#alerts-history">Alerts history</a></li>
+                
+                    <li><a class="toctree-l4" href="#viewing-the-content-and-the-status-of-alerts">Viewing the content and the status of alerts</a></li>
+                
+                    <li><a class="toctree-l4" href="#viewing-all-the-current-data-in-the-_topic-array">Viewing all the current data in the _topic array</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -602,11 +608,11 @@
     
       
         
-          <li>Demos &raquo;</li>
+          <li>Deployment and Operations &raquo;</li>
         
       
     
-    <li>Running Apps</li>
+    <li>System Alerts</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -616,62 +622,131 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="running-demo-applications">Running Demo Applications</h1>
-<p>DataTorrent RTS includes a number of demo applications and they are available for import from the <strong>Development &gt; App Packages</strong> section of the DataTorrent management console.</p>
-<h2 id="importing-demo-applications">Importing Demo Applications</h2>
-<ol>
-<li>Navigate to <strong>Develop &gt; App Packages &gt; Import</strong> section of the DataTorrent console.</li>
-<li>Select one of the available packages, such as <em>Apache Apex Malhar Pi Demo</em> and click <em>Import</em> button.</li>
-<li>Imported packages and included applications will be listed under <strong>Develop &gt; App Packages</strong> page.</li>
-</ol>
-<h2 id="launching-demo-applications">Launching Demo Applications</h2>
-<p>Once imported, applications can be launched with a single click.  <em>Note</em>: Ensure Hadoop YARN and HDFS services are active and ready by checking for errors in the DataTorrent console before launching demo applications.</p>
-<ol>
-<li>
-<p>Navigate to <strong>App Packages</strong> under <strong>Develop</strong> tab of the DataTorrent console, and select one of the imported demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
-</li>
-<li>
-<p>From the list of available Applications, locate PiDemo and click the launch button.</p>
-<p><img alt="" src="../images/sandbox/pidemo-list.png" /></p>
-</li>
-<li>
-<p>Proceed with default options on launch confirmation screen by clicking the Launch button.</p>
-</li>
-<li>
-<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the <strong>Monitor</strong> section of the console and selecting the launched application.</p>
-<p><img alt="" src="../images/sandbox/pidemo-success.png" /></p>
-</li>
-</ol>
-<p>More information about using DataTorrent console is available in <a href="../dtmanage/">dtManage Guide</a></p>
-<h2 id="configuring-launch-parameters">Configuring Launch Parameters</h2>
-<p>Some applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to <code>~/.dt/dt-site.xml</code> configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.</p>
-<ol>
-<li>
-<p>Navigate to <strong>App Packages</strong> under <strong>Develop</strong> tab of the DataTorrent console.  In this example we will use <strong>Apache Apex Malhar Twitter Demo</strong> application package.  Import this package from <em>Develop &gt; App Packages &gt; Import</em> if it is not available.</p>
-</li>
-<li>
-<p>From the list of Applications, select TwitterDemo and press the corresponding launch button.</p>
-</li>
-<li>
-<p>Retrieve Twitter API access information by registering for <a href="https://dev.twitter.com/" target="\_blank">Twitter Developer</a> account, creating a new <a href="https://apps.twitter.com/app/new" target="\_blank">Twitter Application</a>, and navigating to Keys and Access Tokens tab.  Twitter Demo application requires the following to be specified by the user:</p>
-<p>dt.operator.TweetSampler.accessToken
-dt.operator.TweetSampler.accessTokenSecret
-dt.operator.TweetSampler.consumerKey
-dt.operator.TweetSampler.consumerSecret</p>
-</li>
-<li>
-<p>Select <em>Specify custom properties</em> on the launch confirmation screen, click <em>add required properties</em> button, and provide Twitter API access values.  Choose to save this configuration as <code>twitter.xml</code> file and proceed to Launch the application.</p>
-<p><img alt="" src="../images/sandbox/twitterdemo-launch.png" /></p>
-</li>
-<li>
-<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the <strong>Monitor</strong> section of the console and selecting the launched application.</p>
-</li>
-<li>
-<p>View the top 10 tweeted hashtags in real time by generating and viewing the <a href="../dtdashboard/">dashboard</a>.</p>
-</li>
-</ol>
-<h2 id="stopping-applications">Stopping Applications</h2>
-<p>Applications can be shut down or killed from the Monitor section of <a href="../dtmanage/">dtManage</a> by selecting application from the list and clicking <code>shutdown</code> or <code>kill</code> buttons.</p>
+                <h1 id="dt-gateway-system-alerts">DT Gateway System Alerts</h1>
+<p>The DT Gateway allows the user to set arbitrary system alerts using JavaScript with the values in the PubSub websocket topics. The topic values are such as system metrics, application metrics, and custom application counters. Also, these JavaScript conditions can be simple to complex multiline which user can set on metrics, to be alerted during anomalous behavior.  Alert configurations are store in the Hadoop cluster, however, alert active and historical states are stored in the Gateway memory.  Alerts active and historical states will be lost when gateways are restarted.</p>
+<h2 id="alerts-topics">Alerts &amp; Topics</h2>
+<p>As described above the alerts can be set on any metrics. When the alert condition evaluates to true and remains so for a specified time duration, the alert becomes active and email is sent. When the condition is no longer true the alert becomes inactive and another email about the state change is sent. 
+Here is an example for simple JavaScript condition. one can issue the REST request to create an alert named “xyz” which emails to someone@company.com when the number of running applications is greater than 5 for at least 60 seconds.</p>
+<h3 id="put-wsv2systemalertsalertsxyz">PUT /ws/v2/systemAlerts/alerts/xyz</h3>
+<pre><code class="json">{
+  &quot;condition&quot;:&quot;_topic['cluster.metrics'].numAppsRunning &gt; 5&quot;,
+  &quot;email&quot;:&quot;someone@company.com&quot;,
+  &quot;description&quot;: &quot;No.of apps running is more than 5&quot;,
+  &quot;timeThresholdMillis&quot;:&quot;60000&quot;
+}
+</code></pre>
+
+<p>When the number of running applications is greater than 5 for more than 60 seconds, a simple email will be sent to someone@company.com, stating that the alert is in effect, and when the number of running applications drops below 6, another email will be sent to someone@company.com, stating that the alert is no longer in effect.</p>
+<p>So, the <code>condition</code> is a simple JavaScript condition, user can build these JavaScript conditions from various system or application-specific values. These values are available as fields of JavaScript objects obtained by using expressions of the form <code>_topic[&lt;topic_name&gt;]</code>. 
+The topic names can be looked up using the <strong>GET /ws/v2/systemAlerts/topicData</strong> REST API call shown below:</p>
+<p>Note: Alert names may contain special characters such as spaces, slashes and percents. However, they must be URL encoded before making the REST API calls. (ex: Get,Put,Delete)</p>
+<h3 id="get-wsv2systemalertstopicdata">GET /ws/v2/systemAlerts/topicData</h3>
+<pre><code class="json">{
+  -&quot;applications.&lt;applicationId&gt;.logicalOperators&quot;: {...}, 
+  -&quot;applications.&lt;applicationId&gt;.physicalOperators&quot;: {...}, 
+  -&quot;applications.&lt;applicationId&gt;.containers&quot;: {...}, 
+  -&quot;applications.&lt;applicationId&gt;&quot;: {...}
+  -&quot;cluster.metrics&quot;: {...},
+  -&quot;applications&quot;: {...}
+}
+</code></pre>
+
+<p>where <strong><code>&lt;applicationId&gt;</code></strong> refers to the application id of a running application. These topic repeat for every running applications. The alert condition can refer to multiple such topic values and can be any valid JavaScript expressions that return a boolean. The email can be sent to multiple addresses separated by a comma.</p>
+<h2 id="managing-and-viewing-alerts">Managing and viewing alerts</h2>
+<p>From the Gateway REST API, you can do the following operations
+<em> Creating an alert 
+</em> Deleting an alert
+<em> Alerts history
+</em> Viewing the content and the status of alerts
+* Viewing all the current data in the <code>_topic</code> array</p>
+<h2 id="creating-an-alert">Creating an alert</h2>
+<p>To create an alert, the user needs to specify the name of the alert, the alert condition, the email address the alert is emailed to and the duration in milliseconds for which the alert condition has to be true for the alert to be in effect. As explained above, in the JavaScript condition, one can refer to the values in various topics by <code>_topic[&lt;topic_name&gt;]</code>.  The topic values include system metrics, application metrics, and custom application counters, which one can look up using the Gateway REST API.  The alert condition can refer to multiple such topic values and can be any valid JavaScript expressions that return a boolean.  Because of that, the user can create very customized alert conditions, such as whether an application named “XYZApplication” is running, whether a certain application is allocating too many containers, etc.</p>
+<p><strong>Complex JavaScript Expressions :</strong></p>
+<p>For example, one can issue the REST request to create an alert named "WordCountAppNotRunning" which emails to someone@company.com and someone@company.com when the "WordCount" app is not in "Running" state for at least 60 seconds.</p>
+<h3 id="put-wsv2systemalertsalertswordcountappnotrunning">PUT /ws/v2/systemAlerts/alerts/WordCountAppNotRunning</h3>
+<pre><code class="json">{
+  &quot;condition&quot;: &quot;_topic['applications.application_1480063135007_0543']['state'] != 'RUNNING'&quot;,
+  &quot;email&quot;:&quot;someone@company.com, someone@company.com&quot;,
+  &quot;description&quot;: &quot;WordCount Application is not running&quot;,
+  &quot;timeThresholdMillis&quot;:&quot;60000&quot;
+}
+</code></pre>
+
+<p>The above alert is valid for that current running session of "WordCount" application. However, when "WordCount" application is restarted, a new application id is generated. Then, the above alert is obsolete. One solution is user can update the application id in the condition every time application restarts or we can write a complex JavaScript expression to find application id for the given application.</p>
+<p>Let's update above alert to work every time application restarts. The JavaScript condition can replace by </p>
+<pre><code>var alert = false;
+var appId = undefined;
+var appsInfo = _topic['applications'].apps;
+
+for(i = 0; i &lt; appsInfo.length; i++)
+{
+   if(appsInfo[i].name == 'WordCount')
+   {
+         appId = appsInfo[i].id;
+         break;
+   }
+}
+if(appId != undefined)
+{
+    alert  = _topic['applications.' + appId]['state']  !=  'RUNNING' ;
+}
+alert;
+</code></pre>
+
+<p>The complex JavaScript expressions has to compress to single line and can use any tool available, such as  [http://javascriptcompressor.com/]</p>
+<h3 id="put-wsv2systemalertsalertswordcountappnotrunning_1">PUT /ws/v2/systemAlerts/alerts/WordCountAppNotRunning</h3>
+<pre><code class="json">{
+  &quot;condition&quot;: &quot;var alert=false;var appId=undefined;var appsInfo=_topic['applications'].apps;for(i=0;i&lt;appsInfo.length;i++){if(appsInfo[i].name=='WordCount'){appId=appsInfo[i].id;break}}if(appId!=undefined){alert=_topic['applications.'+appId]['state']!='RUNNING'}alert;&quot;,
+   &quot;email&quot;:&quot;someone@company.com, someone@company.com&quot;,
+   &quot;description&quot;: &quot;WordCount Application is not running&quot;,
+   &quot;timeThresholdMillis&quot;:&quot;60000&quot;
+}
+</code></pre>
+
+<h2 id="deleting-an-alert">Deleting an alert</h2>
+<p>We can delete the alert, by web request 
+<strong>DELETE /ws/v2/systemAlerts/alerts/{name}</strong></p>
+<h2 id="alerts-history">Alerts history</h2>
+<p>We can get the alerts history by making a web request</p>
+<p><strong>GET /ws/v2/systemAlerts/history</strong></p>
+<pre><code class="json">{
+&quot;history&quot;: [{
+    &quot;name&quot;: &quot;xyz&quot;,
+    &quot;inTime&quot;: &quot;1481235199598&quot;,
+    &quot;outTime&quot;: &quot;1481235251088&quot;,
+    &quot;message&quot;: &quot;No.of apps running is more than 5&quot;
+},{
+    &quot;name&quot;: &quot;checkCsvParserNotRunning&quot;,
+    &quot;inTime&quot;: &quot;1481235251087&quot;,
+    &quot;outTime&quot;: &quot;1481235549648&quot;,
+    &quot;message&quot;: &quot;Application is not running&quot;
+}],
+}
+</code></pre>
+
+<p>The alert history comprises a name of alert, the time the alert became active (inTime), the time the alert became inactive(outTime) and message. The alert history is obtained through the gateway. So, whenever gateway is restarted, the alerts history gets cleared. </p>
+<h2 id="viewing-the-content-and-the-status-of-alerts">Viewing the content and the status of alerts</h2>
+<p>We can get the content and status of alerts by making a web request </p>
+<p><strong>GET /ws/v2/systemAlerts/alerts/{name}</strong></p>
+<pre><code class="json">{
+ &quot;name&quot;: &quot;checkLatencyApp&quot;,
+ &quot;condition&quot;: &quot;var alert=false;var appId=undefined;var appsInfo=_topic['applications'].apps;for(i=0;i&lt;appsInfo.length;i++){if(appsInfo[i].name=='xyzApp'){appId=appsInfo[i].id;break}}if(appId!=undefined){var expTopic='applications.'+appId+'.physicalOperators';var operators=_topic[expTopic].operators;for(i=0;(i&lt;operators.length);++i){if(operators[i].latencyMA&gt;50){alert=true;break}}}alert;&quot;,
+ &quot;email&quot;: &quot;someone@company.com, someone@company.com&quot;,
+ &quot;description&quot;: &quot;checking latency &gt; 50&quot;,
+ &quot;timeThresholdMillis&quot;: &quot;10000&quot;,
+ &quot;alertStatus&quot;: {
+   &quot;isInAlert&quot;: true,
+   &quot;inTime&quot;: &quot;1481264665450&quot;,
+   &quot;emailSent&quot;: true,
+   &quot;message&quot;: &quot;checking latency &gt; 50&quot;
+  }
+}
+</code></pre>
+
+<p>The payload shows the name of alert, JavaScript condition, email addresses, description and "timeThresholdMillis" which is the duration in milliseconds for which the alert condition has to be true for the alert to be in effect.
+The payload also contains information related alert status such as "isInAlert" which means that the alert is still active or not, "inTime" which represents the time the alert became active, "emailSent" as the name suggests email is sent or not, and "message" is similar to the description.</p>
+<h2 id="viewing-all-the-current-data-in-the-_topic-array">Viewing all the current data in the <code>_topic</code> array</h2>
+<p>This section is already covered under <strong>Alerts &amp; Topics</strong> .</p>
               
             </div>
           </div>
@@ -679,10 +754,10 @@ dt.operator.TweetSampler.consumerSecret</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sandbox/" class="btn btn-neutral float-right" title="Sandbox">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../apexcli/" class="btn btn-neutral float-right" title="Apex CLI">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="DataTorrent RTS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dtgateway_security/" class="btn btn-neutral" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -708,10 +783,10 @@ dt.operator.TweetSampler.consumerSecret</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../dtgateway_security/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../sandbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../apexcli/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

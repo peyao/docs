@@ -522,6 +522,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../dtgateway_systemalerts/">System Alerts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../apexcli/">Apex CLI</a>
         
     </li>
@@ -547,11 +554,7 @@
                 
                     <li><a class="toctree-l4" href="#version-370">Version: 3.7.0</a></li>
                 
-                    <li><a class="toctree-l4" href="#appendix">Appendix</a></li>
-                
                     <li><a class="toctree-l4" href="#version-360">Version: 3.6.0</a></li>
-                
-                    <li><a class="toctree-l4" href="#appendix_1">Appendix</a></li>
                 
                     <li><a class="toctree-l4" href="#version-350">Version 3.5.0</a></li>
                 
@@ -626,30 +629,39 @@
 <p>Release date: Dec 30, 2016</p>
 <h3 id="summary">Summary</h3>
 <p>The new features on this release are functionalities that will ease debugging an application and administering application alerts in production. </p>
-<p>Operation related features for a Dev Ops role:<br />
-<em> Manage and see a history of previous alerts so that users can be aware of potential issues before they become critical. 
-</em> View operator ID(s) and name(s) in the dtManage-Physical-Container list table to quickly identify what operators are in each container. 
-* Filter matching tuple recordings by searching across tuple recording data.</p>
-<p>Debugging features:
-When trying to troubleshoot or debug a distributed system, these capabilities allow users to quickly identify problem areas and easily drill down into relevant details (i.e. logs). 
-<em> Notify users when log files have been removed
-</em> New Application Attempts section under Monitor. It is located along other views such as logical and physical
-<em> New Application Master logs in Application Overview section
-</em> New log button shortcut in Stram Events and Physical Operator section
-<em> Show dead container logs in Running applications. That is to show history of physical operator containers and logs in the physical operator view. For each previous incarnation, there are start time, end time, link to corresponding logs, root cause with error code, and recovery window id.
-</em> Show the same details for killed or finished application like running application view.
-<em> Show container history as default in Physical Operator view
-</em> New historic count field in Physical Operator view
-<em> Get thread dump from a container. It is useful to analyze issues such as "stuck operator", and obtain statistics from the running JVM. In production environments users often don't have direct access to the machines, thus making it available through the REST API will help. 
-</em> Option to auto tail container logs. When viewing a container log via the UI, there is an option to periodically poll for more data (i.e. "tail -f" effect).</p>
-<p>dtAssemble
-<em> New validate button so that user can validate DAG without having to save. 
-</em> Remove auto save function. Save will be initiated by user only.
-* Support custom JSON input for tuple schema creation. This is particularly useful when user needs to add a large number of fields. </p>
-<p>dtDashboard
-* New gauge widget</p>
-<p>AppHub
-* Continued to refine application templates in AppHub (introduced in RTS 3.6.0).  </p>
+<p>Operation related features for a Dev Ops role:  </p>
+<ul>
+<li>Manage and see a history of previous alerts so that users can be aware of potential issues before they become critical. </li>
+<li>View operator ID(s) and name(s) in the dtManage-Physical-Container list table to quickly identify what operators are in each container. </li>
+<li>Filter matching tuple recordings by searching across tuple recording data.</li>
+</ul>
+<p>Debugging features: When trying to troubleshoot or debug a distributed system, these capabilities allow users to quickly identify problem areas and easily drill down into relevant details (i.e. logs). </p>
+<ul>
+<li>Notify users when log files have been removed</li>
+<li>New Application Attempts section under Monitor. It is located along other views such as logical and physical</li>
+<li>New Application Master logs in Application Overview section</li>
+<li>New log button shortcut in Stram Events and Physical Operator section</li>
+<li>Show dead container logs in Running applications. That is to show history of physical operator containers and logs in the physical operator view. For each previous incarnation, there are start time, end time, link to corresponding logs, root cause with error code, and recovery window id.</li>
+<li>Show the same details for killed or finished application like running application view.</li>
+<li>Show container history as default in Physical Operator view</li>
+<li>New historic count field in Physical Operator view</li>
+<li>Get thread dump from a container. It is useful to analyze issues such as "stuck operator", and obtain statistics from the running JVM. In production environments users often don't have direct access to the machines, thus making it available through the REST API will help. </li>
+<li>Option to auto tail container logs. When viewing a container log via the UI, there is an option to periodically poll for more data (i.e. "tail -f" effect).</li>
+</ul>
+<p>dtAssemble</p>
+<ul>
+<li>New validate button so that user can validate DAG without having to save. </li>
+<li>Remove auto save function. Save will be initiated by user only.</li>
+<li>Support custom JSON input for tuple schema creation. This is particularly useful when user needs to add a large number of fields. </li>
+</ul>
+<p>dtDashboard</p>
+<ul>
+<li>New gauge widget</li>
+</ul>
+<p>AppHub</p>
+<ul>
+<li>Continued to refine application templates in AppHub (introduced in RTS 3.6.0).  </li>
+</ul>
 <p>RTS 3.7.0 is based on Apache Apex Core 3.5.0 (released Dec 19, 2016) and Apache Apex Malhar 3.6.0 (released Dec 8, 2016).</p>
 <h3 id="apache-apex-core-350">Apache Apex Core 3.5.0</h3>
 <p>This release upgrades the Apache Hadoop YARN dependency from 2.2 to 2.6. The community determined that current users run on versions equal or higher than 2.6 and Apex can now take advantage of more recent capabilities of YARN. The release contains a number of important bug fixes and operability improvements. 
@@ -660,8 +672,8 @@ Change log: https://github.com/apache/apex-core/blob/v3.5.0/CHANGELOG.md</p>
 <p>There was also benchmarking on WindowedOperator with the spillable data structures. From the result, the community significantly improved how objects are serialized and reduced garbage collection considerably in the Managed State layer. Work is still in progress for purging state that is not needed any more and further improving the performance of Managed State that the spillable data structures depend on. More information about the windowing support can be found at http://apex.apache.org/docs/malhar/operators/windowedOperator/.</p>
 <p>This release also adds a new, alternative Cassandra output operator (non-transactional, upsert based) and support for fixed length file format to the enrichment operator. 
 Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
-<h2 id="appendix">Appendix</h2>
-<h3 id="known-issues">Known Issues</h3>
+<h3 id="appendix">Appendix</h3>
+<h4 id="known-issues">Known Issues</h4>
 <ul>
 <li>[SPOI-9921]   Delete widgets on default pane of physical operators needs to have warm colors</li>
 <li>[SPOI-9923]   Custom panes' on operator monitoring page should have character limits for titles</li>
@@ -701,7 +713,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>[SPOI-10409]  Updating app packages using "check for updates" option from AppHub gives wrong notification</li>
 <li>[SPOI-10410]  Deleting a property while creating tuple schema gives error in developer console</li>
 </ul>
-<h3 id="new-feature">New Feature</h3>
+<h4 id="new-feature">New Feature</h4>
 <ul>
 <li>[SPOI-7720]   DT Hub shows just one version of an application</li>
 <li>[SPOI-10182]  dtAssemble - if there is unsaved change, keep launch button enabled which will pop up a dialog box asking save-and-launch when being clicked.</li>
@@ -718,7 +730,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>[SPOI-8611]   Support gateway configuration changes in UI</li>
 <li>[SPOI-10323]  Always show User profile even when license type is not enterprise</li>
 </ul>
-<h3 id="improvement">Improvement</h3>
+<h4 id="improvement">Improvement</h4>
 <ul>
 <li>[SPOI-9785]   send GA events instead of page views for apphub page events</li>
 <li>[SPOI-10290]  Certification tool - RTS Installer Support for tool</li>
@@ -782,7 +794,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>[SPOI-9483]   Superuser role and oAuth cleanups</li>
 <li>[SPOI-8996]   Add authentication configuration web services spc to gateway REST api doc</li>
 </ul>
-<h3 id="bug-fixes">Bug Fixes</h3>
+<h4 id="bug-fixes">Bug Fixes</h4>
 <ul>
 <li>[SPOI-5852]   App Package page has a single word "ago" for modification time after importing pi demo</li>
 <li>[SPOI-6651]   Launching App from UI ignores APPLICATION_NAME attribute defined in properties.xml file</li>
@@ -907,8 +919,8 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>HDFS to HDFS Line Copy</li>
 <li>HDFS to Kafka Sync</li>
 </ul>
-<h2 id="appendix_1">Appendix</h2>
-<h3 id="improvement_1">Improvement</h3>
+<h3 id="appendix_1">Appendix</h3>
+<h4 id="improvement_1">Improvement</h4>
 <ul>
 <li>[SPOI-9136] - Enforce DefaultOutputPort.emit() or Sink.put() thread affinity</li>
 </ul>
@@ -918,7 +930,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>[SPOI-9419] - Update AppHub API to include the markdown content</li>
 <li>[SPOI-9432] - Update AppHub back end to extract markdown from apa</li>
 </ul>
-<h3 id="sub-task">Sub-task</h3>
+<h4 id="sub-task">Sub-task</h4>
 <ul>
 <li>[SPOI-3277] - Show app master logs on UI for applications that fail at launch when we upgrade to Hadoop 2.4 or above</li>
 <li>[SPOI-9079] - Creation of example application for transform operator</li>
@@ -928,7 +940,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md</p>
 <li>[SPOI-9574] - Rename title on AppHub list page</li>
 <li>[SPOI-9612] - Upgrade AppHub server deployment</li>
 </ul>
-<h3 id="bug-fixes_1">Bug Fixes</h3>
+<h4 id="bug-fixes_1">Bug Fixes</h4>
 <ul>
 <li>[SPOI-9140] - dtManage shows "Failed to parse" error when 'Monitor' tab is refreshed</li>
 <li>[SPOI-9522] - DELETE call to /ws/v2/config/properties/{name} returns 500</li>
