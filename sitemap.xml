@@ -106,19 +106,19 @@
     
         
     <url>
+     <loc>/app-templates/database-to-hdfs/</loc>
+     <lastmod>2017-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/database-to-database-sync/</loc>
+     <lastmod>2017-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/app-templates/hdfs-sync/</loc>
-     <lastmod>2017-01-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/app-templates/s3-to-hdfs-sync/</loc>
-     <lastmod>2017-01-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/app-templates/kafka-to-hdfs-sync/</loc>
      <lastmod>2017-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -136,18 +136,6 @@
     </url>
         
     <url>
-     <loc>/app-templates/database-to-hdfs/</loc>
-     <lastmod>2017-01-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/app-templates/database-to-database-sync/</loc>
-     <lastmod>2017-01-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>/app-templates/kafka-to-database-sync/</loc>
      <lastmod>2017-01-11</lastmod>
      <changefreq>daily</changefreq>
@@ -155,6 +143,18 @@
         
     <url>
      <loc>/app-templates/kafka-to-hdfs-filter/</loc>
+     <lastmod>2017-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/kafka-to-hdfs-sync/</loc>
+     <lastmod>2017-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/app-templates/s3-to-hdfs-sync/</loc>
      <lastmod>2017-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>

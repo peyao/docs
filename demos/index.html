@@ -277,21 +277,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../operators/kafkaInputOperator/">Kafka Input</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../operators/dimensions_computation/">Dimension Computation</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../operators/hdht/">HDHT</a>
+        <a class="" href="../operators/block_reader/">Block Reader</a>
         
     </li>
 
@@ -305,14 +291,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../operators/file_splitter/">File Splitter</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../operators/block_reader/">Block Reader</a>
+        <a class="" href="../operators/dimensions_computation/">Dimension Computation</a>
         
     </li>
 
@@ -320,6 +299,27 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../operators/file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operators/file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operators/hdht/">HDHT</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operators/kafkaInputOperator/">Kafka Input</a>
         
     </li>
 
@@ -358,21 +358,21 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../app-templates/database-to-hdfs/">Database dump to HDFS App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/database-to-database-sync/">Database to Database Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../app-templates/hdfs-sync/">HDFS Sync App</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../app-templates/s3-to-hdfs-sync/">S3 to HDFS Sync App</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../app-templates/kafka-to-hdfs-sync/">Kafka to HDFS Sync App</a>
         
     </li>
 
@@ -393,20 +393,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../app-templates/database-to-hdfs/">Database dump to HDFS App</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../app-templates/database-to-database-sync/">Database to Database Sync App</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../app-templates/kafka-to-database-sync/">Kafka to Database Sync App</a>
         
     </li>
@@ -415,6 +401,20 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../app-templates/kafka-to-hdfs-filter/">Kafka to HDFS Filter App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/kafka-to-hdfs-sync/">Kafka to HDFS Sync App</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../app-templates/s3-to-hdfs-sync/">S3 to HDFS Sync App</a>
         
     </li>
 
@@ -609,18 +609,18 @@
             <div class="section">
               
                 <h1 id="running-demo-applications">Running Demo Applications</h1>
-<p>DataTorrent RTS includes a number of demo applications and they are available for import from the <strong>Development &gt; App Packages</strong> section of the DataTorrent management console.</p>
+<p>DataTorrent RTS includes a number of demo applications and they are available for import from the <strong>AppHub</strong> section of the DataTorrent management console.</p>
 <h2 id="importing-demo-applications">Importing Demo Applications</h2>
 <ol>
-<li>Navigate to <strong>Develop &gt; App Packages &gt; Import</strong> section of the DataTorrent console.</li>
-<li>Select one of the available packages, such as <em>Apache Apex Malhar Pi Demo</em> and click <em>Import</em> button.</li>
-<li>Imported packages and included applications will be listed under <strong>Develop &gt; App Packages</strong> page.</li>
+<li>Navigate to <strong>AppHub</strong> section of the DataTorrent console.</li>
+<li>Select one of the available packages, such as <em>Pi Demo</em> and click <em>Import</em> button.</li>
+<li>Imported application packages and included applications will be listed under <strong>Develop &gt; Application Packages</strong> page.</li>
 </ol>
 <h2 id="launching-demo-applications">Launching Demo Applications</h2>
 <p>Once imported, applications can be launched with a single click.  <em>Note</em>: Ensure Hadoop YARN and HDFS services are active and ready by checking for errors in the DataTorrent console before launching demo applications.</p>
 <ol>
 <li>
-<p>Navigate to <strong>App Packages</strong> under <strong>Develop</strong> tab of the DataTorrent console, and select one of the imported demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
+<p>Navigate to <strong>Develop &gt; Application Packages</strong>, and select one of the imported demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
 </li>
 <li>
 <p>From the list of available Applications, locate PiDemo and click the launch button.</p>
@@ -639,10 +639,10 @@
 <p>Some applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to <code>~/.dt/dt-site.xml</code> configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.</p>
 <ol>
 <li>
-<p>Navigate to <strong>App Packages</strong> under <strong>Develop</strong> tab of the DataTorrent console.  In this example we will use <strong>Apache Apex Malhar Twitter Demo</strong> application package.  Import this package from <em>Develop &gt; App Packages &gt; Import</em> if it is not available.</p>
+<p>Navigate to <strong>AppHub</strong> of the DataTorrent console.  In this example, we will use <strong>Twitter Demo</strong> application package. Click <em>Import</em> button. </p>
 </li>
 <li>
-<p>From the list of Applications, select TwitterDemo and press the corresponding launch button.</p>
+<p>Navigate to <strong>Develop &gt; Application Packages</strong>. From the list of Applications, select TwitterDemo and press the corresponding launch button.</p>
 </li>
 <li>
 <p>Retrieve Twitter API access information by registering for <a href="https://dev.twitter.com/" target="\_blank">Twitter Developer</a> account, creating a new <a href="https://apps.twitter.com/app/new" target="\_blank">Twitter Application</a>, and navigating to Keys and Access Tokens tab.  Twitter Demo application requires the following to be specified by the user:</p>
