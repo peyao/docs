@@ -121,7 +121,19 @@ To build an application
 
     Also remove the first import from `SalesDemo.java`.
 
-9. Make the following changes to pom.xml:
+9. Add the following two lines to `SalesDemo.java` (if it does not exist already).
+
+        PubSubWebSocketAppDataQuery wsIn = new PubSubWebSocketAppDataQuery();
+        wsIn.setTopic("SalesDimensionsQuery");      // 1. Add this line
+        store.setEmbeddableQueryInfoProvider(wsIn);
+
+        PubSubWebSocketAppDataResult wsOut = dag.addOperator("QueryResult", new PubSubWebSocketAppDataResult());
+        wsOut.setTopic("SalesDimensionResult");     // 2. Add this line
+
+        dag.addStream("InputStream", inputGenerator.getOutputPort(), converter.input);
+        ...
+
+10. Make the following changes to pom.xml:
     1. Change the artifactId to something that is likely to be unique to
        this application, for example: `<artifactId>salesapp</artifactId>`.
        This step is optional but is recommended since uploading a second
@@ -148,21 +160,33 @@ To build an application
     file (the version number might need to change as new releases come out):
 
             <dependency>
-                <groupId>com.datatorrent</groupId>
-                <artifactId>dt-contrib</artifactId>
-                <version>3.3.0</version>
+              <groupId>com.datatorrent</groupId>
+              <artifactId>dt-contrib</artifactId>
+              <version>3.5.0</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>*</groupId>
+                  <artifactId>*</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
-                <groupId>com.datatorrent</groupId>
-                <artifactId>dt-library</artifactId>
-                <version>3.3.0</version>
+              <groupId>com.datatorrent</groupId>
+              <artifactId>dt-library</artifactId>
+              <version>3.5.0</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>*</groupId>
+                  <artifactId>*</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
 
-    4. Finally change `apex.version` to 3.2.0-incubating. To recapitulate, we are
-       using versions `3.3.0` for `dt-contrib` and `dt-library`, `3.3.0-incubating`
-       for `malhar-library` and `3.2.0-incubating` for Apex.
+    4. Finally change `apex.version` to `3.6.0-SNAPSHOT`. To recapitulate, we are
+       using versions `3.5.0` for `dt-contrib` and `dt-library`, `3.6.0`
+       for `malhar-library` and `3.6.0-SNAPSHOT` for Apex.
 
-10. Build the project as usual:
+11. Build the project as usual:
 
         mvn clean package -DskipTests
 
@@ -190,17 +214,14 @@ _Note_: If you are launching the application on the sandbox, make sure that
 an IDE is not running on it at the same time; otherwise, the sandbox might
 hang due to resource exhaustion.
 
-1. Log on to the DataTorrent Console (the default username and password
-   are both `dtadmin`).
-2. In the menu bar, click `Develop`.
-3. Under `App Packages`, locate the Sales Dimension application, and click
+1. In the menu bar, click _Develop_.
+2. Under _App Packages_, locate the Sales Dimension application, and click
    _launch application_.
-4. (Optional) To configure the application using a configuration file, select
-   _Use a config file_. To specify individual properties, select _Specify custom properties_.
-5. Click Launch.
+3. (Optional) To configure the application using a configuration file, select
+   _Use configuration file_. To specify individual properties, select _Specify Launch Properties_.
+4. Click Launch.
 
-If the launch is successful a message indicating the success of the launch
-operation appears along with the application ID.
+If the launch is successful, a notification will appear on the top-right corner with the application ID and a hyperlink to monitor the running application.
 
 Operator base classes and interfaces
 ---
@@ -580,38 +601,26 @@ connected in the application. An application must implement the
     public class SalesDemo implements StreamingApplication {
       ...
       public void populateDAG(DAG dag, Configuration conf) {
-        JsonSalesGenerator input
-          = dag.addOperator("InputGenerator", JsonSalesGenerator.class);
-        JsonToMapConverter converter
-          = dag.addOperator("Converter", JsonToMapConverter.class);
-        EnrichmentOperator enrichmentOperator
-          = dag.addOperator("Enrichment", EnrichmentOperator.class);
-        DimensionsComputationFlexibleSingleSchemaMap dimensions
-          = dag.addOperator("DimensionsComputation", DimensionsComputationFlexibleSingleSchemaMap.class);
-        AppDataSingleSchemaDimensionStoreHDHT store
-          = dag.addOperator("Store", AppDataSingleSchemaDimensionStoreHDHT.class);
+        JsonSalesGenerator input = dag.addOperator("InputGenerator", JsonSalesGenerator.class);
+        JsonToMapConverter converter = dag.addOperator("Converter", JsonToMapConverter.class);
+        EnrichmentOperator enrichmentOperator = dag.addOperator("Enrichment", EnrichmentOperator.class);
+        DimensionsComputationFlexibleSingleSchemaMap dimensions = dag.addOperator("DimensionsComputation", DimensionsComputationFlexibleSingleSchemaMap.class);
+        AppDataSingleSchemaDimensionStoreHDHT store = dag.addOperator("Store", AppDataSingleSchemaDimensionStoreHDHT.class);
 
-        Operator.OutputPort<String> queryPort;
-        Operator.InputPort<String> queryResultPort;
+        ...
 
-        URI uri = URI.create("ws://" + gatewayAddress + "/pubsub");
+        PubSubWebSocketAppDataQuery wsIn = new PubSubWebSocketAppDataQuery();
+        wsIn.setTopic("SalesDimensionsQuery");
+        store.setEmbeddableQueryInfoProvider(wsIn);
 
-        PubSubWebSocketAppDataQuery wsIn = new
-        PubSubWebSocketAppDataQuery();
-        wsIn.setUri(uri);
-        queryPort = wsIn.outputPort;
-        dag.addOperator("Query", wsIn);
-        dag.addStream("Query", queryPort, store.query).setLocality(Locality.CONTAINER_LOCAL);
-        PubSubWebSocketAppDataResult wsOut
-          = dag.addOperator("QueryResult", new PubSubWebSocketAppDataResult());
-        wsOut.setUri(uri);
+        PubSubWebSocketAppDataResult wsOut = dag.addOperator("QueryResult", new PubSubWebSocketAppDataResult());
+        wsOut.setTopic("SalesDimensionsResult");
 
-        queryResultPort = wsOut.input;
         dag.addStream("InputStream", inputGenerator.getOutputPort(), converter.input);
         dag.addStream("EnrichmentStream", converter.outputMap, enrichmentOperator.inputPort);
         dag.addStream("ConvertStream", enrichmentOperator.outputPort, dimensions.input);
         dag.addStream("DimensionalData", dimensions.output, store.input);
-        dag.addStream("QueryResult", store.queryResult, queryResultPort).setLocality(Locality.CONTAINER_LOCAL);
+        dag.addStream("QueryResult", store.queryResult, wsOut.input).setLocality(Locality.CONTAINER_LOCAL);
       }
     }
 

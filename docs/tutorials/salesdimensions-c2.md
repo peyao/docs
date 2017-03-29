@@ -57,7 +57,7 @@ Step 3: Customize application and operator settings
 
 Customize the operators and streams as described in each item below; to do that,
 click the individual operator or stream and use the _Operator Inspector_ panel
-on the right to edit the operator and stream settings as described in the item:
+on the bottom to edit the operator and stream settings as described in the item:
 
 1.  Copy this Sales schema below into the _Event Schema JSON_ field of **Input**
     operator, and the _Configuration Schema JSON_ of the **Compute** and **Store**
@@ -89,6 +89,9 @@ on the right to edit the operator and stream settings as described in the item:
 
 2.  Set the _Topic_ property for **Query** and **Result** operators to
     `SalesDimensionsQuery` and `SalesDimensionsResult` respectively.
+
+    _Optional_: In the _Building with Java_ section, the **App Data Pub Sub Query (PubSubWebSocketAppDataQuery)** operator was not added to the DAG. Instead, it was embedded into the **store** operator. You can achieve the same results in dtAssemble by filling the _Embeddable Query Info Provider_ field of the **Store** operator with the properties set in the **Query** operator, and then removing the **Query** operator.
+
 3.  Select the **Store** operator, and edit the _File Store_ property.
     Set _Base Path_ value to `SalesDimensionsDemoStore`. This sets the HDHT
     storage path to write dimensions computation results to
@@ -116,9 +119,9 @@ To launch the Sales Dimension application
 1.  Click the launch button at the top left of the application canvas screen.
 2.  Type a name for the application in the _Name this application_ box.
 3.  (Optional) To configure the application using a configuration file, select
-    _Use a config file_ checkbox.
+    _Use a configuration file_ checkbox.
 4.  (Optional) To specify individual properties, select
-    _Specify custom properties_ checkbox.
+    _Specify Launch Properties_ checkbox.
 5.  Click Launch.
 
 ![Launch](images/sales_dimensions/image21.png "Launch")
@@ -131,12 +134,13 @@ Dimensions Application with dtManage_.
 1.  Go to the Sales Dimensions application operations page under the _Monitor_ tab.
 2.  Confirm that the application is launched successfully by validating that
     the state of the application under the _Application Overview_ section
-    is _Running_.
+    is _RUNNING_.
 3.  Make sure that all the operators are successfully started under the
-    _Stram Events_ section.
-4.  Navigate to the _Physical view_ tab, observe the Input, Parse, Enrich, or
+    _StramEvents_ widget.
+4.  Navigate to the _physical_ tab, observe the Input, Parse, Enrich, or
     Compute operators, and ensure that they are deployed to a single container,
     because of the stream locality setting of CONTAINER_LOCAL.
+    ![containers](images/sales_dimensions/image35.png "containers")
 
 _Note_: This is one of the many performance improvement techniques
 available with the DataTorrent platform; in this case eliminating data

@@ -62,12 +62,12 @@ from the resulting dropdown list.
     for: the name, the Java class, status, and additional statistics for
     latency and processed events.
 
-- **Streams** (not shown in the image)
+- **Streams**
 
     This operator displays a table with one row per stream showing:
     the name, locality, source, and sinks.
 
-- **Metrics Chart** (not shown in the image)
+- **Metrics Chart**
 
     This widget displays moving averages of tuples processed and latencies.
 
