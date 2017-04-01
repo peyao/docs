@@ -29,6 +29,7 @@ pages:
     - Apex Development Setup: apex_development_setup.md
     - Generate New Project in IDE: configure_IDE.md
     - Applications: application_development.md
+    - Application Configurations: application_configurations.md
     - Application Packages: application_packages.md
     - Configuration Packages: configuration_packages.md
     - Operators: operator_development.md
