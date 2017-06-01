@@ -90,7 +90,7 @@ on the bottom to edit the operator and stream settings as described in the item:
 2.  Set the _Topic_ property for **Query** and **Result** operators to
     `SalesDimensionsQuery` and `SalesDimensionsResult` respectively.
 
-    _Optional_: In the _Building with Java_ section, the **App Data Pub Sub Query (PubSubWebSocketAppDataQuery)** operator was not added to the DAG. Instead, it was embedded into the **store** operator. You can achieve the same results in dtAssemble by filling the _Embeddable Query Info Provider_ field of the **Store** operator with the properties set in the **Query** operator, and then removing the **Query** operator.
+    _Optional_: In the _Building with Java_ section, the **App Data Pub Sub Query (PubSubWebSocketAppDataQuery)** operator was not added to the DAG. Instead, it was embedded into the **store** operator to avoid query delays which may happen when the operator is blocked upstream. You can achieve the same results in dtAssemble by filling the _Embeddable Query Info Provider_ field of the **Store** operator with the properties set in the **Query** operator, and then removing the **Query** operator.
 
 3.  Select the **Store** operator, and edit the _File Store_ property.
     Set _Base Path_ value to `SalesDimensionsDemoStore`. This sets the HDHT
