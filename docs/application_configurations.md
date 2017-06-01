@@ -1,9 +1,6 @@
 Application Configurations
 ========================
 
-This guide will walk you through the steps in creating, modifying, and launching
-Application Configurations.
-
 Application Configurations can be thought of as wrappers for Applications. You
 create a Configuration with properties that override and supplement the ones
 already set in the original Application.
@@ -25,8 +22,8 @@ Creating an Application Configuration
     ![](images/application_configurations/image00.png)
   Or if you're on the *Application Configurations* page, click on the **create new** button.
     ![](images/application_configurations/image01.png)
-  3. Select the **Source Application** from the dropdown, choose a
-  unique **Configuration Name**, and click the **create** button.
+  3. Select the **Source Application** from the dropdown (preselected if you used
+  the **configure** button), choose a unique **Configuration Name**, and click the **create** button.
     ![](images/application_configurations/image02.png)
   4. Once the Configuration is created, you will be navigated to the newly created
   Application Configuration's page.
