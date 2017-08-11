@@ -39,16 +39,36 @@ DataTorrent Gateway has support for authentication and when it is configured use
 
 The different authentication mechanisms supported by Gateway are
 
--   Password
--   Kerberos
--   JAAS for LDAP, Active Directory, PAM etc
+-   [Password Authentication](#password-authentication)
+-   [LDAP Authentication](#ldap-authentication)
+-   [Kerberos Authentication](#kerberos-authentication)
+-   [JAAS Authentication](#jaas-authentication) for Active Directory, PAM, etc
 
 JAAS is a extensible authentication framework that supports different types of authentication mechanisms by plugging in an appropriate module.
 
 ### Password Authentication
 
-This is the only authentication mechanism presented here that does
-not depend on any external systems. The users will be managed locally by Gateway. When enabled, all users will be presented with the login prompt before being able to use the DT Console. Password authentication can be enabled by performing following two steps.
+Password security is simple to set up and is ideal for a small to medium set of users. It comes with role-based access control, so users can be assigned roles, and roles can be assigned granular permissions (see [User Management](dtmanage/#user-management)). This is the only authentication mechanism available that does not depend on any external systems. The users will be managed locally by the Gateway. When enabled, all users will be presented with the login prompt before being able to use the DT Console.
+
+To set up password security, on the [Security Configuration](dtmanage/#security-configuration) page select **Password** from the *Authentication Type* dropdown, and save. Allow the Gateway to restart.
+
+![Security Configuration - Password](images/dtmanage/security-password.png)
+
+When the Gateway has restarted, you should be prompted for username and password. Log in as the default admin user **dtadmin** with password **dtadmin**.
+
+![](images/GatewaySecurity/image02.png)
+
+Once authenticated, active username and an option to log out is presented in the top right corner of the DT Console screen.
+
+![](images/GatewaySecurity/image00.png)
+
+Additional users and roles can be created and managed on the [User Management](#user-management) page.
+
+*Note*: Don't forget to change your **dtadmin** user's password!
+
+#### Password Authentication via dt-site.xml
+
+Password authentication can alternatively be configured outside the Console by performing following two steps:
 
 1.  Add a property to `dt-site.xml` configuration file, typically located
     under `/opt/datatorrent/current/conf` ( or `~/datatorrent/current/conf` for local install).
@@ -62,22 +82,43 @@ not depend on any external systems. The users will be managed locally by Gateway
         ...
         </configuration>
 
-2.  Restart the Gateway by running
+2.  Restart the Gateway. If running Gateway in local mode use `dtgateway restart` instead.
 
         sudo service dtgateway restart
 
-	( when running Gateway in local mode use  dtgateway restart command)
 
-Open the Gateway URL in your browser, and you should be prompted for
-user name and password.  Starting with DataTorrent RTS 2.0.0, the
-default username and password is **dtadmin** and **dtadmin**.
+### LDAP Authentication
 
-![](images/GatewaySecurity/image02.png)
+LDAP is a directory based authentication mechanism used in many enterprises. If your organization uses LDAP for authentication, the LDAP security option is ideal for giving your existing users access to RTS, with the role-based access control and group mapping features.
 
-Once authenticated, active user name and an option to log out is
-presented in the top right corner of the DT Console screen.
+There are four variations for configuring LDAP authentication:
 
-![](images/GatewaySecurity/image00.png)
+  * **Identity**
+    * Provide the parent DN of your users and _specify the RDN attribute of users_.
+    * Users will authenticate using their RDN attribute value as their username.
+  * **Anonymous & User Search Filter**
+    * Provide the parent DN of your users and _specify a search filter to identify users_.
+    * Users will authenticate using an appropriate username that matches the parameters defined in the search filter.
+  * **Identity and Anonymous Search**
+    * Provide the parent DN of your users, _specify the RDN attribute of users, and a search filter_.
+    * Users will authenticate using their RDN attribute value as their username, as well as the parameters defined in the search filter.
+  * **Non-Anonymous Search with Group Support**
+    * Provide basic DN info for users, DN and password of a user able to perform a non-anonymous search, and optional group support info.
+    * With _group support disabled_, users need to be added in User Management before logging in. Users authenticate with their RDN attribute value as their username.
+    * With _group support enabled_, users do not have to be added in User Management before logging in. Users authenticate with their RDN attribute value as their username. They will be assigned roles mapped to their LDAP group. For example, user Peter is part of GroupA (admin) and GroupB (developer, operator); Peter will be assigned roles admin, developer, and operator upon login.
+
+When group support is not configured, users must be assigned a role before they are able to log in. This means users can be restricted from logging in (blacklisted) by removing all of their roles.
+
+*Note*: If migrating from *Password* mode, the existing users will be carried over as "local users" and can still login as if in *Password* mode. It is recommended to keep only the **dtadmin** user and delete the rest. This is because local users cannot be added or deleted once *LDAP* mode is activated.
+
+![Security Configuration - LDAP](images/dtmanage/security-LDAP.png)
+
+After setting up LDAP in the Security Configuration page, the **LDAP Users** section will appear in the User Management page. If you have group support enabled, the **LDAP Groups** section will also appear. Existing users (carried over from *Password* mode), will be placed in the **Local Users** sections. Local users cannot be added or deleted in LDAP mode, but their roles and passwords can be modified.
+
+![](images/dtmanage/user-management-LDAP.png)
+
+To configure LDAP via dt-site.xml, check out the [JAAS Authentication - LDAP](#ldap) section below.
+
 
 ### Kerberos Authentication
 
@@ -248,7 +289,7 @@ Custom callback handlers can be implemented by extending the default callback ha
 
 #### LDAP
 
-LDAP is a directory based authentication mechanism used in many enterprises. To enable LDAP authentication follow the JAAS configuration steps described above with the following specific details for the individual steps.
+An alternative way to enable LDAP authentication, instead of [LDAP Authentication](#ldap-authentication) section above, is to follow the JAAS configuration steps described above with the following specific details for the individual steps.
 
 -   For step 1 of the JAAS authentication [configuration process](#enabling-jaas-auth), pick a name for the JAAS module for LDAP. You can choose a name like ```ldap``` that is appropriate for the current scheme. This can be done by specifying the value of the ```dt.gateway.http.authentication.jaas.name``` property to be ```ldap```. This name should now be configured with the appropriate settings as described in the next step.
 

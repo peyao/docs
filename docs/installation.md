@@ -139,3 +139,5 @@ After the system installation is complete, remaining configuration steps are per
 The Installation Wizard can be accessed and repeated at any time to update key system settings from the Configuration section of the DataTorrent UI Console.
 
 DataTorrent installation can be verified by running included demo applications.  See [Launching Demo Applications](demos.md) for details.
+
+*Note*: The ability to connect to this node and port depends on your environment, and may require special setup such as an ssh tunnel, firewall configuration changes, VPN access, etc.
