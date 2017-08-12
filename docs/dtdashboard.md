@@ -26,59 +26,26 @@ The Ads Dimension Demo included in the DataTorrent RTS distribution also utilize
 
 ## Data Sources
 
-A Data Source in the application consists of three operators.  The Query Operator, the Data Source Operator and the Result Operator.  The Query Operator takes in queries from a message queue and passes them to the Data Source Operator.  The Data Source Operator processes the queries and sends the results to the Result Operator.  The Result Operator delivers the results to the message queue.  The Data Source Operator generally takes in data from other parts of the DAG.
-
-
+A Data Source in the application consists of three operators.  The embedded Query Operator, the Data Source Operator and the Result Operator.  The Query Operator takes in queries from a message queue and passes them to the Data Source Operator.  The Data Source Operator processes the queries and sends the results to the Result Operator.  The Result Operator delivers the results to the message queue.  The Data Source Operator generally takes in data from other parts of the DAG.
 
 ![Data Sources](images/dtdashboard/image04.png)
 
-
-
 To see how this is fit in our previous examples, below is the DAG for the Twitter Hashtag Demo:
-
-
-
-
 
 ![Screenshot from 2015-06-03 13:08:54.png](images/dtdashboard/image05.png)
 
-
-
-
-
-The operators “Query”, “Tabular Server” and “QueryResult” are the three operators that serve the data being visualized in the Console.  The “Tabular Server” operator takes in data from the TopCounter operator, processes incoming queries, and generates results.
-
-
-
-And below is the DAG for the Ads Dimension Demo:
-
-
-
-![Screenshot from 2015-06-03 18:27:12.png](images/dtdashboard/image11.png)
-
-
-
-In this DAG, the operators “Query”, “Store” and “QueryResult” are the three operators that make up the Data Source.  The “Store” operator takes in incoming data, stores them in a persistent storage, and serve them.  In other words, the Data Source serves historical data as well as current data, as opposed to the Twitter Hashtag Demo, which only serves the current data.
-
-
-
-All these operators are available in the Malhar (and Megh). When you are familiar with how the built-in operators work, you may want to create your own Data Sources in your own application.  [App Data Framework Programming Guide](http://www.datatorrent.com/docs/)
-
-
+The operators SnapshotServer (which includes embedded Query Operator) and QueryResult are the operators that serve the data being visualized in the Console.  The SnapshotServer operator takes in data from the TopCounter operator, processes incoming queries, and generates results. The Twitter Hashtag Demo application and all its operators are available in the Apache Malhar repository.
 
 # Stats and Custom Metrics
 
 
-
-Each application has statistics such as tuples processed per second, latency, and memory used.  Each operator in an application can contain custom metrics that are part of the application logic.  With the Application Data Framework, each application comes with Data Sources that give out historical and real-time application statistics data and custom metrics data.  You can visualize such data as you would for other Data Sources in the application.
+Each application has statistics such as tuples processed per second, latency, and memory used.  Each operator in an application can contain custom metrics that are part of the application logic.  With the Application Data Framework, each application comes with Data Sources that provide historical and real-time application statistics and custom metrics data.  You can visualize these metrics the same way as custom Data Sources in an application.
 
 
 
 # Data Visualization with Dashboards and Widgets
 
 ## Overview
-
-
 
 DataTorrent Dashboards and Widgets are UI tools that allow users to quickly and easily visualize historical and real-time application data.  Below is an example of a visualization dashboard with Stacked Area Chart, Pie Chart, Multi Bar Chart, and Table widgets.
 
@@ -113,7 +80,7 @@ After selecting Visualize menu item, a list of available dashboards is displayed
 
 
 
-An alternative way to access dashboards is from the Monitor section.  Navigate to one of the running applications, and if the application supports data visualization, using the **visualize** button will display a list of existing dashboards that are associated to the application.
+An alternative way to access dashboards is from the Monitor section.  Navigate to one of the running applications, and if the application supports data visualization, using the **visualize** button will display a list of existing dashboards that are associated with the application.
 
 
 
@@ -210,7 +177,7 @@ When importing a dashboard, the interface tries its best to preselect the most c
 ## Packaged Dashboards
 ### Auto Import When Launching An Application
 
-Application packages may include packaged dashboards which can be imported. Some packaged dashboards will be imported automatically when launching an application. Others will have to be imported manually.
+Application packages may include packaged dashboards which can be imported. Application package developers may select some dashboards to be imported automatically when launching an application, and all packaged dashboards can be imported manually at any time from the Packaged Dashboards page.
 
 ![Import Packaged Dashboard Launch Modal](images/dtdashboard/image24.png)
 
@@ -314,6 +281,8 @@ You can access the Presentation Mode from the dashboard menu:
 
 ![accessPresentationMode.png](images/dtdashboard/image20.png)
 
+*Note*: To share your presentation, share the URL while inside Presentation Mode.
+
 ## Presentation Builder
 
 The Presentation Builder can be used to create a presentation with multiple dashboards.
@@ -322,5 +291,3 @@ that dashboard will serve as the starting point of your presentation. To start t
 just enter Presentation Mode from the home dashboard.
 
 ![presentationBuilder.gif](images/dtdashboard/image21.gif)
-
-*Note*: To share your presentation, share the URL while inside Presentation Mode.
