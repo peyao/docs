@@ -89,7 +89,7 @@ Password authentication can alternatively be configured outside the Console by p
 
 ### LDAP Authentication
 
-LDAP is a directory based authentication mechanism used in many enterprises. If your organization uses LDAP for authentication, the LDAP security option is ideal for giving your existing users access to RTS, with the role-based access control and group mapping features.
+LDAP is a directory based authentication mechanism used in many enterprises. If your organization uses LDAP for authentication, the LDAP security option is ideal for giving your existing users access to RTS, with role-based access control and group mapping features.
 
 There are four variations for configuring LDAP authentication:
 
@@ -104,10 +104,10 @@ There are four variations for configuring LDAP authentication:
     * Users will authenticate using their RDN attribute value as their username, as well as the parameters defined in the search filter.
   * **Non-Anonymous Search with Group Support**
     * Provide basic DN info for users, DN and password of a user able to perform a non-anonymous search, and optional group support info.
-    * With _group support disabled_, users need to be added in User Management before logging in. Users authenticate with their RDN attribute value as their username.
-    * With _group support enabled_, users do not have to be added in User Management before logging in. Users authenticate with their RDN attribute value as their username. They will be assigned roles mapped to their LDAP group. For example, user Peter is part of GroupA (admin) and GroupB (developer, operator); Peter will be assigned roles admin, developer, and operator upon login.
+    * With _group support disabled_, users need to be added in User Management before logging in, unless a default role is set. Users authenticate with their User Id Attribute value as their username.
+    * With _group support enabled_, users do **not** have to be added in User Management before logging in. Users authenticate with their User Id Attribute value as their username. They will be assigned roles mapped to their LDAP group. For example, user Peter is part of GroupA (admin) and GroupB (developer, operator); Peter will be assigned roles admin, developer, and operator upon login.
 
-When group support is not configured, users must be assigned a role before they are able to log in. This means users can be restricted from logging in (blacklisted) by removing all of their roles.
+When group support is not configured, users must be assigned a role before they are able to log in, unless a default role is set. This means users can be restricted from logging in (blacklisted) by removing all of their roles. Default roles will not be reapplied after a user's initial login, and therefore will not interfere with restricting users.
 
 *Note*: If migrating from *Password* mode, the existing users will be carried over as "local users" and can still login as if in *Password* mode. It is recommended to keep only the **dtadmin** user and delete the rest. This is because local users cannot be added or deleted once *LDAP* mode is activated.
 
@@ -119,6 +119,31 @@ After setting up LDAP in the Security Configuration page, the **LDAP Users** sec
 
 To configure LDAP via dt-site.xml, check out the [JAAS Authentication - LDAP](#ldap) section below.
 
+### Active Directory Authentication
+
+Active Directory (AD) is a directory based authentication mechanism for users in Microsoft Windows domains. Active Directory supports role-based access control and group mapping features.
+
+*Note*: Configuring Active Directory is similar to configuring LDAP with the Non-Anonymous Search with Group Support variation.
+
+To configure Active Directory, you will need:
+
+  * Active Directory user attributes (DN, UID, object class).
+  * Authentication details for an Active Directory user able to perform a non-anonymous search.
+  * **(Optional)** Active Directory group attributes for group mapping features.
+    * With _group support disabled_, users need to be added in User Management before logging in, unless a default role is set. Users authenticate with their User Id Attribute value as their username.
+    * With _group support enabled_, users do **not** need to be added in User Management before logging in. Users authenticate with their User Id Attribute value as their username. They will be assigned roles mapped to their AD group. For example, user Peter is part of GroupA (admin) and GroupB (developer, operator); Peter will be assigned roles admin, developer, and operator upon login.
+
+When group support is not configured, users must be assigned a role before they are able to log in, unless a default role is set. This means users can be restricted from logging in (blacklisted) by removing all of their roles. Default roles will not be reapplied after a user's initial login, and therefore will not interfere with restricting users.
+
+*Note*: If migrating from *Password* mode, the existing users will be carried over as "local users" and can still login as if in *Password* mode. It is recommended to keep only the **dtadmin** user and delete the rest. This is because local users cannot be added or deleted once *Active Directory* mode is activated.
+
+![Security Configuration - AD](images/dtmanage/security-AD.png)
+
+After setting up Active Directory in the Security Configuration page, the **Active Directory Users** section will appear in the User Management page. If you have group support enabled, the **Active Directory Groups** section will also appear. Existing users (carried over from *Password* mode), will be placed in the **Local Users** sections. Local users cannot be added or deleted in Active Directory mode, but their roles and passwords can be modified.
+
+![](images/dtmanage/user-management-AD.png)
+
+To configure Active Directory via dt-site.xml, check out the [JAAS Authentication - Active Directory](#active-directory) section below.
 
 ### Kerberos Authentication
 
@@ -321,7 +346,7 @@ settings are only provided as a reference example.
 
 #### Active Directory
 
-Active Directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Kerberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
+Active Directory is used when authenticating users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Kerberos as well as LDAP. The recommended way to configure Active Directory is described in [Active Directory Authentication](#active-directory-authentication), in this section we will look at an alternative way with JAAS.
 
 Follow the JAAS configuration steps described above with the following specific details.
 
