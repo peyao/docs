@@ -181,13 +181,12 @@ hang due to resource exhaustion.
 
 1. Log on to the DataTorrent Console (the default username and password are
    both `dtadmin`).
-2. In the top navigation bar, click _Develop_.
-3. Under _App Packages_, locate the top N word count application, and click
-   _Launch Application_.
-4. (Optional) To configure the application using a configuration file, select
-    _Use a config file_. To specify individual properties, select _Specify
-    custom properties_.
-5. Click Launch.
+2. In the top navigation bar, click _Launch_.
+3. Under the _Applications_ tab, locate the top N word count application, and click
+   the _launch_ button. In the confirmation modal, click the _launch_ button.
+
+    *Note*: To configure the application using a configuration file, use the dropdown
+    next to the _launch_ button and select a file under the _launch with xml_ section.
 
 A message indicating success of the launch operation should appear along with
 the application ID.

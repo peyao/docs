@@ -203,8 +203,10 @@ To upload the Sales Dimension application package
 1.  Log on to the DataTorrent Console (the default username and password are
     both `dtadmin`).
 2.  On the menu bar, click _Develop_.
-3.  Under _App Packages_, click on _upload a package_.
+3.  Under _App Packages_, click on _upload package_.
+
     ![upload](images/sales_dimensions/image20.png "upload")
+
 4.  Navigate to the location of `salesApp-1.0-SNAPSHOT.apa` and select it.
 5.  Wait till the package is successfully uploaded.
 
@@ -214,12 +216,12 @@ _Note_: If you are launching the application on the sandbox, make sure that
 an IDE is not running on it at the same time; otherwise, the sandbox might
 hang due to resource exhaustion.
 
-1. In the menu bar, click _Develop_.
-2. Under _App Packages_, locate the Sales Dimension application, and click
-   _launch application_.
-3. (Optional) To configure the application using a configuration file, select
-   _Use configuration file_. To specify individual properties, select _Specify Launch Properties_.
-4. Click Launch.
+1. In the menu bar, click _Launch_.
+2. Under the _Applications_ tab, locate the Sales Dimension application, and click the
+   _launch_ button. In the confirmation modal, click the _launch_ button.
+   
+    *Note*: To configure the application using a configuration file, use the dropdown next to
+    the _launch_ button and select a file under the _launch with xml_ section.
 
 If the launch is successful, a notification will appear on the top-right corner with the application ID and a hyperlink to monitor the running application.
 

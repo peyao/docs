@@ -173,6 +173,7 @@ section below):
     java.lang.OutOfMemoryError: GC overhead limit exceeded.
 
 Rebuild the application, upload the package and use this file at launch time:
+
 ![Custom config file](images/topnwords/image50.png "low-mem")
 
 The allocated memory shown in the "Application Overview" panel should now drop
