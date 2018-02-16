@@ -26,7 +26,7 @@ Notification is displayed on the top right corner after application package is s
 
     Detailed information about the application package like version, last modified time, and short description is available on this page. Click on launch button for `Kafka-to-HDFS-Sync` application. In the confirmation modal, click the Configure button.
 
-1. The <a name="launch-dialogue"></a>`Kafka-to-HDFS-Sync` application configuration page is displayed. The Required Properties section m ust be completed before the application can be launched.
+1. The <a name="launch-dialogue"></a>`Kafka-to-HDFS-Sync` application configuration page is displayed. The Required Properties section must be completed before the application can be launched.
 
     ![Launch dialogue](images/kafka-to-hdfs-sync/launch.png)
 
