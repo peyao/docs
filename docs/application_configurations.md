@@ -156,6 +156,8 @@ Dashboards are automatically imported (if they have not already been) when the a
 
 ![](images/application_configurations/working_with_dashboards.png)
 
+See the [Packaged Dashboard](/dtdashboard#packaged-dashboards) section in the dtDashboard page for more details.
+
 #### Configuring a Packaged Dashboard
 
 To configure a packaged dashboard, click the **configure** button. In the modal, you can change the dashboard name and target applications. Target applications can be either the current application configuration, or other running applications that have data sources.
