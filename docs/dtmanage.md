@@ -27,19 +27,19 @@ The Launch page lists all of the **Applications** and [**Configurations**](/appl
 
 ![Launch](images/dtmanage/console-launch.png)
 
-The page is split into two views: **Applications** and **Configurations**. The **Applications** view lists all the base applications pulled in from application packages. The **Configurations** view lists all available application configurations.
+Two alternative views are accessible through the **Applications** and **Configurations** buttons on the top right of the page. The **Applications** view lists all the applications across all the application packages. The **Configurations** view lists all the available application configurations.
 
-The *instances* column lists all running instances of each application or configuration. Clicking on an instance link takes you to the running instance page.
+The *instances* column lists all the running instances of each application or configuration. Clicking on an instance takes you to the application instance page.
 
 
 ### Uploading Packages and Configurations
 
-The **Applications** and **Configurations** views have their own upload buttons. If you want to upload an application package (.apa), use the **upload package** button in the **Applications** view. If you want to upload an application configuration (.apc), use the **upload configuration** button in the **Configurations** view.
+To upload an application package (.apa), use the **upload package** button in the **Applications** view. To upload an application configuration (.apc), use the **upload configuration** button in the **Configurations** view.
 
 
 ### Launching Applications and Configurations
 
-Applications and configurations can be launched using the **launch** button in the *actions* column. This opens a launch modal where you can confirm whether to **Launch** or **Configure** the target.
+Applications and configurations can be launched using the **launch** button in the *actions* column. This opens a launch modal where you can confirm whether to **Launch** or **Configure** the application.
 
 *Note*: Some applications and configurations must be configured before launching because they have incomplete required properties.
 
@@ -48,11 +48,11 @@ When using the **Configure** button in the *Launch Application* modal, a tempora
 
 #### Launch Dropdown
 
-The dropdown next to the **launch** button contains some convenient management actions and some alternative launch options.
+The dropdown menu to the right of the **launch** button contains some convenient management actions and alternative launch options.
 
 ![Launch Dropdown](images/dtmanage/console-launch-dropdown.png)
 
-When working with **Applications**, the dropdown provides quick access to related configurations, ability to launch with configuration xmls, and some package management actions.
+When working with **Applications**, the dropdown provides quick access to related configurations, ability to launch with configuration xml files, and some package management actions.
 
 When working with **Configurations**, the dropdown provides configuration management actions, links to related configurations, and source management actions.
 
@@ -61,7 +61,7 @@ When working with **Configurations**, the dropdown provides configuration manage
 
 Multiple configurations can have their source applications retargeted at the same time. This is useful when working with a new application version and you want to migrate a set of existing configurations.
 
-To start, select all of the configurations you want to retarget using the checkbox, then click the **retarget** button that shows up in the button bar above the configurations list.
+To start, select all of the configurations you want to retarget using the selection checkboxes, then click the **retarget** button that shows up above the configurations list.
 
 In the modal, select a new target source application, confirm your changes, and click **Retarget**.
 
