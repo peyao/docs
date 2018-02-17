@@ -2,13 +2,9 @@ Application Configurations
 ==========================
 
 An application configuration is a collection of custom settings applied to an application.
-These settings may be properties, artifacts, services, and dashboards.
-
-Configurations can be created, modified, and deleted without affecting the source application.
-It is useful for keeping applications generic, but easily modifiable with properties.
-
-Application configurations are based on [Configuration Packages](/configuration_packages).
-As a result, they can be downloaded, shared, and uploaded just like configuration package (.apc) files.
+These settings may include properties, launch options, artifacts, services, and dashboards.
+Application Configurations can be thought of as wrappers for Applications, which allow for clean separation between 
+application sources and application runtime configurations.  Configurations are based on [Configuration Packages](/configuration_packages) and can be created, modified, and deleted without affecting the source application packages.  And once created they can be downloaded, shared, and uploaded, enabling convenient storage and transporation of application settings across multiple environments.
 
 ![](images/application_configurations/working_with.png)
 
