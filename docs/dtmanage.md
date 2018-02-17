@@ -41,9 +41,9 @@ The **Applications** and **Configurations** views have their own upload buttons.
 
 Applications and configurations can be launched using the **launch** button in the *actions* column. This opens a launch modal where you can confirm whether to **Launch** or **Configure** the target.
 
-*Note*: Some applications must be configured before launching because they have required properties.
+*Note*: Some applications and configurations must be configured before launching because they have incomplete required properties.
 
-When using the **Configure** button in the *Launch Application* modal, a temporary configuration is used. Temporary configurations are useful for launching and testing quickly without creating too many configurations. Read more about [temporary configurations](/application_configurations#launching-quickly-with-temporary-configurations) at the main Application Configurations page.
+When using the **Configure** button in the *Launch Application* modal, a temporary configuration is used. Temporary configurations are useful for launching and testing quickly without creating extra configurations. Read more about [temporary configurations](/application_configurations#launching-quickly-with-temporary-configurations) on the main Application Configurations page.
 
 
 #### Launch Dropdown
@@ -52,18 +52,19 @@ The dropdown next to the **launch** button contains some convenient management a
 
 ![Launch Dropdown](images/dtmanage/console-launch-dropdown.png)
 
-When working with **Applications**, the dropdown gives you quick access to configurations targeting the selected application, ability to create a temporary configuration with a configuration xml, and some package management actions.
+When working with **Applications**, the dropdown provides quick access to related configurations, ability to launch with configuration xmls, and some package management actions.
 
-When working with **Configurations**, the dropdown gives you access to configuration management actions, related configurations, and source application management actions.
+When working with **Configurations**, the dropdown provides configuration management actions, links to related configurations, and source management actions.
 
 
 #### Retargeting Multiple Configurations
 
-Multiple configurations can have their source applications retargeted together. This is useful when working with a new application version and you want to migrate some existing configurations.
+Multiple configurations can have their source applications retargeted at the same time. This is useful when working with a new application version and you want to migrate a set of existing configurations.
 
-To start, select all of the configurations you want to retarget using the checkbox, then click the **retarget** button that shows up in the button bar above the configuration list.
+To start, select all of the configurations you want to retarget using the checkbox, then click the **retarget** button that shows up in the button bar above the configurations list.
 
 In the modal, select a new target source application, confirm your changes, and click **Retarget**.
+
 
 
 ## Visualize

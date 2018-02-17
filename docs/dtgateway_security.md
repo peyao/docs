@@ -163,7 +163,7 @@ can be same as the Hadoop web-service Kerberos credentials which are
 typically identified with the principal HTTP/HOST@DOMAIN. A few other
 configuration properties are also needed. These can be specified in the
 same “dt-site.xml” configuration file as the DT Gateway authentication
-configuration described in the Operation and Installation Guide. This
+configuration described in the [Configuration](configuration.md). This
 authentication can be set up using the following steps.
 
 1.  Add the following properties to `dt-site.xml` configuration file, typically located under `/opt/datatorrent/current/conf` ( or `~/datatorrent/current/conf` for local install)

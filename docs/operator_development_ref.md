@@ -458,7 +458,7 @@ operator can only work with certain values of an attribute, they can be
 accessed during setup call on an operator. During development of the
 operator the values of these attributes could be used to provide better
 operability for the operator. Details of attributes are covered in
-Operation and Installation Guide.
+[Configuration](configuration.md).
 
 ### Templates
 
