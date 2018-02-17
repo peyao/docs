@@ -173,4 +173,4 @@ The settings modal can be accessed by clicking the **edit** button next to the c
 
 Retargeting allows you to carry over your configuration settings to another source application. This is useful when working with multiple versions of an application; you can **copy** the configuration, then retarget the source application in the copied configuration.
 
-When you delete an application configuration's source application, it becomes orphaned. You can reupload the application, or you can retarget the configuration.
+When an application configuration's source application is deleted, it becomes orphaned. You can reupload the source application or retarget the configuration to restore functionality.

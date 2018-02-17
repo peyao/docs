@@ -1,4 +1,4 @@
-# dtManage Guide
+# DataTorrent Console (dtManage) Guide
 
 The DataTorrent Console (aka dtManage) is a web-based user interface that allows you to monitor and manage the DataTorrent RTS platform and applications running on your Hadoop cluster.
 
@@ -229,7 +229,6 @@ To access the application package listing, click on the "Apps" link from the Dev
 
 - Download the app package
 - Delete the app package
-- Create a new application in an application package via dtAssemble (requires enterprise license)
 - Launch applications in the app package
 
 > **Note:** If authentication is enabled, you may not be able to see others’ app packages, depending on your permissions.
@@ -248,19 +247,21 @@ All DataTorrent applications are made up of operators that connect together via 
 
 ![DAG View](images/dtmanage/console-dag-view.png)
 
-
-### Creating apps with dtAssemble
-
-If you have an Enterprise license, you will have access to the dtAssemble tool. Using this tool is outside the scope of this guide, but check out the [dtAssemble guide](http://docs.datatorrent.com/dtassemble/).
-
-
-
-
 ## Configure
 
 The RTS configuration menu is accessed by the cog button on the top-right corner of the Console. Under the **configuration** section, there are links to various tools to help you configure and troubleshoot your DataTorrent installation. The available menu items may differ depending on your security settings.
 
 ![](images/dtmanage/console-config-system-screen.png)
+
+### System Information
+
+This page displays details of the following:
+* Gateway Information - Displays all the details of the gateway properties that are configured in the current DT RTS installation.
+* Hadoop Information - Displays the details of Hadoop properties that are configured in the current DT RTS installation.
+* Phone Home Information - Displays the data from the current DT RTS installation, such as usage statistics, which is dynamically aggregated over the time period of 24 hours and sent to the DT servers. The data is aggregated in total time frames that is it includes data from the start of the gateway installation to present.
+
+![System Configuration Page](images/dtmanage/console-system-screen2.png)
+
 
 ### System Configuration
 
@@ -275,7 +276,7 @@ In addition, you can perform the following actions from this page:
   * Usage Reporting - If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
   * Installation Wizard - Rerun the initial installation to reconfigure HDFS installation path and Hadoop executable.
 
-### Security Configuration
+### Security 
 
 By default, your installation starts with no security enabled, which may be sufficient on a closed network with a limited set of users. However, it is recommended to use some form of authentication especially for production environments.
 
@@ -283,7 +284,12 @@ By default, your installation starts with no security enabled, which may be suff
 
 DataTorrent RTS supports various authentication methods which can be enabled by following instructions in the [Authentication](dtgateway_security/#authentication) section.
 
-### System Alerts
+### Services
+Services represent global, shared, and automatically managed Docker or Apex processes. Applications are dependent on such services. From the Service page,  you can create new services, import packaged services, or manage installed services.
+
+![Security Configuration Page](images/dtmanage/security-screen1.png)
+
+### Alerts
 
 System alerts can be configured to notify users through the Console and emails based on various system and application metrics.
 
@@ -325,7 +331,7 @@ You can click on the "Javascript Code" tab to see the generated JavaScript expre
 You can generate a test email to validate your alert by checking the "Send Test Email" check-box and clicking on the blue "Test" button. The test email is sent regardless of the true or false result
 of the JavaScript condition, if the evaluation has no errors provided SMTP is configured as described in the Alerts section.
 
-### License Information
+### License 
 
 Use the License Information page to view how much of your DataTorrent license capacity your cluster is consuming as well as what capabilities your license permits. You can also upload new license files here.
 
@@ -344,7 +350,7 @@ The User Profile page displays information about the current user, including the
 
 ### User Management
 
-Use this page to manage users and roles of your DataTorrent cluster:
+Use this page to manage users and their corresponding roles on your DataTorrent cluster. This page is accessible only to an admin user. You can do the following from this page:
 
 *   Add users
 *   Change users’ roles
@@ -354,7 +360,7 @@ Use this page to manage users and roles of your DataTorrent cluster:
 *   Edit role permissions
 *   Delete roles
 
-![User Management Screen](images/dtmanage/console-user-mgmt.png)
+![User Management Screen](images/dtmanage/console-user-mgmt.png
 
 > **Note:** With most authentication schemes, the admin role cannot be deleted.
 
