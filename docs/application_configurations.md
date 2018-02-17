@@ -48,12 +48,12 @@ configurations can be converted to regular application configurations by saving 
 Working With Application Configurations
 =======================================
 
-
   * [Properties](#properties)
   * [JAR Artifacts](#jar-artifacts)
   * [File Artifacts](#file-artifacts)
   * [Services](#services)
   * [Dashboards](#dashboards)
+  * [Settings](#settings)
 
 
 Properties
@@ -159,3 +159,16 @@ Dashboards are automatically imported (if they have not already been) when the a
 #### Configuring a Packaged Dashboard
 
 To configure a packaged dashboard, click the **configure** button. In the modal, you can change the dashboard name and target applications. Target applications can be either the current application configuration, or other running applications that have data sources.
+
+
+Settings
+--------
+
+The application configuration settings modal allows you to edit the **Configuration Name** and retarget the **Source Application**.
+The settings modal can be accessed by clicking the **edit** button next to the configuration name header, or through the dropdown menu on the top right corner of the page.
+
+#### Retargeting Source Application
+
+Retargeting allows you to carry over your configuration settings to another source application. This is useful when working with multiple versions of an application; you can **copy** the configuration, then retarget the source application in the copied configuration.
+
+When you delete an application configuration's source application, it becomes orphaned. You can reupload the application, or you can retarget the configuration.

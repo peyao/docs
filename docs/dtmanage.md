@@ -23,33 +23,47 @@ The AppFactory hosts a collection of applications and templates grouped by vario
 
 ## Launch
 
-The Launch screen lists all of the imported and uploaded packages and their applications. Applications can be launched and active instances viewed.
+The Launch page lists all of the **Applications** and [**Configurations**](/application_configurations) available for launching, as well as offering convenient management features.
 
 ![Launch](images/dtmanage/console-launch.png)
 
-#### Launching Apps
+The page is split into two views: **Applications** and **Configurations**. The **Applications** view lists all the base applications pulled in from application packages. The **Configurations** view lists all available application configurations.
 
-To launch an app in an App Package, click on the launch button to the far right of the list. A dialog box will appear with several options: 
+The *instances* column lists all running instances of each application or configuration. Clicking on an instance link takes you to the running instance page.
 
-- **Specify a name for the running app**
-  The console will pre-populate this field with an appropriate name, but you can specify your own name. Make sure it is unique among all the applications running in the Hadoop cluster of your DataTorrent installation.
-- **Specify launch properties**
-  In addition to choosing a config file, you may also directly specify properties in the launch pop-up by selecting this option. Any required properties will automatically show up in this section and require input. Note that there are several helpful functions when specifying custom properties:
-  - *add* - App Packages can have custom properties applied at launch time to override existing properties.
-    - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults. This button can be found clicking on the *add* button's submenu.
-  If any properties were added, the option to save the properties as a Configuration Package is activated.
-- **Use configuration file**
-  App Package config files are xml files that contain `<properties>` that get interpreted and used for launching an application. To choose one, enable the check box and choose the config file you want to use for launch.
-- **Use configuration package**
-  App Packages with a separate associated Configuration Package can be selected here. The Configuration Package will launch with its own custom properties.
-- **Specify the [scheduler queue](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)**
-  This input allows you to specify which queue you want the application to be launched under. The default behavior depends on your Hadoop installation, but typically will be `root.[USER_NAME]`.
-- **Enable [Garbage Collection logging](http://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/index.html)**
-  Checking this box enables GC logging by including the `-Xloggc:<LOG_DIR>/gc.log -verbose:gc -XX:+PrintGCDateStamps` JVM options for all the containers of the application. This GC logging in turn enables garbage collection widgets described later.
 
-![Launch app modal](images/dtmanage/console-launch-app.png)
+### Uploading Packages and Configurations
 
-> **Note:** For more information about config files and custom properties, see the [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html)
+The **Applications** and **Configurations** views have their own upload buttons. If you want to upload an application package (.apa), use the **upload package** button in the **Applications** view. If you want to upload an application configuration (.apc), use the **upload configuration** button in the **Configurations** view.
+
+
+### Launching Applications and Configurations
+
+Applications and configurations can be launched using the **launch** button in the *actions* column. This opens a launch modal where you can confirm whether to **Launch** or **Configure** the target.
+
+*Note*: Some applications must be configured before launching because they have required properties.
+
+When using the **Configure** button in the *Launch Application* modal, a temporary configuration is used. Temporary configurations are useful for launching and testing quickly without creating too many configurations. Read more about [temporary configurations](/application_configurations#launching-quickly-with-temporary-configurations) at the main Application Configurations page.
+
+
+#### Launch Dropdown
+
+The dropdown next to the **launch** button contains some convenient management actions and some alternative launch options.
+
+![Launch Dropdown](images/dtmanage/console-launch-dropdown.png)
+
+When working with **Applications**, the dropdown gives you quick access to configurations targeting the selected application, ability to create a temporary configuration with a configuration xml, and some package management actions.
+
+When working with **Configurations**, the dropdown gives you access to configuration management actions, related configurations, and source application management actions.
+
+
+#### Retargeting Multiple Configurations
+
+Multiple configurations can have their source applications retargeted together. This is useful when working with a new application version and you want to migrate some existing configurations.
+
+To start, select all of the configurations you want to retarget using the checkbox, then click the **retarget** button that shows up in the button bar above the configuration list.
+
+In the modal, select a new target source application, confirm your changes, and click **Retarget**.
 
 
 ## Visualize
