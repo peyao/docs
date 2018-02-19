@@ -27,6 +27,12 @@ To create an application configuration:
   4. In the **New Application Configuration** modal, confirm the *Source Application* is correct and name your configuration.
   5. Click **create**. You will be navigated to the newly created configuration's page.
 
+There are additional ways to create application configurations:
+
+  * In the **Launch** page, using the **new configuration** button above the Applications and Configurations table.
+  * In the **Develop > Application Packages** page, using the dropdown next to an application's launch button, select **new configuration**.
+  * In the **Develop > Application Configurations** page, using the **create new** button above the Configurations table.
+
 
 #### Launching Quickly With Temporary Configurations
 
@@ -44,12 +50,54 @@ configurations can be converted to regular application configurations by saving 
 Working With Application Configurations
 =======================================
 
+  * [Header](#header)
+  * [Application Details](#application-details)
   * [Properties](#properties)
+  * [Launch Options](#launch-options)
   * [JAR Artifacts](#jar-artifacts)
   * [File Artifacts](#file-artifacts)
   * [Services](#services)
   * [Dashboards](#dashboards)
-  * [Settings](#settings)
+
+
+Header
+------
+
+The header contains all of the main configuration actions. This is where you can **launch**, **save**, **discard**, and more.
+
+![](images/application_configurations/working_with_header.png)
+
+The configuration status is displayed on the top right of the header. The status changes as instances of the configuration are detected. The header displays additional instance-related actions conditionally, like **kill** and **view** when it finds a *RUNNING* instance.
+
+
+### Actions Menu
+
+The actions (ellipsis) menu contains additional actions like **copy**, **download**, **delete**, and **settings**, as well as some **application package actions**. If the configuration has a *RUNNING* instance, the **application instance actions** section will appear and allow managing the instance.
+
+![](images/application_configurations/working_with_header_actions_menu.png)
+
+
+#### Settings
+
+Selecting **settings** in the actions menu opens the settings modal, which allows you to edit the **Configuration Name**
+and retarget the **Source Application**.
+
+Retargeting allows you to carry over your configuration settings to another source application. This is useful when working with multiple versions of an application; you can **copy** the configuration, then retarget the source application in the copied configuration.
+
+When an application configuration's source application is deleted, it becomes orphaned. You can reupload the source application or retarget the configuration to restore functionality.
+
+The settings modal can also be accessed by clicking the **edit** button next to the configuration name in the header.
+
+
+Application Details
+-------------------
+
+The application details section gives an overview of the source application and the package it belongs to. The **app package**
+and **app** links are useful for quick access to source details. The application DAG can be inspected by clicking-and-dragging to pan the diagram.
+
+![](images/application_configurations/working_with_application_details.png)
+
+In the case where a configuration becomes orphaned (source application not found), the **app package** link will be highlighted red. Clicking it will reveal the Settings modal which you can use to retarget the source application. See more about this in the [Settings](#settings) section above.
 
 
 Properties
@@ -79,6 +127,16 @@ selecting **default properties** in the **add** dropdown.
 
 Garbage collection (GC) logging can be enabled by selecting **enable gc logging** in the
 **add** dropdown. This will add an optional property 
+
+
+Launch Options
+--------------
+
+The launch options section contains any application launch specific options.
+
+![](images/application_configurations/working_with_launch_options.png)
+
+The **Queue to launch this application under** option allows you to choose a Hadoop YARN queue.
 
 
 JAR Artifacts
@@ -159,14 +217,3 @@ See the [Packaged Dashboard](/dtdashboard#packaged-dashboards) section in the dt
 To configure a packaged dashboard, click the **configure** button. In the modal, you can change the dashboard name and target applications. Target applications can be either the current application configuration, or other running applications that have data sources.
 
 
-Settings
---------
-
-The application configuration settings modal allows you to edit the **Configuration Name** and retarget the **Source Application**.
-The settings modal can be accessed by clicking the **edit** button next to the configuration name header, or through the dropdown menu on the top right corner of the page.
-
-#### Retargeting Source Application
-
-Retargeting allows you to carry over your configuration settings to another source application. This is useful when working with multiple versions of an application; you can **copy** the configuration, then retarget the source application in the copied configuration.
-
-When an application configuration's source application is deleted, it becomes orphaned. You can reupload the source application or retarget the configuration to restore functionality.
