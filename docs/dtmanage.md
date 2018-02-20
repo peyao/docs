@@ -43,7 +43,7 @@ Applications and configurations can be launched using the **launch** button in t
 
 *Note*: Some applications and configurations must be configured before launching because they have incomplete required properties.
 
-When using the **Configure** button in the *Launch Application* modal, a temporary configuration is used. Temporary configurations are useful for launching and testing quickly without creating extra configurations. Read more about [temporary configurations](/application_configurations#launching-quickly-with-temporary-configurations) on the main Application Configurations page.
+When using the **Configure** button in the *Launch Application* modal, a temporary configuration is used. Temporary configurations are useful for launching and testing quickly without creating extra configurations. Read more about [temporary configurations](application_configurations.md#launching-quickly-with-temporary-configurations) on the main Application Configurations page.
 
 
 #### Launch Dropdown
@@ -211,7 +211,7 @@ Shows various metrics of your application on a real-time line chart. Single-clic
 
 #### Garbage Collection (GC) Chart by Heap
 
-This chart shows a container's heap memory in use in KB (kilo-bytes) against time. The chart is constructed by plotting and extrapolating in-use heap memory obtained from events in the GC log file of a container which requires GC logging to be enabled as described in [Application Configurations](/application_configurations#optional-properties). The chart shown is for a single container that is selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+This chart shows a container's heap memory in use in KB (kilo-bytes) against time. The chart is constructed by plotting and extrapolating in-use heap memory obtained from events in the GC log file of a container which requires GC logging to be enabled as described in [Application Configurations](application_configurations.md#optional-properties). The chart shown is for a single container that is selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
 
 - all application containers in the application view
 - all the containers containing the physical partitions of a logical operator in the logical operator view
@@ -222,7 +222,7 @@ This chart shows a container's heap memory in use in KB (kilo-bytes) against tim
 
 #### Garbage Collection (GC) Log Table
 
-This table shows the garbage collection (GC) events for a group of containers. This table too requires GC logging to be enabled as described in [Application Configurations](/application_configurations#optional-properties). The containers included in the group depend on the context of the widget:
+This table shows the garbage collection (GC) events for a group of containers. This table too requires GC logging to be enabled as described in [Application Configurations](application_configurations.md#optional-properties). The containers included in the group depend on the context of the widget:
 
 - all application containers in the application view
 - all the containers containing the physical partitions of a logical operator in the logical operator view
@@ -233,7 +233,7 @@ This table shows the garbage collection (GC) events for a group of containers. T
 
 #### Garbage Collection (GC) Chart by Duration
 
-This discrete bar chart shows GC event duration in seconds against time for a group of containers. Each bar is of fixed-width but the height denotes the duration of the corresponding GC event. This chart too requires GC logging to be enabled as described in [Application Configurations](/application_configurations#optional-properties). One or more containers are selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+This discrete bar chart shows GC event duration in seconds against time for a group of containers. Each bar is of fixed-width but the height denotes the duration of the corresponding GC event. This chart too requires GC logging to be enabled as described in [Application Configurations](application_configurations.md#optional-properties). One or more containers are selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
 
 - all application containers in the application view
 - all the containers containing the physical partitions of a logical operator in the logical operator view

@@ -214,7 +214,7 @@ Dashboards are automatically imported (if they have not already been) when the a
 
 ![](images/application_configurations/working_with_dashboards.png)
 
-See the [Packaged Dashboard](dtdashboard/#packaged-dashboards) section in the dtDashboard page for more details.
+See the [Packaged Dashboard](dtdashboard.md#packaged-dashboards) section in the dtDashboard page for more details.
 
 #### Configuring a Packaged Dashboard
 
