@@ -23,7 +23,7 @@ The AppFactory hosts a collection of applications and templates grouped by vario
 
 ## Launch
 
-The Launch page lists all of the **Applications** and [**Configurations**](/application_configurations) available for launching, as well as offering convenient management features.
+The Launch page lists all of the **Applications** and [**Configurations**](application_configurations.md) available for launching, as well as offering convenient management features.
 
 ![Launch](images/dtmanage/console-launch.png)
 
@@ -78,11 +78,25 @@ The Monitor section of the Console can be used to monitor, troubleshoot, and man
 
 ### Cluster Overview
 
-The Cluster Overview page shows overall cluster statistics as well as a list of running DataTorrent applications.
+The operations home page shows overall cluster statistics as well as a list of running DataTorrent applications.
 
-![Cluster Overview Page](images/dtmanage/console-monitor-home.png)
+![Operations Home Page](images/dtmanage/console-monitor-home.png)
 
-The cluster statistics include some performance statistics and memory usage information. As for the application list, take note of: **ended apps** This includes all the ended applications that are still in the resource manager history.
+The CPU/Memory section shows the cpu cores and memory usage statistics.  The sample above shows that Apex applications are currently using `10.48 cores` and `788 GB` of memory, and that at one time memory usage peaked at `991.5 GB`.
+
+The Applications section shows counts of all current application states.  The sample image shows there are `6 running` applications and `0 pending`.  It is important that the `pending` count does not continually show a value other than zero, which may indicate that the cluster lacks available cpu/memory resources to start a new application.
+
+The Performance section shows current statistics such as container and operator counts, tuples processed per seconds and tuples emitted per seconds across all Apex applications.
+
+The Issues section shows warning and error counts.  The count style changes to a clickable button if the value is nonzero.  Additional details about the errors and warnings may be viewed by clicking the error or warning count buttons, or by navigating to the [System Information](#system-information) section.
+
+The Services section shows the current running/failed/stopped services.  Only states with nonzero values are shown.  The image above shows there are `7 running` services.
+
+Below the cluster overview is a list of running applications.  In this list each column has a filter input just below the header which is useful for locating specific applications when there is a large number of applications running.  Clicking on individual column headers will sort the rows by that column value.  Clicking on a specific application id or name will take you to the instance page for that application (see below).
+
+Selecting the **ended apps** button will include all ended applications that are still in the resource manager history.
+
+Notice the **services** designation on the _ato-online-analytics-service_ and _fpa-online-analytics-service_ applications in the image above.  These are Apex applications running as services.  For more details on services, refer to the [Services](services.md) section.
 
 ### Instance Page
 
@@ -103,6 +117,10 @@ All the default dashboard tabs have this widget. It contains basic information r
 ![shutdown and kill buttons](images/dtmanage/console-instance-kill-shutdown.png)
 
 The “shutdown” function tries to gracefully stop the application, while “kill” forces the application to end. In either case, you will need to confirm your action.
+
+**Note**: You should not shutdown or kill an Apex application which is running as a service.  If you want to terminate such an application, then you should stop or delete the service.  For more details on stopping and deleting services, refer to the [Services](services.md) section. 
+
+The **AM logs** button shows you a dropdown menu where you may find the App Master logs, application log and GC log.  Selecting one of the menu options will take you to the log page where you can analyze the logs.  See the [Viewing Logs](#viewing-logs) section for more details.
 
 You can also use the **set logging level** button on this widget to specify what logging level gets written to the dt.log files. 
 
@@ -129,7 +147,22 @@ This widget visualizes the logical plan of the application being viewed:
 
 ![](images/dtmanage/logical-dag.png)
 
-Additionally, you can cycle through various metrics aggregated by logical operator. In the screenshot above, processed tuples per second and emitted tuples per second are shown. 
+Additionally, by selecting alternatives from the "Top" and "Bottom" dropdowns, you can cycle through
+various metrics aggregated by the logical operators. In the screenshot above, processed tuples per
+second and emitted tuples per second are shown.
+
+The rectangle near the bottom right with a miniature representation of the DAG is a scrolling aid and
+is useful when the DAG is very large and does not fit in its entirety in the browser window: You can
+pan (i.e. shift the viewport) to a particular area of the DAG by moving the grey box with your pointer
+to the corresponding area of the mini-DAG.
+
+Clicking on the "Critical Path" checkbox, you can enable highlighting of the path of the longest
+latencies highlighted in red:
+
+![](images/dtmanage/CriticalPath.png)
+
+Similarly, clicking on the "Stream Locality" checkbox will draw the streams with different dot patterns
+to distinguish the different localities chosen.
 
 >**Pro tip:** Hold the alt/option key while using your mouse scroll wheel to zoom in and out on the DAG.
 
@@ -151,11 +184,22 @@ One nice feature specific to this widget is the ability to set the logging level
 
 #### Physical Operators List Widget
 
-Shows the physical operators in the application.
+Shows the physical operators in the application and, for each operator, also shows the container
+running it. The value in the "container" column is a clickable link which takes you to the page
+for that container. The same link is also present in the "id" column of the "Containers" widget
+described next.
 
 #### Containers List Widget
 
-Shows the containers in the application. From this widget you can: select a container and go to one of its logs, fetch non-running containers and view information about them, and even kill selected containers.
+Shows the containers in the application. Selecting a container by clicking on the checkbox
+will trigger the display of additional buttons which allow you to retrieve logs, fetch info for
+containers that have already terminated, retrieve a stack dump, or kill selected containers:
+
+![](images/dtmanage/ContainerButtons.png)
+
+The Application Master container is the one whose container id ends with `_000001`.  The `AppMaster` label is shown to the right of the id, as shown in the above screenshot. The entries in the id column are clickable links that take you to the page for a specific container, showing the physical operators hosted in it and the relevant statistics:
+
+![](images/dtmanage/PhysicalOperators.png)
 
 #### Logical Streams List Widget
 
@@ -206,6 +250,7 @@ There is a mechanism called tuple recording that can be used to easily look at t
 
 >**Pro tip:** Select multiple tuples by holding down the shift key.
 
+<a name="viewing-logs">
 ### Viewing Logs
 
 Another useful feature of the Console is the ability to view container logs of a given application. To do this, select a container from the Containers List widget (default location of this widget is in the “physical” dashboard). Then click the logs dropdown and select the log you want to look at:
@@ -250,7 +295,7 @@ All DataTorrent applications are made up of operators that connect together via 
 
 ## Configure
 
-The RTS configuration menu is accessed by the cog button on the top-right corner of the Console. Under the **configuration** section, there are links to various tools to help you configure and troubleshoot your DataTorrent installation. The available menu items may differ depending on your security settings.
+The RTS configuration menu is accessed by the cog button on the top-right corner of the Console. Under the **System Configuration** section, there are links to various tools to help you configure and troubleshoot your DataTorrent installation. The available menu items may differ depending on your security settings.
 
 ![](images/dtmanage/console-config-system-screen.png)
 
@@ -286,9 +331,9 @@ By default, your installation starts with no security enabled, which may be suff
 DataTorrent RTS supports various authentication methods which can be enabled by following instructions in the [Authentication](dtgateway_security/#authentication) section.
 
 ### Services
-Services represent global, shared, and automatically managed Docker or Apex processes. Applications are dependent on such services. From the Service page,  you can create new services, import packaged services, or manage installed services.
+Services represent global, shared, and automatically managed processes. These processes are automatically installed, managed, and monitored by the Gateway, and can be an instance of an Apex application or a Docker container. Applications can rely on any number of services as their dependencies, and all the required services will be automatically installed and launched as needed when the application starts.  For more details refer to the [Services](services.md) section.
 
-![Security Configuration Page](images/dtmanage/security-screen1.png)
+![Services](images/services/services-list.png)
 
 ### Alerts
 
@@ -361,7 +406,7 @@ Use this page to manage users and their corresponding roles on your DataTorrent 
 *   Edit role permissions
 *   Delete roles
 
-![User Management Screen](images/dtmanage/console-user-mgmt.png
+![User Management Screen](images/dtmanage/console-user-mgmt.png)
 
 > **Note:** With most authentication schemes, the admin role cannot be deleted.
 
@@ -371,12 +416,13 @@ The first time you open the Console, after installing DataTorrent RTS on your cl
 
 * Location of the Hadoop executable
 * DFS location where all the DataTorrent files are stored
+* Docker configuration
 * DataTorrent license
 * Summary and review of any remaining configuration items
 
 At any time, you can go back to the installation wizard from the Configuration Tab. It can help diagnose issues and reconfigure your cluster and gateway.
 
-![](images/dtmanage/hadoop-config-screenshot.png)
+![](images/dtmanage/config-screenshot.png)
 
 When your Hadoop cluster has security enabled with Kerberos, there will be four additional controls in the installation wizard: 
 
@@ -388,6 +434,4 @@ When your Hadoop cluster has security enabled with Kerberos, there will be four 
 
 > **Note:** The token lifetime values you enter will not actually set these values in your hadoop configuration, it is only meant to inform the DataTorrent platform of these values.
 
-
-
-
+Docker configuration is optional.  For more details, refer to the [Docker Configuration](services.md#configuring-docker) section.
