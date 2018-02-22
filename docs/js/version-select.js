@@ -39,6 +39,64 @@ window.addEventListener("DOMContentLoaded", function() {
     return select;
   }
 
+  // function appendTemplate(templateText) {
+  //   var versionSection = document.querySelector("div.rst-versions");
+
+  //   var template = document.createElement('template');
+  //   templateText = templateText.trim(); // remove whitespace
+  //   template.innerHTML = templateText;
+    
+  //   versionSection.prepend(template.content.firstChild);
+  // }
+
+
+  function getCurrentVersion(versions) {
+    return versions.find(function(i) {
+      return i.version === CURRENT_VERSION ||
+             i.aliases.includes(CURRENT_VERSION) ||
+             (CURRENT_VERSION === 'latest' && i.latest);
+    });
+  }
+
+
+
+
+  var getVersions = $.get('/versions.json');
+  var getTemplate = $.get('/js/version-select.html');
+
+  $.when(getVersions, getTemplate)
+    .done(function(versionsResponse, templateResponse) {
+      var versions = versionsResponse[0];
+      var template = templateResponse[0];
+      var currentVersion = getCurrentVersion(versions);
+
+      // add template
+      $('.rst-versions').append(template);
+
+      var $versionSelect = $('.version-select');
+      var $versionSelectBar = $('.version-select__bar');
+      var $versionSelectBarVersion = $('.version-select__bar-version');
+      var $versionSelectMenu = $('.version-select__menu');
+      var $versionSelectMenuListVersions = $('.version-select__menu-versions');
+
+      // build template
+      $versionSelectBarVersion.append(currentVersion.title);
+
+      // expand/collapse click handler
+      $versionSelectBar.click(function(event) {
+        if (!$versionSelect.hasClass('version-select--shift-up')) {
+          $versionSelect.addClass('version-select--shift-up');
+        } else {
+          $versionSelect.removeClass('version-select--shift-up');
+        }
+      });
+
+      versions.forEach(function(version) {
+        $versionSelectMenuListVersions.append('<dd><a href="#">v' + version.title + '</a></dd>');
+      });
+    });
+
+  return;
   var xhr = new XMLHttpRequest();
   // xhr.open("GET", REL_BASE_URL + "/../versions.json");
   xhr.open("GET", "/versions.json");
@@ -79,7 +137,9 @@ window.addEventListener("DOMContentLoaded", function() {
     // place select in div
     div = document.createElement('div');
     div.className = 'version-select';
-    div.append('Version:');
+    div.append('v: ');
+    div.append(currentVersion.title);
+    div.append(document.createElement('span'));
     div.append(select);
 
     var versionSection = document.querySelector("div.rst-versions");
