@@ -1,4 +1,4 @@
-function initializeVersionSelection() {
+$(function initializeVersionSelect() {
   function normalizePath(path) {
     var normalized = [];
     path.split("/").forEach(function(bit, i) {
@@ -39,17 +39,6 @@ function initializeVersionSelection() {
     return select;
   }
 
-  // function appendTemplate(templateText) {
-  //   var versionSection = document.querySelector("div.rst-versions");
-
-  //   var template = document.createElement('template');
-  //   templateText = templateText.trim(); // remove whitespace
-  //   template.innerHTML = templateText;
-    
-  //   versionSection.prepend(template.content.firstChild);
-  // }
-
-
   function getCurrentVersion(versions) {
     return versions.find(function(i) {
       return i.version === CURRENT_VERSION ||
@@ -58,11 +47,22 @@ function initializeVersionSelection() {
     });
   }
 
-
-
+  function getVersionLink(version) {
+    var match = window.location.href.match(/\/v\/[0-9]*\.[0-9]*\.[0-9]*\//);
+    if (match) {
+      // path has version number in it
+      // window.location.href = window.location.href.replace(/\/v\/[0-9]*\.[0-9]*\.[0-9]*\//,  '/v/' + this.value + '/');
+      return window.location.href.replace(/\/v\/[0-9]*\.[0-9]*\.[0-9]*\//,  '/v/' + version + '/');
+    } else {
+      // path does not have version in it
+      // window.location.href = window.location.href.replace(window.location.origin, window.location.origin + '/v/' + this.value);
+      return window.location.href.replace(window.location.origin, window.location.origin + '/v/' + version);
+    }
+    // window.location.href = REL_BASE_URL + "/../" + this.value;
+  }
 
   var getVersions = $.get('/versions.json');
-  var getTemplate = $.get('/js/version-select.html');
+  var getTemplate = $.get('/custom/version-select.html');
 
   $.when(getVersions, getTemplate)
     .done(function(versionsResponse, templateResponse) {
@@ -92,7 +92,7 @@ function initializeVersionSelection() {
       });
 
       versions.forEach(function(version) {
-        $versionSelectMenuListVersions.append('<dd><a href="#">v' + version.title + '</a></dd>');
+        $versionSelectMenuListVersions.append('<dd><a href="' + getVersionLink(version.version) + '">v' + version.title + '</a></dd>');
       });
     });
 
@@ -146,6 +146,4 @@ function initializeVersionSelection() {
     versionSection.prepend(div);
   };
   xhr.send();
-}
-
-initializeVersionSelection();
+});
