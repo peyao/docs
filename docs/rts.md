@@ -3,7 +3,7 @@ DataTorrent RTS Overview
 
 DataTorrent RTS is an enterprise product built around Apache Apex, a Hadoop-native unified stream and batch processing platform.  DataTorrent RTS combines Apache Apex engine with a set of enterprise-grade management, monitoring, development, and visualization tools.  
 
-![DataTorrent RTS Architecture Layers Diagram](images/rts/stack.png)
+![DataTorrent RTS Architecture](images/rts/DT_Architecture_image.png)
 
 DataTorrent RTS platform enables creation and management of real-time big data applications in a way that is
 

@@ -89,7 +89,7 @@ To configure rules from HDFS, do the following:
 
 ### CEP Workbench & JAR Artifacts
 
-Refer to [CEP Workbench](cep_workbench.md) and [JAR Artifacts](jar_artifacts.md) for more details. 
+Refer to [CEP Workbench](../cep_workbench.md) and [JAR Artifacts](../jar_artifacts.md) for more details. 
 
 ## Setting the Expiration Limit for Events
 
