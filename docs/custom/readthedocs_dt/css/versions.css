@@ -8,6 +8,13 @@
   cursor: default;
 }
 
+.version-select {
+  display: none;
+}
+.version-select--show {
+  display: block;
+}
+
 .version-select__bar {
   padding: 14px;
   text-align: right;

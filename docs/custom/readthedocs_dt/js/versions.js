@@ -33,7 +33,7 @@ $(function initializeVersionSelect() {
     xhttp.send();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 404) {
-        window.location.href = window.location.origin +  '/v/' + version + '/'; //home page
+        window.location.href = window.location.origin + '/v/' + version + '/'; //home page
       }
       else if (this.readyState == 4 && this.status == 200) {
         window.location.href = href2;
@@ -110,5 +110,11 @@ $(function initializeVersionSelect() {
           }
         });
       });
+
+      $versionSelect.addClass('version-select--show');
+    })
+    .fail(function() {
+      // no version support, collapse footer
+      $('nav.wy-nav-side').css('height', '100%');
     });
 });
