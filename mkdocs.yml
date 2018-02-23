@@ -1,9 +1,7 @@
 site_name: DataTorrent Documentation
 google_analytics: ['UA-44586211-2', 'docs.datatorrent.com']
 site_favicon: favicon.ico
-theme:
-    name: readthedocs
-    custom_dir: 'readthedocs_dt'
+theme: readthedocs
 extra_javascript: ['custom/custom-loader.js']
 pages:
 - DataTorrent RTS: index.md
@@ -109,3 +107,7 @@ pages:
 - Release Notes: release_notes.md
 - Glossary: glossary.md
 - Resources: additional_docs.md
+
+theme:
+    name: readthedocs
+    custom_dir: 'docs/custom/readthedocs_dt'
