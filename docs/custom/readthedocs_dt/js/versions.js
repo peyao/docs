@@ -105,7 +105,9 @@ $(function initializeVersionSelect() {
         }
 
         $el.click(function() {
-          checkIfPageExistsInSelectedVersion(getVersionLink(versionStr), versionStr);
+          if (versionStr !== 'latest') {
+            checkIfPageExistsInSelectedVersion(getVersionLink(versionStr), versionStr);
+          }
         });
       });
     });
