@@ -177,6 +177,11 @@ function injectCustomLoaderJs() {
     mkdocsContent = ary.join('extra_javascript: ');
   }
 
+  // NOTE: Hardcoding 'docs/custom/readthedocs-dt' theme
+  var DEFAULT_THEME = 'readthedocs';
+  var CUSTOM_DIR_THEME = 'docs/custom/readthedocs_dt';
+  mkdocsContent += '\ntheme:\n    name: ' + DEFAULT_THEME + '\n    custom_dir: \'' + CUSTOM_DIR_THEME + '\'';
+
   fs.writeFileSync(file, mkdocsContent);
 }
 
