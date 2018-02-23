@@ -45,3 +45,6 @@
   color: #fff;
   font-size: 85%;
 }
+.version-select__menu-versions dd a.active {
+  font-weight: bold;
+}

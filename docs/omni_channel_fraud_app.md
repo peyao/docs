@@ -35,7 +35,7 @@ The following table lists the various processing phases of the incoming data tup
 | **Phase** | **Process** | **Description** |
 | --- | --- | --- |
 | 1. | Transaction Ingestion | Data from all your input sources is pushed onto a message bus such as Apache kafka. The application leverages platform capabilities to ingest data from Kafka message bus to rest of its pipeline. Data tuples are filtered and transformed. The following operators are involved during Transaction ingestion: Kafka Input Operator, Filter Operator and Transformation Operator |
-| 2 | Transaction Enrichment | Data is enriched with the lookup information such as user profile data, card data, geo data, store profile data etc.The following operators are involved in the transaction enrichment phase: Enricher, Geo Data, Customer Data, Card Data, and Product Data.  By default, these are the enrichment operators, you can modify, add, or remove these operators by launching the application with a different application configuration. &lt;link to enrichment configuration's |
+| 2 | Transaction Enrichment | Data is enriched with the lookup information such as user profile data, card data, geo data, store profile data etc.The following operators are involved in the transaction enrichment phase: Enricher, Geo Data, Customer Data, Card Data, and Product Data.  By default, these are the enrichment operators, you can modify, add, or remove these operators by launching the application with a different application configuration. Refer to [Enriching Data](#enrichdata) |
 | 3 | Fraud Rule Execution | Fraud detection rules can be applied to the enriched data using the CEP Workbench. The following operator are involved in the Fraud Rule Execution phase: Fraud Rule Executor  |
 | 4 | Analytics | OAS and Metrics |
 | 5 | Fraud Triggers and Alerts | Triggers are activated based on the output of the upstream processing. The processed transactions are written onto HDFS to run any historical analysis in future. Also, transactions are published on message bus such as kafka to take real time actions. The application is also integrated with alerting systems that send real time alerts to applicable users.  Email alerts are sent by default. The following operator is involved in the Fraud Triggers and Alerts phase: Alert Mail, Data Writer, and Kafka Output operator|
@@ -50,19 +50,19 @@ The following operators/modules are included for the Fraud Prevention applicatio
 | Transaction Parser | This JSON parser operator parses the incoming transaction messages  and converts them into plain java objects hereafter referred as tuple for further processing. |
 | TransactionTransformer | Transforms tuple fields as per given configuration e.g. fetch deviceIp from mobile details or web details based on transaction source |
 | TransactionValidator | Validates tuples based on configuration e.g. all transactions with transaction amount more than 100$ |
-| User Profile Enricher | This operator gets the relevant JAVA applicable user details corresponding to a unique ID and enriches the tuple. -Refer &lt;configure enrichment&gt;Using this operator is optional in an FPA application. |
-| Geo Data Enricher | The application identifies the geolocation of the transaction by performing a lookup of the transaction IP against the external database like Maxmind database.  Using this operator is optional in an FPA application. |
-| CardDataEnricher | This operator gets relevant card details and enriches tuple.Using this operator is optional in an FPA application. |
-| ProductDataEnricher | This operator gets relevant product details and enriches tuple.Using this operator is optional in an FPA application. |
-| Input Module | Input module consists of two operators: **Kafka Input Operator** This operator emits the byte array from Kafka topic whose properties are set on the module. These properties must be the same ones set on the corresponding output module whose messages are subscribed. You can also indicate which offset to start reading messages from kafka. **Avro Deserializer** This operator does the deserialization of the schema set on the module. The schema must be the same one set on corresponding output module whose messages are subscribed.The deserialized class should be in classpath. This will be achieved by querying schema repository to include the jar of the class. Omni-Channel Fraud prevention application. Refer to &lt;Application Backplane&gt; |
-| AccountDataEnricher | This operator gets relevant user account security information from Account takeover prevention application using application backplane. |
+| User Profile Enricher | This operator gets the relevant JAVA applicable user details corresponding to a unique ID and enriches the tuple. Using this operator is optional in an FPA application. Refer [User Data Enricher](#userdata) |
+| Geo Data Enricher | The application identifies the geolocation of the transaction by performing a lookup of the transaction IP against the external database like Maxmind database.  Using this operator is optional in an FPA application. Refer [Geo Data Enricher](#geodata)|
+| CardDataEnricher | This operator gets relevant card details and enriches tuple. Using this operator is optional in an FPA application. Refer [Card Data Enricher](#carddata)  |
+| ProductDataEnricher | This operator gets relevant product details and enriches tuple.Using this operator is optional in an FPA application. Refer [Product Data Enricher](#productdata) |
+| Input Module | Input module consists of two operators: **Kafka Input Operator**- This operator emits the byte array from Kafka topic whose properties are set on the module. These properties must be the same ones set on the corresponding output module whose messages are subscribed. You can also indicate which offset to start reading messages from kafka. **Avro Deserializer** - This operator does the deserialization of the schema set on the module. The schema must be the same one set on corresponding output module whose messages are subscribed.The deserialized class should be in classpath. This will be achieved by querying schema repository to include the jar of the class. Omni-Channel Fraud prevention application. Refer [Application Backplane](appbackplane.md)  |
+| AccountDataEnricher | This operator gets relevant user account security information from Account takeover prevention application using application backplane. |appbackplane.md)
 | Fraud Rules Executor | This operator is the Drools Operator. It applies the pre-defined rules to the incoming tuples and takes a suitable action depending on the outcome of the rules applied to a tuple. |
 | HDFS Output Operator | This output operator writes messages coming from the Rules Executor to the specified HDFS file path. Using this operator is optional in an FPA application. |
 | AOO Operator | This operator writes messages to a Kafka topic that are consumed by Online Analytics Service (OAS). |
 
 # Setting the Application
 
-Before you run the **Omni Channel Fraud Prevention** application, you must ensure to fulfill the prerequisites and to configure theenrichment.
+Before you run the **Omni Channel Fraud Prevention** application, you must ensure to fulfill the prerequisites and to configure the enrichment.
 
 ## Prerequisites
 
@@ -73,20 +73,20 @@ The following should be installed on the computer before setting up the applicat
 | Apache Hadoop | 2.6.0 and Above | Apache Hadoop is an open-source software framework that is used for distributed storage and processing of dataset of big data using the MapReduce programming model. |
 | DataTorrent RTS | 3.10 | DataTorrent RTS, which is built on Apache Apex, provides a high-performing, fault-tolerant, scalable, easy to use data processing platform for both batch and streaming workloads. DataTorrent RTS includes advanced management, monitoring, development, visualization, data ingestion, and distribution features. |
 | Apache Kafka | 0.9 | Apache Kafka is an open-source stream processing platform that provides a unified, high-throughput, low-latency platform for handling real-time data feeds. |
-| Maxmind |   | If you are using Geo data enrichment, ensure to copy the maxmind city database on HDFS and configure the operator with the location. For more details, refer to Configuring the Properties section. |
+| Maxmind |   | If you are using Geo data enrichment, ensure to copy the maxmind city database on HDFS and configure the operator with the location. For more details, refer to [Configuring the Properties](#configproperties) section. |
 
-## Enriching Data
+## <a name="enrichdata"></a>Enriching Data
 
-Missing fields from your incoming records can be enriched with the lookup data. Enricher operators can be used to enrich the incoming data. You can add custom enricher operators or edit the existing default operators from the **enrichments.json** file on the HDFS. The path of the **enrichments.json** file must be set before you launch the application. This can be done by adding, the **dt.fraudprevention.enrichments.configFilePath** property to the application configuration and setting its value to the **enrichments.json** file path.
+Missing fields from your incoming records can be enriched with the lookup data. Enricher operators can be used to enrich the incoming data. You can add custom enricher operators or edit the existing default operators from the **enrichments.json** file on the HDFS. The path of the **enrichments.json** file must be set before you launch the application. This can be done by adding the **dt.fraudprevention.enrichments.configFilePath** property to the application configuration and setting its value to the **enrichments.json** file path.
 
 By default, the Fraud Prevention application has the following enrichers:
 
 - [User Data Enricher](#userdata)
 - [Geo Data Enricher](#geodata)
 - [Card Data Enricher](#carddata)
-- [Product Data Enricher](productdata)
+- [Product Data Enricher](#productdata)
 
-# Configuring the Properties
+# <a name="configproperties"></a>Configuring the Properties
 
 Before launching the Fraud Prevention application, you can set the application configurations as per your requirement. The properties of the following items can be added to an application configuration during launch.
 
@@ -348,7 +348,7 @@ Lookup the product details in your json records that are stored in HDFS files. Y
 
 ## <a name="outputmodule"></a>Output Module
 
-The following properties must be set for the output module. &lt;refer to application backplane&gt;
+The following properties must be set for the output module. Also refer [Application Backplane](appbackplane.md)
 
 | **Property** | **Description** | **Type** | **Example** |
 | --- | --- | --- | --- |

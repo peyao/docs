@@ -25,17 +25,20 @@ $(function initializeVersionSelect() {
   var REL_BASE_URL = (typeof base_url === 'undefined' ? '.' : base_url);
   var ABS_BASE_URL = normalizePath(window.location.pathname + "/" + REL_BASE_URL);
   var CURRENT_VERSION_STR = ABS_BASE_URL ? ABS_BASE_URL.split('/v/')[1].split('/')[0] : 'latest';
+  // var CURRENT_VERSION = (ABS_BASE_URL.match(/^(\/v\/)([A-Za-z0-9\.\-_]+)(\/)/i) || [])[2] || '';
 
-  function makeSelect(options, selected) {
-    var select = document.createElement("select");
-
-    options.forEach(function(i) {
-      var option = new Option(i.text, i.value, undefined,
-                              i.value === selected);
-      select.add(option);
-    });
-
-    return select;
+  function checkIfPageExistsInSelectedVersion(href2, versionSelect, event) {
+    var xhttp= new XMLHttpRequest();  
+    xhttp.open("GET", href2, true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 404) {
+        window.location.href = window.location.origin +  '/v/' + versionSelect.value + '/'; //home page
+      }
+      else if (this.readyState == 4 && this.status == 200) {
+        window.location.href = href2;
+      }
+    };  
   }
 
   function getCurrentVersion(versions) {
@@ -91,6 +94,14 @@ $(function initializeVersionSelect() {
       // append versions
       versions.forEach(function(version) {
         $versionSelectMenuVersions.append('<dd><a href="' + getVersionLink(version.version) + '">' + version.title + '</a></dd>');
+      });
+
+      // bold active version
+      $('.version-select__menu-versions > dd > a').each(function(i, el) {
+        var $el = $(el);
+        if ($el.text() === CURRENT_VERSION_STR) {
+          $el.addClass('active');
+        }
       });
     });
 });
