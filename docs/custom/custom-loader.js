@@ -1,4 +1,4 @@
-// This block is used to load the version-select.js script
+// This block is used to load custom scripts and stylesheets
 // This file is added to the mkdcos.yml file in the extra_javascript file.
 // In doing so, the html files will reference it using a relative path.
 // It should be OK to leave this file in the js folder and referenced using relative paths.
@@ -20,12 +20,7 @@ window.addEventListener("DOMContentLoaded", function() {
     document.head.appendChild(tag);
   }
 
-
-  // loading custom menu files
-  loadCss('/custom/menu.css');
-  loadScript('/custom/menu.js');
-
-  // loading custom version-select files
-  loadCss('/custom/version-select.css');
-  loadScript('/custom/version-select.js');
+  // loading custom files
+  // loadCss('/custom/version-select.css');
+  // loadScript('/custom/version-select.js');
 });
