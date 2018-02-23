@@ -41,10 +41,11 @@
   display: inline-block;
   padding: 8px;
 }
-.version-select__menu-versions dd a {
+.version-select__menu-versions dd .version {
   color: #fff;
   font-size: 85%;
+  cursor: pointer;
 }
-.version-select__menu-versions dd a.active {
+.version-select__menu-versions dd .version--active {
   font-weight: bold;
 }
