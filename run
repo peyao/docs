@@ -311,7 +311,7 @@ function copyLatestVersionToRoot() {
  * This way, the root custom directory always has the latest custom codes
  */
 function copyCustomDirectoryToRoot() {
-  var statement = 'cp ' + tempDir + '/.custom/* ' + tempDir + '/custom';
+  var statement = 'cp -R ' + tempDir + '/.custom/* ' + tempDir + '/custom';
   log('copying latest custom codes to root custom directory, statement:', statement);
   execSync(statement);  
 }
@@ -398,7 +398,7 @@ function checkoutPrevBranch() {
 function createSymbolicLink() {
   var statement = 'cd ' + tempDir + '/v ; rm -rf ' + argv.docsVersion + ' ; ln -sf ' + argv.targetVersion + ' ' + argv.docsVersion + ' ; cd -';
   log('creating symbolic link, statement:', statement);
-  // execSync(statement);
+  execSync(statement);
 }
 
 /*
