@@ -81,11 +81,7 @@ $(function initializeVersionSelect() {
 
       // expand/collapse click handler
       $versionSelectBar.click(function(event) {
-        if (!$versionSelect.hasClass('version-select--shift-up')) {
-          $versionSelect.addClass('version-select--shift-up');
-        } else {
-          $versionSelect.removeClass('version-select--shift-up');
-        }
+        $versionSelectMenu.toggle();
       });
 
       // set link for latest version
@@ -110,11 +106,11 @@ $(function initializeVersionSelect() {
           }
         });
       });
-
-      $versionSelect.addClass('version-select--show');
     })
     .fail(function() {
-      // no version support, collapse footer
-      $('nav.wy-nav-side').css('height', '100%');
+      var $sideNav = $('nav.wy-nav-side');
+      var $versionSelect = $('.version-select');
+      $sideNav.css('height', '100%');
+      $versionSelect.hide();
     });
 });
