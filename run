@@ -154,36 +154,15 @@ function injectCustomDirectory() {
 }
 
 /*
- * Inject custom-loader.js into the mkdocs.yml file in the
- * branch we are building
+ * Inject custom theme into the mkdocs.yml file in the branch we are building
  */
-function injectCustomLoaderJs() {
+function injectCustomTheme() {
   // set file name
   var file = 'mkdocs.yml';
-  log('adding custom-loader.js to mkdocs file:', file);
+  log('modifying mkdocs settings file:', file);
 
-  // read file mkdocs.yml
+  // read current mkdocs.yml
   var mkdocsContent = fs.readFileSync(file, 'utf-8');
-
-  // inject custom/custom-loader.js if necessary
-  var ary = mkdocsContent.split('extra_javascript: ');
-  if (ary.length === 1) {
-    // there's no extra_javascript in the file, append it
-    log('mkdodcs.yml does not have an "extra_javascript" line');
-    mkdocsContent += '\nextra_javascript: [\'custom/custom-loader.js\']';
-  } else {
-    // mkdocs contains the extra_javascript property, see if we need to insert custom-loader.js
-    log('found "extra_javascript" line in mkdocs.yml');
-    var subary = ary[1].split('\n');
-    var extraJavascript = JSON.parse(subary[0].replace(/\'/g, '"'));
-    if (extraJavascript.indexOf('custom/custom-loader.js') === -1) {
-      log('adding custom/custom-loader.js to extra_javascript');
-      extraJavascript.push('custom/custom-loader.js');
-      subary[0] = JSON.stringify(extraJavascript);
-    }
-    ary[1] = subary.join('\n');
-    mkdocsContent = ary.join('extra_javascript: ');
-  }
 
   // adding custom theme 'readthedocs_dt'
   mkdocsContent += '\ntheme:\n    name: readthedocs\n    custom_dir: \'docs/custom/readthedocs_dt\'';
@@ -454,7 +433,7 @@ function build() {
 
   checkoutGitTag();
   injectCustomDirectory();
-  injectCustomLoaderJs();
+  injectCustomTheme();
   runMkdocsBuildCommand();
   updateVersionsJson('add');
   cleanGitBranch();
