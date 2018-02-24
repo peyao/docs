@@ -185,6 +185,9 @@ function injectCustomLoaderJs() {
     mkdocsContent = ary.join('extra_javascript: ');
   }
 
+  // adding custom theme 'readthedocs_dt'
+  mkdocsContent += 'theme:\n    name: readthedocs\n    custom_dir: \'docs/custom/readthedocs_dt\'';
+
   fs.writeFileSync(file, mkdocsContent);
 }
 
