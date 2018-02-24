@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="{{ base_url }}/css/highlight.css">
-  <link rel="stylesheet" href="{{ base_url}}/css/menu.css">
-  <link rel="stylesheet" href="{{ base_url}}/css/versions.css">
   {%- for path in extra_css %}
   <link href="{{ path }}" rel="stylesheet">
   {%- endfor %}
@@ -124,8 +122,6 @@
   {%- block scripts %}
     <script>var base_url = '{{ base_url }}';</script>
     <script src="{{ base_url }}/js/theme.js" defer></script>
-    <script src="{{ base_url }}/js/menu.js" defer></script>
-    <script src="{{ base_url }}/js/versions.js" defer></script>
     {%- for path in extra_javascript %}
       <script src="{{ path }}" defer></script>
     {%- endfor %}
