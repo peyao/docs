@@ -264,25 +264,25 @@ td, th {
 /* .toctree-l2 : mkdocs does not apply this class, select it using child combinator (>) */
 .wy-menu-vertical li.toctree-l1 > .subnav > li > span.caption-text,
 .wy-menu-vertical li.toctree-l1 > .subnav > li > a {
-  padding-left: 2.42em !important;
+  padding-left: 3em !important;
 }
 
 /* .toctree-l3 */
 .wy-menu-vertical li.toctree-l3 a,
 .wy-menu-vertical li a.toctree-l3 {
-  padding-left: 3.42em !important;
+  padding-left: 4.5em !important;
 }
 
 /* .toctree-l4 */
 .wy-menu-vertical li.toctree-l4 a,
 .wy-menu-vertical li a.toctree-l4 {
-  padding-left: 4.42em !important;
+  padding-left: 6em !important;
 }
 
 /* .toctree-l5 */
 .wy-menu-vertical li.toctree-l5 a,
 .wy-menu-vertical li a.toctree-l5 {
-  padding-left: 5.42em !important;
+  padding-left: 6em !important;
 }
 
 /* extend right padding for more space before breaking */
